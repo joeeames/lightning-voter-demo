@@ -1,18 +1,14 @@
 var express = require('express');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var  port = process.env.PORT || 8800
 
 var app = express();
 
-var config = require('./config')[env];
 
-require('./expressConfig')(app, config);
+require('./expressConfig')(app);
 
-// require('./server/config/mongoose')(config);
+require('./routes')(app);
 
-// require('./server/config/passport')();
-
-require('./server/config/routes')(app);
-
-app.listen(config.port);
-console.log('Listening on port ' + config.port + '...');
+app.listen(port);
+console.log('Listening on port ' + port + '...');

@@ -1,6 +1,8 @@
-var auth = require('./auth'),
-  users = require('../controllers/users'),
-  courses = require('../controllers/courses');
+// var auth = require('./auth'),
+  // users = require('../controllers/users'),
+  // courses = require('../controllers/courses');
+var fs = require('fs');
+
 
 module.exports = function(app) {
 
@@ -8,7 +10,9 @@ module.exports = function(app) {
   // app.post('/api/users', users.createUser);
   // app.put('/api/users', users.updateUser);
 
-  // app.get('/api/courses', courses.getCourses);
+  app.get('/api/courses', function(req, res, next) {
+    res.send([{id: 3, name: 'bob 101'}, {id:4, name: 'bob 201'}])
+  });
   // app.get('/api/courses/:id', courses.getCourseById);
 
   // app.get('/partials/*', function(req, res) {
@@ -27,8 +31,6 @@ module.exports = function(app) {
   // });
 
   app.get('*', function(req, res) {
-    res.render('index', {
-      bootstrappedUser: req.user
-    });
+    res.sendStatus(404);
   });
 }

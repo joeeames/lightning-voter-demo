@@ -4,7 +4,7 @@
   "description": "lightning talk voting app",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/server.js"
+    "start": "nodemon ./server/server.js"
   },
   "keywords": [],
   "author": "joe eames",
