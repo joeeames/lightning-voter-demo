@@ -1,0 +1,19 @@
+<nav sessions="$ctrl.sessions" reviewed-sessions="$ctrl.reviewedSessions"></nav>
+<h1>Admin Home</h1>
+
+<div class="panel panel-primary" ng-repeat="session in $ctrl.sessionsByVoteDesc">
+  <div class="panel-heading">
+      {{session.title}}
+      
+      <small style="padding-left:25px">By: {{session.userFirstName + ' ' + session.userLastName}}</small>
+    </div>
+    <div class="panel-body">
+      <p>
+        <strong>Duration: {{session.length}} minutes</strong>
+      </p>
+      <p>
+        <strong>Votes: {{session.voteCount}}</strong>
+      </p>
+      <p>{{session.abstract}}</p>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+body {
+  padding-top:60px;
+}
+
+.pointable {
+  cursor: pointer;
+}
+
+/*.fade.ng-show {
+  transition:1.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-show.ng-show-active {
+  opacity:1;
+}*/

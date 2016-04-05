@@ -1,0 +1,36 @@
+<nav sessions="$ctrl.sessions" reviewed-sessions="$ctrl.reviewedSessions"></nav>
+
+<h1>Create New Session</h1>
+<p>By filling out this form, you are volunteering to give a session in the lightning
+   talk room at ng-conf 2016. These will be held on "Fair Day", Thursay May 7th. They 
+   will start at 10am and go until finished. The schedule for the lightning talks will
+   be published at the conference.</p>
+
+<form class="form">
+  <div class="form-group">
+    Give your session a title
+    <input required type="text" placeholder="Title" ng-model="$ctrl.title" class="form-control">
+  </div>
+  <div class="form-group">
+    Enter a length, from 2 minutes to 30 minutes
+    <input required type="number" placeholder="Length in Minutes" 
+      ng-model="$ctrl.length" class="form-control" min="2" max="30">
+  </div>
+  <div class="form-group">
+    Describe your session
+    <textarea required name="" id="" cols="30" rows="10" 
+      ng-model="$ctrl.abstract" class="form-control"
+      placeholder="Abstract"></textarea>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-3">
+      <button class=" btn btn-primary btn-sm" ng-click="$ctrl.create()">Create</button>
+    </div>
+  </div>
+</form>
+
+<h2>Your Other Sessions</h2>
+<div class="well" ng-repeat="session in $ctrl.userSessions">
+  {{session.title}}
+</div>

@@ -1,0 +1,18 @@
+<h1>Please Login</h1>
+
+<p>Enter your attendee email address</p>
+<form class="form">
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <input type="text" placeholder="Email Address" ng-model="$ctrl.email" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" ng-click="$ctrl.login()">Login</button>
+    </div>
+  </div>
+</form>
+
+<br><br>
+<div class="alert alert-danger" ng-show="!!$ctrl.errorMessage">{{errorMessage}}</div>

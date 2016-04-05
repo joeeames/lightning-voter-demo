@@ -1,0 +1,12 @@
+{
+  "name": "ng-lightning-voter",
+  "version": "1.0.0",
+  "description": "lightning talk voting app for ng-conf",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 2888"
+  },
+  "keywords": [],
+  "author": "joe eames",
+  "license": "MIT"
+}
