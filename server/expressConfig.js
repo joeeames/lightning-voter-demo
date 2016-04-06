@@ -7,9 +7,6 @@ var express = require('express'),
 var rootPath = path.normalize(__dirname + '/../');
 
 module.exports = function(app) {
-
-  app.set('views', rootPath + '/server/views');
-  app.set('view engine', 'ejs');
   app.use(logger('dev'));
   app.use(cookieParser());
   app.use(bodyParser.json());

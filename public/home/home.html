@@ -1,21 +1,19 @@
-<nav sessions="$ctrl.sessions" reviewed-sessions="$ctrl.reviewedSessions"></nav>
-<div class="page-header">
-  <h1>Home</h1>
-</div>
+<nav sessions="vm.sessions" reviewed-sessions="vm.reviewedSessions"></nav>
 
-<h2 style="margin-top:50px">Unreviewed Sessions</h2>
-<unreviewed-talk session="$ctrl.currentSessionToReview" vote-no="$ctrl.voteNo()" vote-yes="$ctrl.voteYes()"></unreviewed-talk>
+<h2 style="margin-top:30px">Unreviewed Sessions</h2>
+<unreviewed-talk session="vm.currentSessionToReview" vote-no="vm.voteNo()" vote-yes="vm.voteYes()"></unreviewed-talk>
 
 
-<hr style="margin-top:50px">
-<h2>Your Sessions</h2>
-<a class="btn btn-primary" href="#/createsession">Create a New Session</a>
+<hr style="margin-top:20px">
+<h3>Your Sessions
+<a class="btn btn-primary btn-xs" href="#/createsession">Create a New Session</a>
+</h3>
 <br><br>
 
 <div class="row">
   <div class="col-sm-8">
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat="session in $ctrl.userSessions">
+      <li class="list-group-item" ng-repeat="session in vm.userSessions">
         {{session.title}}
       </li>
     </ul>

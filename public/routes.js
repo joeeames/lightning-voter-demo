@@ -53,7 +53,10 @@ app.config(function($routeProvider) {
       }
     })
     .when('/home', {
-      template: '<home reviewed-sessions="$resolve.reviewedSessions" sessions="$resolve.sessions" user-sessions="$resolve.userSessions"></home>',
+      controller: 'home',
+      templateUrl: 'home/home.html',
+      controllerAs: 'vm',
+      // template: '<home reviewed-sessions="$resolve.reviewedSessions" sessions="$resolve.sessions" user-sessions="$resolve.userSessions"></home>',
       resolve: {
         userSessions: function($firebaseAuthService, fbRef, $firebaseArray) {
           return $firebaseAuthService.$requireAuth().then(function() {

@@ -1,15 +1,11 @@
-angular.module('app').component('home', {
-  templateUrl: '/home/home.html',
-  bindings: {
-    userSessions: '=',
-    sessions: '=',
-    reviewedSessions: '='
-  },
-  controller: function($firebaseAuthService) {
+angular.module('app').controller('home', function(userSessions, sessions, reviewedSessions, $firebaseAuthService) {
+    this.sessions = sessions;
+    this.reviewedSessions = reviewedSessions;
+    this.userSessions = userSessions;
     
     this.setNextSessionToReview = function() {
       this.currentSessionToReview = 
-        this.sessions.getNextUnreviewedSession($firebaseAuthService.$getAuth().uid, this.reviewedSessions);
+        sessions.getNextUnreviewedSession($firebaseAuthService.$getAuth().uid, reviewedSessions);
     }
     this.setNextSessionToReview();
     
@@ -28,5 +24,4 @@ angular.module('app').component('home', {
       this.reviewedSessions.$save();
       this.setNextSessionToReview();
     }
-  }
 })
