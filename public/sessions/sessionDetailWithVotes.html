@@ -1,5 +1,5 @@
 <detail-panel collapsed="{{vm.initialCollapsed}}" title="{{vm.session.title}}">
   <strong>{{vm.session.voteCount}} votes</strong>
-  <p>Length: {{vm.session.length}} minutes</p>
+  <p>{{vm.session.length | talkDuration}}</p>
   <p><small>{{vm.session.abstract}}</small></p>  
 </detail-panel>
