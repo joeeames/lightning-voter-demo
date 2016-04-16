@@ -33,7 +33,6 @@ exports.incrementVote = function(req, res) {
   } else {
     res.status(500)
   }
-  console.log('incrementing ', sessionId)
   res.end();
 }
 

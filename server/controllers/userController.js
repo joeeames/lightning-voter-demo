@@ -34,14 +34,12 @@ exports.createSession = function(req, res) {
 
 exports.getRandomUnreviewedSession = function(req, res) {
   var userReviewedSessions = reviewedSessionsForUser(req.user.id)
-  console.log(userReviewedSessions);
   
   var unreviewedSessions = sessions.filter(session => {
     var reviewedSess = userReviewedSessions.find(revSession => revSession.id === session.id);
     return !(reviewedSess || session.userId === req.user.id) 
   })
   
-  console.log('unrev sess', unreviewedSessions);
   res.send(unreviewedSessions[Math.floor(Math.random() * unreviewedSessions.length)]);
   
 }

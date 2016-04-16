@@ -1,4 +1,4 @@
 *add some pieces that don't follow the style guide
-add some tests
-combine node files?
+*add a controller test
+add a directive test
 *rewrite 1 controller and 1 directive to NOT use controller As
