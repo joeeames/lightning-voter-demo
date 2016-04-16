@@ -1,4 +1,4 @@
-angular.module('app').service('parseNames', function() {
+angular.module('app').factory('parseNames', function() {
   return function(blobInput) {
     var lines = blobInput.split(/\r?\n/);
     lines.forEach(function(line, idx) {

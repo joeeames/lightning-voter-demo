@@ -1,2 +1,0 @@
-*make sure admin users can only login through the admin page. Don't let them login through the regular login page
-create a simple schedule based on votes

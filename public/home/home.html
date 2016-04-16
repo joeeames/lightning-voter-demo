@@ -1,21 +1,12 @@
-<nav sessions="vm.sessions" reviewed-sessions="vm.reviewedSessions"></nav>
+<nav></nav>
 
 <h2 style="margin-top:30px">Unreviewed Sessions</h2>
 <unreviewed-talk session="vm.currentSessionToReview" vote-no="vm.voteNo()" vote-yes="vm.voteYes()"></unreviewed-talk>
-
-
 <hr style="margin-top:20px">
 <h3>Your Sessions
-<a class="btn btn-primary btn-xs" href="#/createsession">Create a New Session</a>
+<a zoom-in class="btn btn-primary btn-xs" href="#/createsession">Create a New Session</a>
 </h3>
-<br><br>
 
-<div class="row">
-  <div class="col-sm-8">
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat="session in vm.userSessions">
-        {{session.title}}
-      </li>
-    </ul>
-  </div>
+<div ng-repeat="session in vm.userSessions">
+  <session-detail session="session" initial-collapsed="true"></session-detail>
 </div>

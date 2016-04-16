@@ -3,19 +3,16 @@ angular.module('app').directive('nav', function() {
   return {
     templateUrl: '/nav/nav.html',
     scope: {
-      sessions: '=',
-      reviewedSessions: '='
     },
     controllerAs: "vm",
-    controller: function($scope, $firebaseAuthService, $firebaseObject, fbRef) {
+    bindToController: true,
+    controller: function(currentIdentity, sessions, unreviewedSessionCount) {
       
-      this.currentUser = $firebaseObject(fbRef.getUserRef());
+      this.currentUser = currentIdentity.currentUser;
       
-      this.getUnreviewedSessionsCount = function() {
-        
-        return $scope.sessions.getUnreviewedCount($firebaseAuthService.$getAuth().uid, 
-          $scope.reviewedSessions);
-      }
+      unreviewedSessionCount.updateUnreviewedSessionCount();
+      this.unreviewedSessionCount = unreviewedSessionCount;
+      
     }
   }
 

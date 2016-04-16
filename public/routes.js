@@ -1,128 +1,113 @@
 
 app.config(function($routeProvider) {
   var routeResolvers = {
-    requireAdmin: function($firebaseAuthService, routeAuth) {
-      return $firebaseAuthService.$waitForAuth().then(function() {
-        console.log('checking route');
-        return routeAuth.requireAdmin();  
-      })
+    loggedIn: function(auth) {
+      return auth.requireLogin();
     },
-    sessions: function($firebaseAuthService, fbRef, sessionCollection) {
-      return $firebaseAuthService.$requireAuth().then(function() {
-        var query = fbRef.getSessionsRef();
-        return sessionCollection(query).$loaded()
-      })
+    waitForAuth: function(auth) {
+      return auth.waitForAuth();
     },
-    sessionsByVote: function($firebaseAuthService, fbRef, sessionCollection) {
-      return $firebaseAuthService.$requireAuth().then(function() {
-        var query = fbRef.getSessionsRef().orderByChild("voteCount");
-        return sessionCollection(query).$loaded()
-      })
+    requireAdmin: function(auth) {
+      return auth.requireAdmin();
     },
-    reviewedSessions: function($firebaseAuthService, fbRef, $firebaseObject) {
-      return $firebaseAuthService.$requireAuth().then(function() {
-        var query = fbRef.getReviewedSessionsRef();
-        return $firebaseObject(query).$loaded()
-      })
+    userSessions: function(sessions, currentIdentity, auth) {
+      return auth.requireLogin().then(function() {
+        return sessions.getSessionsByUser(currentIdentity.currentUser.id);
+      });
+    },
+    allSessions: function(sessions, auth) {
+      return auth.requireLogin().then(function() {
+        return sessions.getAllSessions();
+      });
+    },
+    allUsers: function(users, auth) {
+      return auth.requireLogin().then(function() {
+        return users.getAllUsers();
+      });
     }
+    
   }
   
   $routeProvider
     .when('/admin/login', {
-      template: '<admin-login current-auth="$resolve.currentAuth"></admin-login>',
-      resolve: {
-        currentAuth: function($firebaseAuthService) {
-          return $firebaseAuthService.$waitForAuth();
-        }
-      }
-    })
-    .when('/admin/home', {
-      template: '<admin-home sessions="$resolve.sessions" reviewed-sessions="$resolve.reviewedSessions"></admin-home>',
-      resolve: {
-        admin: routeResolvers.requireAdmin,
-        sessions: routeResolvers.sessionsByVote,
-        reviewedSessions: routeResolvers.reviewedSessions
-      }
-    })
-    .when('/admin/schedule', {
-      template: '<admin-schedule sessions="$resolve.sessions" reviewed-sessions="$resolve.reviewedSessions"></admin-schedule>',
-      resolve: {
-        admin: routeResolvers.requireAdmin,
-        sessions: routeResolvers.sessionsByVote,
-        reviewedSessions: routeResolvers.reviewedSessions
-      }
-    })
-    .when('/home', {
-      controller: 'home',
-      templateUrl: 'home/home.html',
+      controller: 'adminLoginCtrl',
+      templateUrl: 'admin/login.html',
       controllerAs: 'vm',
-      // template: '<home reviewed-sessions="$resolve.reviewedSessions" sessions="$resolve.sessions" user-sessions="$resolve.userSessions"></home>',
       resolve: {
-        userSessions: function($firebaseAuthService, fbRef, $firebaseArray) {
-          return $firebaseAuthService.$requireAuth().then(function() {
-            var query = fbRef.getUserSessionsRef().orderByChild("title");
-            return $firebaseArray(query).$loaded();
-          })
-        },
-        sessions: routeResolvers.sessions,
-        reviewedSessions: routeResolvers.reviewedSessions
+        currentAuth: routeResolvers.waitForAuth
+      }
+    })
+    .when('/admin/results', {
+      controller: 'resultsCtrl',
+      templateUrl: 'admin/results.html',
+      controllerAs: 'vm',
+      resolve: {
+        admin: routeResolvers.requireAdmin,
+        allSessions: routeResolvers.allSessions
+      }
+    })
+    .when('/admin/users/:id', {
+      controller: 'userDetailsCtrl',
+      templateUrl: 'admin/userDetails.html',
+      controllerAs: 'vm',
+      resolve: {
+        admin: routeResolvers.requireAdmin,
+        allUsers: routeResolvers.allUsers
+      }
+    })
+    .when('/users', {
+      controller: 'userListCtrl',
+      templateUrl: 'admin/userlist.html',
+      controllerAs: 'vm',
+      resolve: {
+        admin: routeResolvers.requireAdmin,
+        allUsers: routeResolvers.allUsers
       }
     })
     .when('/admin/createusers', {
-      template: '<admin-create-users reviewed-sessions="$resolve.reviewedSessions" sessions="$resolve.sessions" users="$resolve.users"></admin-create-users>',
+      controller: 'createUsersCtrl',
+      templateUrl: 'admin/createUsers.html',
+      controllerAs: 'vm',
+      resolve:  {
+        admin: routeResolvers.requireAdmin
+      }
+    })
+    .when('/home', {
+      controller: 'homeCtrl',
+      templateUrl: 'home/home.html',
+      controllerAs: 'vm',
       resolve: {
-        users: function($firebaseAuthService, fbRef, $firebaseArray) {
-          return $firebaseAuthService.$requireAuth().then(function() {
-            var query = fbRef.getUsersRef().orderByChild("firstName");
-            return $firebaseArray(query).$loaded()
-          })
-        },
-        admin: routeResolvers.requireAdmin,
-        sessions: routeResolvers.sessions,
-        reviewedSessions: routeResolvers.reviewedSessions
+        login:routeResolvers.loggedIn,
+        userSessions: routeResolvers.userSessions
       }
     })
     .when('/profile', {
-      template: '<profile user-data="$resolve.userData" reviewed-sessions="$resolve.reviewedSessions" sessions="$resolve.sessions" ></home>',
+      controller: 'profileCtrl',
+      templateUrl: 'profile/profile.html',
+      controllerAs: 'vm',
       resolve: {
-        userData: function($firebaseAuthService, fbRef, $firebaseObject) {
-          return $firebaseAuthService.$requireAuth().then(function() {
-            var query = fbRef.getUserRef()
-            return $firebaseObject(query).$loaded();
-          })
-        },
-        sessions: routeResolvers.sessions,
-        reviewedSessions: routeResolvers.reviewedSessions
+        userProfile: routeResolvers.loggedIn,
       }
     })
     .when('/createsession', {
-      template: '<create-new-session user-profile="$resolve.userProfile" reviewed-sessions="$resolve.reviewedSessions" user-sessions="$resolve.userSessions" sessions="$resolve.sessions"></create-new-session>',
+      controller: 'createNewSessionCtrl',
+      templateUrl: 'home/createNewSession.html',
+      controllerAs: 'vm',
       resolve: {
-        userSessions: function($firebaseAuthService, fbRef, $firebaseArray) {
-          return $firebaseAuthService.$requireAuth().then(function() {
-            var query = fbRef.getUserSessionsRef().orderByChild("title");
-            return $firebaseArray(query).$loaded()
-          })
-        },
-        sessions: routeResolvers.sessions,
-        reviewedSessions: routeResolvers.reviewedSessions,
-        userProfile: function($firebaseAuthService, fbRef, $firebaseObject) {
-          return $firebaseAuthService.$requireAuth().then(function() {
-            var query = fbRef.getUserRef()
-            return $firebaseObject(query).$loaded();
-          })
-        },
+        userSessions: routeResolvers.userSessions,
       }
     })
     .when('/login', {
-      template: '<login current-auth="$resolve.currentAuth"></login>',
+      controller: 'loginCtrl',
+      templateUrl: 'security/login.html',
+      controllerAs: 'vm',
       resolve: {
-        currentAuth: function($firebaseAuthService) {
-          return $firebaseAuthService.$waitForAuth();
-        }
+        currentAuth: routeResolvers.waitForAuth
       }
     })
     .when('/logout', {
+      controller: 'logoutCtrl',
+      controllerAs: 'vm',
       template: '<logout></logout>'
     })
     .otherwise('/home')
