@@ -16,24 +16,31 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'public/vendor/jquery.min.js',
-      'public/vendor/1.4.9/angular.min.js',
+      'public/vendor/1.4.9/angular.js',
       'public/vendor/1.4.9/angular-route.min.js',
       'public/vendor/toastr.min.js',
       'public/toastr/toastr.js',
       'public/app.js',
       'public/**/*.js',
-      'test/**/*.js'
+      'test/**/*.js',
+      'public/**/*.html'
     ],
 
 
     // list of files to exclude
     exclude: [
+      'public/vendor/1.5.3/**/*.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      '**/*.html': ['ng-html2js']
+    },
+    
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'public'
     },
 
 

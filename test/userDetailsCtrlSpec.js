@@ -1,14 +1,6 @@
 
 describe('userDetailsCtrlCtrl', function() {
-  var $ctrlCnst;
-  var mockCurId = {currentUser: {id:555}};
-  var mockUserSessions = [];
-  var mockSessions = {
-    getNextUnreviewedSession: function() {return {then: function() {}}}
-  };
-  var mockToastr = {};
-  var mockUnreviewedSessionCount = {};  
-  
+  var $ctrlCnst; 
   
   beforeEach(module('app'));
   
