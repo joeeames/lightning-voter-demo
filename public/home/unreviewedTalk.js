@@ -6,13 +6,15 @@ angular.module('app').directive('unreviewedTalk', function() {
       voteYes: '&',
       voteNo: '&'
     },
-    controller: function($scope) {
+    controllerAs: '$ctrl',
+    bindToController: true,
+    controller: function() {
       
-      $scope.yes = function() {
+      this.yes = function() {
         this.voteYes();
       }
       
-      $scope.no = function() {
+      this.no = function() {
         this.voteNo();
       }
     }

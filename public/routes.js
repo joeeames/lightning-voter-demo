@@ -30,8 +30,10 @@ app.config(function($routeProvider) {
   
   $routeProvider
     .when('/admin/login', {
-      controller: 'adminLoginCtrl',
-      templateUrl: 'admin/adminLogin.html',
+      // controller: 'adminLoginCtrl',
+      // templateUrl: 'admin/adminLogin.html',
+      // controllerAs: '$ctrl',
+      template: '<admin-login></admin-login>',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }
@@ -72,9 +74,7 @@ app.config(function($routeProvider) {
       }
     })
     .when('/home', {
-      controller: 'homeCtrl',
-      templateUrl: 'home/home.html',
-      controllerAs: 'vm',
+      template: '<home user-sessions="$resolve.userSessions"></home>',
       resolve: {
         login:routeResolvers.loggedIn,
         userSessions: routeResolvers.userSessions

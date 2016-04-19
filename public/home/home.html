@@ -1,12 +1,12 @@
 <nav></nav>
 
 <h2 style="margin-top:30px">Unreviewed Sessions</h2>
-<unreviewed-talk session="vm.currentSessionToReview" vote-no="vm.voteNo()" vote-yes="vm.voteYes()"></unreviewed-talk>
+<unreviewed-talk session="$ctrl.currentSessionToReview" vote-no="$ctrl.voteNo()" vote-yes="$ctrl.voteYes()"></unreviewed-talk>
 <hr style="margin-top:20px">
 <h3>Your Sessions
 <a zoom-in class="btn btn-primary btn-xs" href="#/createsession">Create a New Session</a>
 </h3>
 
-<div ng-repeat="session in vm.userSessions">
+<div ng-repeat="session in $ctrl.userSessions">
   <session-detail session="session" initial-collapsed="true"></session-detail>
 </div>
