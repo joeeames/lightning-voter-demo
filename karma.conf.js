@@ -16,8 +16,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'public/vendor/jquery.min.js',
-      'public/vendor/1.5.3/angular.min.js',
-      'public/vendor/1.5.3/angular-route.min.js',
+      'public/vendor/1.5.5/angular.min.js',
+      'public/vendor/1.5.5/angular-route.min.js',
       'public/vendor/toastr.min.js',
       'public/toastr/toastr.js',
       'public/app.js',
