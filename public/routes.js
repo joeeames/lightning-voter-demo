@@ -31,8 +31,7 @@ app.config(function($routeProvider) {
   $routeProvider
     .when('/admin/login', {
       controller: 'adminLoginCtrl',
-      templateUrl: 'admin/login.html',
-      controllerAs: 'vm',
+      templateUrl: 'admin/adminLogin.html',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }

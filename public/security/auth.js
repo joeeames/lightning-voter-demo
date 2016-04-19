@@ -3,6 +3,7 @@ angular.module('app').factory('auth', function($q, $http, currentIdentity) {
     login: function(credentials) {
       var dfd = $q.defer();
       $http.post('/api/login', credentials).then(function(response) {
+        console.log('here')
         currentIdentity.setUser(response.data.user);
         
         dfd.resolve();

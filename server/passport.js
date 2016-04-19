@@ -6,8 +6,6 @@ var passport = require('passport'),
 module.exports = function() {
   passport.use(new LocalStrategy(
     function(username, password, done) {
-      // console.log(2, username, password, done);
-      
       var found = users.find(user => {
         return user.email.toLowerCase() === username;
       })

@@ -6,8 +6,6 @@ angular.module('app').directive('unreviewedTalk', function() {
       voteYes: '&',
       voteNo: '&'
     },
-    // controllerAs: 'vm',
-    // bindToController: true,
     controller: function($scope) {
       
       $scope.yes = function() {

@@ -1,5 +1,5 @@
 angular.module('app').controller('loginCtrl', 
-    function($location, currentIdentity, auth) {
+    function($location, currentIdentity, auth, toastr) {
       
   if(currentIdentity.authenticated()) {
     $location.path('/home');
@@ -9,14 +9,10 @@ angular.module('app').controller('loginCtrl',
     auth.login({
       username: this.email,
       password: "pass"
-    }).then((function() {
+    }).then(function() {
       $location.path('/home');
-    }).bind(this), (function(err) {
-      this.errorMessage = err;
-    }).bind(this))
-  }
-  
-  this.logout = function() {
-    auth.logout();
+    }, function(err) {
+      toastr.error(err);
+    })
   }
 })

@@ -8,11 +8,13 @@ angular.module('app').directive('detailPanel', function() {
       title: '@',
       initialCollapsed: '@collapsed'
     },
-    controller: function($scope) {
-      $scope.collapsed = ($scope.initialCollapsed === 'true');
+    controllerAs: 'vm',
+    bindToController: true,
+    controller: function() {
+      this.collapsed = (this.initialCollapsed === 'true');
 
-      $scope.collapse = function() {
-        $scope.collapsed = !$scope.collapsed;
+      this.collapse = function() {
+        this.collapsed = !this.collapsed;
       }
     }
   }
