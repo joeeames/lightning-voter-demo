@@ -6,13 +6,8 @@ angular.module('app').component('home', {
   controller: function(currentIdentity, sessions, 
     toastr, unreviewedSessionCount) {
       
-    var obj = {a:3, b:4}
-    var {a} = obj;
-    console.log(`the answer is ${a}`);
-      
       
     this.currentUser = currentIdentity.currentUser
-    // this.userSessions = userSessions;
     
     this.setNextSessionToReview = function() {
       sessions.getNextUnreviewedSession(currentIdentity.currentUser.id)

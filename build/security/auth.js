@@ -5,10 +5,10 @@ angular.module('app').service('auth', (function () {
         this.currentIdentity = currentIdentity;
     }
     Auth.prototype.login = function (credentials) {
+        var _this = this;
         var dfd = this.$q.defer();
         this.$http.post('/api/login', credentials).then(function (response) {
-            console.log('here');
-            this.currentIdentity.setUser(response.data.user);
+            _this.currentIdentity.setUser(response.data.user);
             dfd.resolve();
         }, function (response) {
             dfd.reject("Invalid Credentials");
@@ -16,9 +16,10 @@ angular.module('app').service('auth', (function () {
         return dfd.promise;
     };
     Auth.prototype.logout = function () {
+        var _this = this;
         var dfd = this.$q.defer();
         this.$http.post('/api/logout').then(function (response) {
-            this.currentIdentity.clearUser();
+            _this.currentIdentity.clearUser();
             dfd.resolve();
         }, function (response) {
             dfd.reject("Error Logging Out");
@@ -48,12 +49,13 @@ angular.module('app').service('auth', (function () {
         });
     };
     Auth.prototype.requireAdmin = function () {
-        return this.waitForAuth().then(function () {
-            if (this.currentIdentity.authenticated() && this.currentIdentity.currentUser.isAdmin) {
+        var _this = this;
+        return this.waitForAuth().the(function () {
+            if (_this.currentIdentity.authenticated() && _this.currentIdentity.currentUser.isAdmin) {
                 return true;
             }
             else {
-                return this.$q.reject('AUTH_REQUIRED');
+                return _this.$q.reject('AUTH_REQUIRED');
             }
         });
     };

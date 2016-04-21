@@ -12,22 +12,21 @@ angular.module('app').service('auth',
  
     login(credentials) {
       var dfd = this.$q.defer();
-      this.$http.post('/api/login', credentials).then(function(response) {
-        console.log('here')
+      this.$http.post('/api/login', credentials).then(response => {
         this.currentIdentity.setUser(response.data.user);
         
         dfd.resolve();
-      }, function(response) {
+      }, response => {
         dfd.reject("Invalid Credentials");
       })
       return dfd.promise;
     }
     logout() {
       var dfd = this.$q.defer();
-      this.$http.post('/api/logout').then(function(response) {
+      this.$http.post('/api/logout').then(response => {
         this.currentIdentity.clearUser();
         dfd.resolve();
-      }, function(response) {
+      }, response => {
         dfd.reject("Error Logging Out");
       })
       return dfd.promise;
@@ -35,7 +34,7 @@ angular.module('app').service('auth',
     
     waitForAuth() {
       var dfd = this.$q.defer();
-      this.$http.get('/api/currentIdentity').then((response) => {
+      this.$http.get('/api/currentIdentity').then(response => {
         if(!!response.data) {
           this.currentIdentity.setUser(response.data);
         }
@@ -55,7 +54,7 @@ angular.module('app').service('auth',
     }
     
     requireAdmin() {
-      return this.waitForAuth().then(function() {
+      return this.waitForAuth().the(() => {
         if(this.currentIdentity.authenticated() && this.currentIdentity.currentUser.isAdmin) {
           return true;
         } else {

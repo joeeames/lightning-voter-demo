@@ -4,11 +4,7 @@ angular.module('app').component('home', {
         userSessions: '='
     },
     controller: function (currentIdentity, sessions, toastr, unreviewedSessionCount) {
-        var obj = { a: 3, b: 4 };
-        var a = obj.a;
-        console.log("the answer is " + a);
         this.currentUser = currentIdentity.currentUser;
-        // this.userSessions = userSessions;
         this.setNextSessionToReview = function () {
             var _this = this;
             sessions.getNextUnreviewedSession(currentIdentity.currentUser.id)
