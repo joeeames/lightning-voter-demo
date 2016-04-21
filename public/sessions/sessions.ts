@@ -27,7 +27,7 @@ angular.module('app').factory('sessions', function($http, $q) {
     },
     
     getNextUnreviewedSession: function(userId) {
-      return $http.get('/api/users/' + userId + '/randomUnreviewedSession');
+      return $http.get(`/api/users/${userId}/randomUnreviewedSession`);
     },
     
     addReviewedSession: function(userId, sessionId) {

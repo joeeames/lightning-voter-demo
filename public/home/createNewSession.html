@@ -5,28 +5,28 @@
 <form class="form">
   <div class="form-group">
     Give your session a title
-    <input required type="text" placeholder="Title" ng-model="vm.title" class="form-control">
+    <input required type="text" placeholder="Title" ng-model="$ctrl.title" class="form-control">
   </div>
   <div class="form-group">
     Enter a length, from 2 minutes to 30 minutes
     <input required type="number" placeholder="Length in Minutes" 
-      ng-model="vm.length" class="form-control" min="2" max="30">
+      ng-model="$ctrl.length" class="form-control" min="2" max="30">
   </div>
   <div class="form-group">
     Describe your session
     <textarea required name="" id="" cols="30" rows="4" 
-      ng-model="vm.abstract" class="form-control"
+      ng-model="$ctrl.abstract" class="form-control"
       placeholder="Abstract"></textarea>
   </div>
   
   <div class="row">
     <div class="col-sm-3">
-      <button class=" btn btn-primary btn-sm" ng-click="vm.create()">Create</button>
+      <button class=" btn btn-primary btn-sm" ng-click="$ctrl.create()">Create</button>
     </div>
   </div>
 </form>
 
 <h2>Your Other Sessions</h2>
-<div ng-repeat="session in vm.userSessions">
+<div ng-repeat="session in $ctrl.userSessions">
   <session-detail session="session" initial-collapsed="false"></session-detail>
 </div>

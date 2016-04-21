@@ -22,4 +22,5 @@ module.exports = function(app) {
   app.use(passport.session());
   
   app.use(express.static(rootPath + '/public'));
+  app.use(express.static(rootPath + '/build'));
 }

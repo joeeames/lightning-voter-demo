@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
-  <div class="panel-heading pointable" ng-click="vm.collapse()">
-    <span>{{vm.title}}</span>
+  <div class="panel-heading pointable" ng-click="$ctrl.collapse()">
+    <span>{{$ctrl.title}}</span>
   </div>
-  <div class="panel-body" ng-hide="vm.collapsed" ng-transclude>
+  <div class="panel-body" ng-hide="$ctrl.collapsed" ng-transclude>
   </div>
 </div>

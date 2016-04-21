@@ -2,6 +2,9 @@
 app.config(function($routeProvider) {
   var routeResolvers = {
     loggedIn: function(auth) {
+      // console.log(auth)
+      // var a = new auth();
+      // console.log(a);
       return auth.requireLogin();
     },
     waitForAuth: function(auth) {
@@ -30,45 +33,43 @@ app.config(function($routeProvider) {
   
   $routeProvider
     .when('/admin/login', {
-      // controller: 'adminLoginCtrl',
-      // templateUrl: 'admin/adminLogin.html',
-      // controllerAs: '$ctrl',
       template: '<admin-login></admin-login>',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }
     })
     .when('/admin/results', {
-      controller: 'resultsCtrl',
-      templateUrl: 'admin/results.html',
-      controllerAs: 'vm',
+      template: '<results all-sessions="$resolve.allSessions"></results>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allSessions: routeResolvers.allSessions
       }
     })
     .when('/admin/users/:id', {
-      controller: 'userDetailsCtrl',
-      templateUrl: 'admin/userDetails.html',
-      controllerAs: 'vm',
+      // controller: 'userDetailsCtrl',
+      // templateUrl: 'admin/userDetails.html',
+      // controllerAs: 'vm',
+      template: '<user-details all-users="$resolve.allUsers"></user-details>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers
       }
     })
     .when('/users', {
-      controller: 'userListCtrl',
-      templateUrl: 'admin/userlist.html',
-      controllerAs: 'vm',
+      // controller: 'userListCtrl',
+      // templateUrl: 'admin/userlist.html',
+      // controllerAs: 'vm',
+      template: '<user-list all-users="$resolve.allUsers"></user-list>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers
       }
     })
     .when('/admin/createusers', {
-      controller: 'createUsersCtrl',
-      templateUrl: 'admin/createUsers.html',
-      controllerAs: 'vm',
+      // controller: 'createUsersCtrl',
+      // templateUrl: 'admin/createUsers.html',
+      // controllerAs: 'vm',
+      template: '<create-users></create-users>',
       resolve:  {
         admin: routeResolvers.requireAdmin
       }
@@ -81,32 +82,35 @@ app.config(function($routeProvider) {
       }
     })
     .when('/profile', {
-      controller: 'profileCtrl',
-      templateUrl: 'profile/profile.html',
-      controllerAs: 'vm',
+      // controller: 'profileCtrl',
+      // templateUrl: 'profile/profile.html',
+      // controllerAs: 'vm',
+      template: '<profile user-profile="$resolve.userProfile"></profile>',
       resolve: {
         userProfile: routeResolvers.loggedIn,
       }
     })
     .when('/createsession', {
-      controller: 'createNewSessionCtrl',
-      templateUrl: 'home/createNewSession.html',
-      controllerAs: 'vm',
+      // controller: 'createNewSessionCtrl',
+      // templateUrl: 'home/createNewSession.html',
+      // controllerAs: 'vm',
+      template: '<create-new-session user-sessions="$resolve.userSessions"></create-new-user>',
       resolve: {
         userSessions: routeResolvers.userSessions,
       }
     })
     .when('/login', {
-      controller: 'loginCtrl',
-      templateUrl: 'security/login.html',
-      controllerAs: 'vm',
+      // controller: 'loginCtrl',
+      // templateUrl: 'security/login.html',
+      // controllerAs: 'vm',
+      template: '<login></login>',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }
     })
     .when('/logout', {
-      controller: 'logoutCtrl',
-      controllerAs: 'vm',
+      // controller: 'logoutCtrl',
+      // controllerAs: 'vm',
       template: '<logout></logout>'
     })
     .otherwise('/home')

@@ -1,20 +1,15 @@
-angular.module('app').directive('detailPanel', function() {
-  return {
-    restrict: 'E',
-    transclude: true,
-    templateUrl: '/components/detailPanel.html',
-    scope: {
-      title: '@',
-      initialCollapsed: '@collapsed'
-    },
-    controllerAs: 'vm',
-    bindToController: true,
-    controller: function() {
-      this.collapsed = (this.initialCollapsed === 'true');
+angular.module('app').component('detailPanel', {
+  transclude: true,
+  templateUrl: '/components/detailPanel.html',
+  bindings: {
+    title: '@',
+    initialCollapsed: '@collapsed'
+  },
+  controller: function() {
+    this.collapsed = (this.initialCollapsed === 'true');
 
-      this.collapse = function() {
-        this.collapsed = !this.collapsed;
-      }
+    this.collapse = function() {
+      this.collapsed = !this.collapsed;
     }
   }
 })
