@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./server/server.js",
-    "dev": "nodemon ./server/server.js -w ./server"
+    "dev": "nodemon ./server/server.js -w ./server",
+    "test": "karma start"
   },
   "keywords": [],
   "author": "joe eames",
