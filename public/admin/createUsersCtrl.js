@@ -4,7 +4,6 @@ angular.module('app').controller('createUsersCtrl',
   this.import = function() {
     var people = parseNames(this.namesblob);
     people.forEach((function(person) {
-      console.log(person);
      users.createNewUser({
         email: person.email,
         password: "pass",
