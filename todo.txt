@@ -1,7 +1,0 @@
-Add a controller that isn't a route controller
-
-*add some pieces that don't follow the style guide
-*add a controller test
-*add a directive test
-*add a service test
-*rewrite 1 controller and 1 directive to NOT use controller As
