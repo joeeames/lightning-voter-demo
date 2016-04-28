@@ -1,7 +1,7 @@
 <nav></nav>
 <h1>User List</h1>
 
-<a ng-href="#/admin/users/{{user.id}}" zoom-in class="btn btn-primary btn-spaced" ng-click="viewUserDetails" ng-repeat="user in vm.users">
+<a ng-href="#/admin/users/{{user.id}}" zoom-in class="btn btn-primary btn-spaced" ng-repeat="user in vm.users">
   {{user.firstName}}
   {{user.lastName}}
 </a>
