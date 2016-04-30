@@ -1,8 +1,9 @@
-angular.module('app').component('adminLogin', {
+angular.module('app').component('adminLogin', { 
   templateUrl: '/admin/adminLogin.html',
   bindings: {
   },
   controller: function($location, currentIdentity, auth, toastr) {
+    
     this.loggedIn = currentIdentity.authenticated();
     if(this.loggedIn) {
       $location.path('/home');

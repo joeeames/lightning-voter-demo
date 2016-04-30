@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node ./server/server.js",
     "dev": "nodemon ./server/server.js -w ./server",
-    "typings": "typings",
+    "test": "karma start",
     "tsc": "tsc -p . -w --outDir build",
-    "test": "karma start"
+    "typings": "typings"
   },
   "keywords": [],
   "author": "joe eames",

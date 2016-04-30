@@ -13,3 +13,10 @@ angular.module('app').component('detailPanel', {
     }
   }
 })
+
+
+
+
+
+
+
