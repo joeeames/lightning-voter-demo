@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <base href="/">
   <title>ng-conf Lightning Talks</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -41,6 +42,14 @@
   <script type="text/javascript" src="/components/zoomIn.js"></script>
   <script type="text/javascript" src="/profile/profile.js"></script>
   
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
 
+  <script src="config/systemjs.config.js"></script>
+  <script>
+    System.import('app').catch(function(err){ console.error(err); });
+  </script>
 </body>
 </html>
