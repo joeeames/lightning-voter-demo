@@ -5,13 +5,13 @@
 <form class="form-inline">
   <label for="firstName">First Name</label>
   <input type="text" id="firstName" placeholder="First Name"
-    class="form-control" ng-model="$ctrl.profile.firstName">
+    class="form-control" [(ngModel)]="profile.firstName">
     
   <label for="lastName">Last Name</label>
   <input type="text" id="lastName" placeholder="Last Name"
-    class="form-control" ng-model="$ctrl.profile.lastName">
+    class="form-control" [(ngModel)]="profile.lastName">
   
   <br><br>
-  <button class="btn btn-primary btn-sm" ng-click="$ctrl.save()">Save</button>
-  <button class="btn btn-warning btn-sm" ng-click="$ctrl.cancel()">Cancel</button>
+  <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
+  <button class="btn btn-warning btn-sm" (click)="cancel()">Cancel</button>
 </form>
