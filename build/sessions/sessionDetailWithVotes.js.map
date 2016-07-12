@@ -1,1 +1,0 @@
-{"version":3,"file":"sessionDetailWithVotes.js","sourceRoot":"","sources":["../../public/sessions/sessionDetailWithVotes.ts"],"names":[],"mappings":"AAAA,OAAO,CAAC,MAAM,CAAC,KAAK,CAAC,CAAC,SAAS,CAAC,wBAAwB,EAAE;IACxD,WAAW,EAAE,uCAAuC;IACpD,QAAQ,EAAE;QACR,OAAO,EAAE,GAAG;QACZ,gBAAgB,EAAE,GAAG;KACtB;IACD,UAAU,EAAE;IACZ,CAAC;CACF,CAAC,CAAA"}
