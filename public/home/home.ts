@@ -18,6 +18,7 @@ angular.module('app').component('home', {
     
     
     this.voteYes = function() {
+      console.log('yes');
       sessions.incrementVote(this.currentSessionToReview.id)
       .then(() => sessions.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id))
       .then(function() {
@@ -29,6 +30,7 @@ angular.module('app').component('home', {
     }
     
     this.voteNo = function() {
+      console.log('no');
       sessions.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id)
       .then(function() {
         this.setNextSessionToReview();

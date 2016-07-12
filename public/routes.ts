@@ -76,7 +76,7 @@ app.config(function($routeProvider) {
       }
     })
     .when('/createsession', {
-      template: '<create-new-session user-sessions="$resolve.userSessions"></create-new-user>',
+      template: '<create-new-session [user-sessions]="$resolve.userSessions"></create-new-user>',
       resolve: {
         userSessions: routeResolvers.userSessions,
       }

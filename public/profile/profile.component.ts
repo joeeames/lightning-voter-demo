@@ -4,7 +4,7 @@ import { Component, Inject } from '@angular/core';
   selector: 'profile',
   templateUrl: '/profile/profile.html'
 })
-export class profileComponent { 
+export class ProfileComponent { 
   
   //function($location, toastr, currentIdentity) {
 
