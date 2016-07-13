@@ -1,13 +1,13 @@
 import { Component, Inject } from '@angular/core';
+import { NG1_COMPONENTS } from '../upgradedNg1Components';
 
 @Component({
   selector: 'profile',
-  templateUrl: '/profile/profile.html'
+  templateUrl: '/profile/profile.html',
+  directives: [NG1_COMPONENTS]
 })
 export class ProfileComponent { 
   
-  //function($location, toastr, currentIdentity) {
-
   profile: any;
 
   constructor(
@@ -16,13 +16,12 @@ export class ProfileComponent {
     @Inject('toastr') private toastr:any
     ) {
 
-    this.profile = angular.copy(currentIdentity.currentUser);
     this.currentIdentity = currentIdentity;
   }
     
       
-  save() {
-    this.currentIdentity.updateUser(this.profile);
+  save(newProfile) {
+    this.currentIdentity.updateUser(newProfile);
     toastr.success('Profile Saved!');
   }
   
