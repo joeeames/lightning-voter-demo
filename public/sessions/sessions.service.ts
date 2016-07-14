@@ -1,13 +1,21 @@
-angular.module('app').service('sessions', class Sessions {
-  $http: any;
-  $q: any;
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 
-  constructor($http, $q) {
-    this.$http = $http;
-    this.$q = $q;
+@Injectable()
+export class Sessions {
+
+  constructor(private http: Http) {
   }
 
   getSessionsByUser(userId) {
+
+    this.http.get('/api/sessions/user/' + userId).map(rsp => {
+
+    })
+    
+    .map((rsp: Response) => { 
+      return rsp.data;
+    });
     var dfd = this.$q.defer();
     
     this.$http.get('/api/sessions/user/' + userId).then(function(response) {
