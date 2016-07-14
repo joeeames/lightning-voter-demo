@@ -1,5 +1,5 @@
 import { upgradeAdapter } from './upgradeAdapter';
-import { NameParser } from './admin/nameParser';
+import { NameParser } from './admin/nameParser.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { CreateNewSessionComponent } from './home/createNewSession.component';
