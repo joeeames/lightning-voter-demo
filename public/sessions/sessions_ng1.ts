@@ -7,14 +7,6 @@ angular.module('app').service('sessions_ng1', class Sessions {
     this.$q = $q;
   }
   
-  createNewSession(newSession) {
-    return this.$http.post('/api/sessions', newSession);
-  }
-  
-  getNextUnreviewedSession(userId) {
-    return this.$http.get(`/api/users/${userId}/randomUnreviewedSession`);
-  }
-  
   addReviewedSession(userId, sessionId) {
     return this.$http.post('/api/users/' + userId + '/reviewSession/' + sessionId);
   }

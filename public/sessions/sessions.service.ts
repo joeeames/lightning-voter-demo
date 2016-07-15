@@ -21,11 +21,14 @@ export class Sessions {
       .map((rsp: Response) => {
         return rsp.json();
       });
-    //return this.$http.post('/api/sessions', newSession);
   }
   
   getNextUnreviewedSession(userId) {
-    return this.sessions_ng1.getNextUnreviewedSession(userId);
+    return this.http
+      .get(`/api/users/${userId}/randomUnreviewedSession`)
+      .map((rsp: Response) => {
+        return rsp.json();
+      });
   }
   
   addReviewedSession(userId, sessionId) {

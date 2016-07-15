@@ -9,8 +9,10 @@ angular.module('app').component('home', {
     this.currentUser = currentIdentity.currentUser
     
     this.setNextSessionToReview = function() {
-      sessions.getNextUnreviewedSession(currentIdentity.currentUser.id).then((response) => {
-        this.currentSessionToReview = response.data;
+      sessions
+          .getNextUnreviewedSession(currentIdentity.currentUser.id)
+          .subscribe((data) => {
+        this.currentSessionToReview = data;
       })
     }
     this.setNextSessionToReview();
