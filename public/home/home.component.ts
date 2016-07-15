@@ -18,7 +18,7 @@ export class HomeComponent {
     private sessions : Sessions, 
     @Inject('toastr') private toastr, 
     @Inject('unreviewedSessionCount') private unreviewedSessionCount) {
-      this.currentUser = currentIdentity;
+      this.currentUser = currentIdentity.currentUser;
       this.setNextSessionToReview();
   }
 
@@ -31,16 +31,13 @@ export class HomeComponent {
 
   voteYes() {
     this.sessions.incrementVote(this.currentSessionToReview.id)
-    .subscribe(() => {
-      this.sessions.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id)
+      .flatMap(() => this.sessions.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id))
       .subscribe(() => {
         this.setNextSessionToReview();
         
         // pull updated value
         this.unreviewedSessionCount.updateUnreviewedSessionCount();
       })
-    })
-    
   }
   
   voteNo() {
