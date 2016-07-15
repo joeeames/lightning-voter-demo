@@ -20,15 +20,9 @@ export class CreateNewSessionComponent {
   }
 
   create(newUserSession) {
-    console.log(newUserSession);
-    // let newUserSession = {
-      // title: this.title,
-      // length: parseInt(this.length),
-      // abstract: this.abstract,
-      newUserSession.userFirstName = this.currentIdentity.currentUser.firstName,
-      newUserSession.userLastName = this.currentIdentity.currentUser.lastName,
-      newUserSession.userId = this.currentIdentity.currentUser.id,
-    // }
+    newUserSession.userFirstName = this.currentIdentity.currentUser.firstName,
+    newUserSession.userLastName = this.currentIdentity.currentUser.lastName,
+    newUserSession.userId = this.currentIdentity.currentUser.id,
     
     this.sessions.createNewSession(newUserSession).then(response => {
       this.userSessions.push(response.data);
