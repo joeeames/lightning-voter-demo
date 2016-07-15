@@ -1,58 +1,42 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class Sessions {
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+    @Inject('sessions_ng1') private sessions_ng1: any ) {
   }
 
   getSessionsByUser(userId) {
-    console.log('hi'); 
     return this.http.get('/api/sessions/user/' + userId)
       .map((rsp: Response) => {
-        let data = rsp.json(); 
-        console.log(data);
-        return data;
+        return rsp.json(); 
       });
-    // var dfd = this.$q.defer();
-    
-    // this.$http.get('/api/sessions/user/' + userId).then(function(response) {
-    //   dfd.resolve(response.data);
-    // }, function() {
-    //   dfd.reject();
-    // });
-    // return dfd.promise;
   }
   
-  // getAllSessions() {
-  //   var dfd = this.$q.defer();
-    
-  //   this.$http.get('/api/sessions').then(function(response) {
-  //     dfd.resolve(response.data);
-  //   }, function() {
-  //     dfd.reject();
-  //   });
-  //   return dfd.promise;
-  // }
+  createNewSession(newSession) {
+    return this.http.post('/api/sessions', newSession)
+      .map((rsp: Response) => {
+        return rsp.json();
+      });
+    //return this.$http.post('/api/sessions', newSession);
+  }
   
-  // createNewSession(newSession) {
-  //   return this.$http.post('/api/sessions', newSession);
-  // }
+  getNextUnreviewedSession(userId) {
+    return this.sessions_ng1.getNextUnreviewedSession(userId);
+  }
   
-  // getNextUnreviewedSession(userId) {
-  //   return this.$http.get(`/api/users/${userId}/randomUnreviewedSession`);
-  // }
+  addReviewedSession(userId, sessionId) {
+    return this.sessions_ng1.addReviewedSession(userId, sessionId);
+  }
   
-  // addReviewedSession(userId, sessionId) {
-  //   return this.$http.post('/api/users/' + userId + '/reviewSession/' + sessionId);
-  // }
+  incrementVote(sessionId) {
+    return this.sessions_ng1.incrementVote(sessionId);
+  }
   
-  // incrementVote(sessionId) {
-  //   return this.$http.put('/api/sessions/' + sessionId + '/incrementVote/');
-  // }
-  
-  // getUnreviewedCount(userId) {
-  //   return this.$http.get('/api/users/' + userId + '/unreviewedSessionCount');
-  // }
+  getUnreviewedCount(userId) {
+    return this.sessions_ng1.getUnreviewedCount(userId);
+  }
 };

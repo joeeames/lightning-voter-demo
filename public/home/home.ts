@@ -5,7 +5,6 @@ angular.module('app').component('home', {
   },
   controller: function(currentIdentity, sessions, 
     toastr, unreviewedSessionCount) {
-      
     
     this.currentUser = currentIdentity.currentUser
     

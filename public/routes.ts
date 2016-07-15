@@ -12,7 +12,9 @@ app.config(function($routeProvider) {
     },
     userSessions: function(sessions, currentIdentity, auth) {
       return auth.requireLogin().then(function() {
-        return sessions.getSessionsByUser(currentIdentity.currentUser.id);
+        return sessions
+          .getSessionsByUser(currentIdentity.currentUser.id)
+          .toPromise();
       });
     },
     allSessions: function(sessions, auth) {
