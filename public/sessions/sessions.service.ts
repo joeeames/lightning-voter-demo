@@ -5,8 +5,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class Sessions {
 
-  constructor(private http: Http,
-    @Inject('sessions_ng1') private sessions_ng1: any ) {
+  constructor(private http: Http) {
   }
 
   getSessionsByUser(userId) {
@@ -27,19 +26,29 @@ export class Sessions {
     return this.http
       .get(`/api/users/${userId}/randomUnreviewedSession`)
       .map((rsp: Response) => {
-        return rsp.json();
+        if(rsp.text() !== "")
+          return rsp.json();
+        else
+          return null;
       });
   }
   
   addReviewedSession(userId, sessionId) {
-    return this.sessions_ng1.addReviewedSession(userId, sessionId);
+    return this.http.post('/api/users/' + userId + '/reviewSession/' + sessionId, null);
+  }
+
+  getAllSessions() {
+    return this.http.get('/api/sessions/')
+      .map((rsp: Response) => {
+        return rsp.json(); 
+      });
   }
   
   incrementVote(sessionId) {
-    return this.sessions_ng1.incrementVote(sessionId);
+    return this.http.put('/api/sessions/' + sessionId + '/incrementVote/', null);
   }
   
   getUnreviewedCount(userId) {
-    return this.sessions_ng1.getUnreviewedCount(userId);
+    return this.http.get('/api/users/' + userId + '/unreviewedSessionCount');
   }
 };

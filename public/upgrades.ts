@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { CreateNewSessionComponent } from './home/createNewSession.component';
 import { DetailPanelComponent } from './components/detailPanel.component';
+import { HomeComponent } from './home/home.component';
 
 export function upgradeAndDowngrade() {
   upgradeAdapter.addProvider(NameParser);
@@ -16,7 +17,7 @@ export function upgradeAndDowngrade() {
   upgradeAdapter.upgradeNg1Provider("currentIdentity");
   upgradeAdapter.upgradeNg1Provider("$location");
   upgradeAdapter.upgradeNg1Provider("toastr");
-  upgradeAdapter.upgradeNg1Provider("sessions_ng1");
+  upgradeAdapter.upgradeNg1Provider("unreviewedSessionCount");
 
   angular.module('app').directive('profile', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(ProfileComponent));
@@ -26,4 +27,6 @@ export function upgradeAndDowngrade() {
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(CreateNewSessionComponent));
   angular.module('app').directive('detailPanel', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(DetailPanelComponent));
+  angular.module('app').directive('home', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(HomeComponent));
 }

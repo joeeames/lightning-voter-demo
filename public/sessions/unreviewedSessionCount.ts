@@ -11,8 +11,9 @@ angular.module('app').service('unreviewedSessionCount', class UnreviewedSessionC
   
   updateUnreviewedSessionCount() {
     this.sessions.getUnreviewedCount(this.currentIdentity.currentUser.id)
-        .then(response => {
-      this.value = response.data.count;
+        .subscribe(response => {
+          
+      this.value = response.json().count;
     })
   }
 })

@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
     },
     allSessions: function(sessions, auth) {
       return auth.requireLogin().then(function() {
-        return sessions.getAllSessions();
+        return sessions.getAllSessions().toPromise();
       });
     },
     allUsers: function(users, auth) {
@@ -65,7 +65,7 @@ app.config(function($routeProvider) {
       }
     })
     .when('/home', {
-      template: '<home user-sessions="$resolve.userSessions"></home>',
+      template: '<home [user-sessions]="$resolve.userSessions"></home>',
       resolve: {
         login:routeResolvers.loggedIn,
         userSessions: routeResolvers.userSessions
