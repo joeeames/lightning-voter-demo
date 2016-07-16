@@ -4,7 +4,7 @@ import { Sessions } from './sessions/sessions.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { CreateNewSessionComponent } from './home/createNewSession.component';
-import { DetailPanelComponent } from './components/detailPanel.component';
+import { DetailPanelComponent } from './common/detailPanel.component';
 import { HomeComponent } from './home/home.component';
 
 export function upgradeAndDowngrade() {

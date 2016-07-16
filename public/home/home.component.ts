@@ -2,11 +2,12 @@ import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { Sessions } from '../sessions/sessions.service';
 import {  NG1_COMPONENTS } from '../upgradedNg1Components';
 import { UnreviewedTalkComponent } from './unreviewedTalk.component';
+import { ZoomInDirective } from '../common/zoom-in.directive';
 
 @Component({
   selector: 'home',
   templateUrl: '/home/home.component.html',
-  directives: [NG1_COMPONENTS, UnreviewedTalkComponent]
+  directives: [NG1_COMPONENTS, UnreviewedTalkComponent, ZoomInDirective]
 })
 export class HomeComponent {
   @Input() userSessions: any;

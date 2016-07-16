@@ -2,7 +2,7 @@ import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'detail-panel',
-  templateUrl: '/components/detailPanel.component.html'
+  templateUrl: '/common/detailPanel.component.html'
 })
 export class DetailPanelComponent {
   @Input() title: string;
