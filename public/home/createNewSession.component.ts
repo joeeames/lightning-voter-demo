@@ -1,15 +1,16 @@
 import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
-import { NG1_COMPONENTS } from '../upgradedNg1Components';
 import { Sessions } from '../sessions/sessions.service';
 import { Response } from '@angular/http';
+import { Session } from '../sessions/session.model';
+import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'create-new-session',
   templateUrl: '/home/createNewSession.component.html',
-  directives: [NG1_COMPONENTS]
+  directives: [NavComponent]
 })
 export class CreateNewSessionComponent {
-  @Input() userSessions: any;
+  @Input() userSessions: Session[];
   title: string;
   length: string;
   abstract: string;
@@ -21,13 +22,13 @@ export class CreateNewSessionComponent {
 
   }
 
-  create(newUserSession) {
+  create(newUserSession:Session) {
     newUserSession.userFirstName = this.currentIdentity.currentUser.firstName,
     newUserSession.userLastName = this.currentIdentity.currentUser.lastName,
     newUserSession.userId = this.currentIdentity.currentUser.id,
     
     this.sessions.createNewSession(newUserSession)
-        .subscribe((data: any) => {
+        .subscribe((data: Session) => {
       this.userSessions.push(data);
     })
 

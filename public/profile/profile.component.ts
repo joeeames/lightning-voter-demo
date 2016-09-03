@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { NG1_COMPONENTS } from '../upgradedNg1Components';
+import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'profile',
   templateUrl: '/profile/profile.html',
-  directives: [NG1_COMPONENTS]
+  directives: [NavComponent]
 })
 export class ProfileComponent { 
   

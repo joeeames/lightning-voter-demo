@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { Session } from './session.model';
 
 @Injectable()
 export class Sessions {
@@ -11,14 +12,14 @@ export class Sessions {
   getSessionsByUser(userId) {
     return this.http.get('/api/sessions/user/' + userId)
       .map((rsp: Response) => {
-        return rsp.json(); 
+        return <Session[]>rsp.json();
       });
   }
   
   createNewSession(newSession) {
     return this.http.post('/api/sessions', newSession)
       .map((rsp: Response) => {
-        return rsp.json();
+        return <Session>rsp.json();
       });
   }
   
@@ -27,7 +28,7 @@ export class Sessions {
       .get(`/api/users/${userId}/randomUnreviewedSession`)
       .map((rsp: Response) => {
         if(rsp.text() !== "")
-          return rsp.json();
+          return <Session>rsp.json();
         else
           return null;
       });
@@ -40,7 +41,7 @@ export class Sessions {
   getAllSessions() {
     return this.http.get('/api/sessions/')
       .map((rsp: Response) => {
-        return rsp.json(); 
+        return <Session[]>rsp.json(); 
       });
   }
   

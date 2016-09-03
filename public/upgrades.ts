@@ -6,6 +6,7 @@ import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { CreateNewSessionComponent } from './home/createNewSession.component';
 import { DetailPanelComponent } from './common/detailPanel.component';
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 
 export function upgradeAndDowngrade() {
   upgradeAdapter.addProvider(NameParser);
@@ -29,4 +30,6 @@ export function upgradeAndDowngrade() {
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(DetailPanelComponent));
   angular.module('app').directive('home', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(HomeComponent));
+  angular.module('app').directive('nav', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(NavComponent));
 }

@@ -1,18 +1,22 @@
 import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { Sessions } from '../sessions/sessions.service';
-import {  NG1_COMPONENTS } from '../upgradedNg1Components';
+import { SESSION_DETAIL } from '../upgradedNg1Components';
 import { UnreviewedTalkComponent } from './unreviewedTalk.component';
 import { ZoomInDirective } from '../common/zoom-in.directive';
+import { Session } from '../sessions/session.model';
+import { CurrentUser } from '../security/currentUser.model';
+import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'home',
   templateUrl: '/home/home.component.html',
-  directives: [NG1_COMPONENTS, UnreviewedTalkComponent, ZoomInDirective]
+  directives: [SESSION_DETAIL, UnreviewedTalkComponent, 
+    ZoomInDirective, NavComponent]
 })
 export class HomeComponent {
-  @Input() userSessions: any;
-  currentUser: any;
-  currentSessionToReview: any;
+  @Input() userSessions: Session[];
+  currentUser: CurrentUser;
+  currentSessionToReview: Session;
 
   constructor(
     @Inject('currentIdentity') private currentIdentity,
@@ -25,8 +29,8 @@ export class HomeComponent {
 
   setNextSessionToReview() {
     this.sessions.getNextUnreviewedSession(this.currentIdentity.currentUser.id)
-        .subscribe((data) => {
-      this.currentSessionToReview = data;
+        .subscribe((session:Session) => {
+      this.currentSessionToReview = session;
     })
   }
 

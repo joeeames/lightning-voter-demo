@@ -1,3 +1,4 @@
+//remove this when this gets converted to ng2
 interface CurrentUser {
   firstName: string;
   lastName: string;
