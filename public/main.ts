@@ -1,13 +1,11 @@
-import { upgradeAdapter } from './upgradeAdapter';
+import { upgradeAdapter } from './app.module';
 import { upgradeAndDowngrade } from './upgrades';
-import { disableDeprecatedForms, provideForms} from '@angular/forms';
 import './rxjsOperations';
-import { HTTP_PROVIDERS } from '@angular/http';
+// import { HTTP_PROVIDERS } from '@angular/http';
 
 upgradeAndDowngrade();
 
-upgradeAdapter.addProvider(disableDeprecatedForms());
-upgradeAdapter.addProvider(provideForms());
-upgradeAdapter.addProvider(HTTP_PROVIDERS);
+console.log('upgrading & downgrading done');
+// upgradeAdapter.addProvider(HTTP_PROVIDERS);
 
 upgradeAdapter.bootstrap(document.documentElement, ['app']);

@@ -3,8 +3,7 @@ import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'profile',
-  templateUrl: '/profile/profile.html',
-  directives: [NavComponent]
+  templateUrl: '/profile/profile.html'
 })
 export class ProfileComponent { 
   

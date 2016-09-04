@@ -4,7 +4,7 @@ import { TalkDurationPipe } from '../common/talkDuration.pipe';
 @Component({
   selector: 'unreviewed-talk',
   templateUrl: '/home/unreviewedTalk.component.html',
-  pipes: [TalkDurationPipe]
+  // pipes: [TalkDurationPipe]
 })
 export class UnreviewedTalkComponent {
   @Input() session: any;

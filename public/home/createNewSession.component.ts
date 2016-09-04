@@ -7,7 +7,7 @@ import { NavComponent } from '../nav/nav.component';
 @Component({
   selector: 'create-new-session',
   templateUrl: '/home/createNewSession.component.html',
-  directives: [NavComponent]
+  // directives: [NavComponent]
 })
 export class CreateNewSessionComponent {
   @Input() userSessions: Session[];

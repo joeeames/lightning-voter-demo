@@ -1,4 +1,4 @@
-import { upgradeAdapter } from './upgradeAdapter';
+import { upgradeAdapter } from './app.module';
 import { NameParser } from './admin/nameParser.service';
 import { Sessions } from './sessions/sessions.service';
 import { ProfileComponent } from './profile/profile.component';
@@ -9,17 +9,20 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 
 export function upgradeAndDowngrade() {
-  upgradeAdapter.addProvider(NameParser);
-  angular.module('app').factory('nameParser', upgradeAdapter.downgradeNg2Provider(NameParser))
+//   upgradeAdapter.addProvider(NameParser);
+//   upgradeAdapter.addProvider(Sessions);
   
-  upgradeAdapter.addProvider(Sessions);
+  // Downgrading Angular 2 services to Angular 1 services
+  angular.module('app').factory('nameParser', upgradeAdapter.downgradeNg2Provider(NameParser)) 
   angular.module('app').factory('sessions', upgradeAdapter.downgradeNg2Provider(Sessions))
 
+  // Upgrading Angular 1 services to Angular 2 services
   upgradeAdapter.upgradeNg1Provider("currentIdentity");
   upgradeAdapter.upgradeNg1Provider("$location");
   upgradeAdapter.upgradeNg1Provider("toastr");
   upgradeAdapter.upgradeNg1Provider("unreviewedSessionCount");
 
+  // downgrading Angular 2 Components to Angular 1 Directives
   angular.module('app').directive('profile', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(ProfileComponent));
   angular.module('app').directive('unreviewedTalk', 

@@ -1,6 +1,6 @@
 import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { Sessions } from '../sessions/sessions.service';
-import { SESSION_DETAIL } from '../upgradedNg1Components';
+// import { SESSION_DETAIL } from '../upgradedNg1Components';
 import { UnreviewedTalkComponent } from './unreviewedTalk.component';
 import { ZoomInDirective } from '../common/zoom-in.directive';
 import { Session } from '../sessions/session.model';
@@ -10,8 +10,8 @@ import { NavComponent } from '../nav/nav.component';
 @Component({
   selector: 'home',
   templateUrl: '/home/home.component.html',
-  directives: [SESSION_DETAIL, UnreviewedTalkComponent, 
-    ZoomInDirective, NavComponent]
+  // directives: [SESSION_DETAIL, UnreviewedTalkComponent, 
+  //   ZoomInDirective, NavComponent]
 })
 export class HomeComponent {
   @Input() userSessions: Session[];
