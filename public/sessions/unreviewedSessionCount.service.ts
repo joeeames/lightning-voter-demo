@@ -10,14 +10,17 @@ export class UnreviewedSessionCount {
   
   constructor(private sessions: Sessions, 
     @Inject('currentIdentity') private currentIdentity:any) {
-    this.value = 0;
+      this.value = 0;
   }
   
-  updateUnreviewedSessionCount() {
+  updateUnreviewedSessionCount(cb?) {
     this.sessions.getUnreviewedCount(this.currentIdentity.currentUser.id)
         .subscribe(response => {
           
       this.value = response.json().count;
+      if(cb) {
+        cb();
+      }
     })
   }
 }

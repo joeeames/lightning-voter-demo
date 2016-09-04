@@ -7,6 +7,8 @@ import { CreateNewSessionComponent } from './home/createNewSession.component';
 import { DetailPanelComponent } from './common/detailPanel.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVotes.component';
+import { SessionDetailComponent } from './sessions/sessionDetail.component';
 
 export function upgradeAndDowngrade() {
   
@@ -33,4 +35,8 @@ export function upgradeAndDowngrade() {
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(HomeComponent));
   angular.module('app').directive('nav', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(NavComponent));
+  angular.module('app').directive('sessionDetailWithVotes', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(SessionDetailWithVotesComponent));
+  angular.module('app').directive('sessionDetail', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(SessionDetailComponent));
 }

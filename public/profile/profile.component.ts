@@ -3,7 +3,7 @@ import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'profile',
-  templateUrl: '/profile/profile.html'
+  templateUrl: '/profile/profile.component.html'
 })
 export class ProfileComponent { 
   

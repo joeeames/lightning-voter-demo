@@ -1,4 +1,4 @@
-import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Sessions } from '../sessions/sessions.service';
 import { CurrentUser } from '../security/currentUser.model';
 import { UnreviewedSessionCount } from '../sessions/unreviewedSessionCount.service';
@@ -15,11 +15,15 @@ export class NavComponent {
     @Inject('currentIdentity') private currentIdentity,
     private sessions : Sessions, 
     @Inject('toastr') private toastr, 
-    private unreviewedSessionCount: UnreviewedSessionCount) {
+    private unreviewedSessionCount: UnreviewedSessionCount,
+    private changeDetectorRef: ChangeDetectorRef) {
 
     this.currentUser = currentIdentity.currentUser;
     
-    unreviewedSessionCount.updateUnreviewedSessionCount();
+    unreviewedSessionCount.updateUnreviewedSessionCount(function() {
+      console.log(unreviewedSessionCount.value);
+      changeDetectorRef.detectChanges();
+    });
   }
   
 }

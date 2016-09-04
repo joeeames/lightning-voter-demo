@@ -15,6 +15,8 @@ import { TalkDurationPipe } from './common/talkDuration.pipe';
 import { DetailPanelComponent } from './common/detailPanel.component'
 import { CreateNewSessionComponent } from './home/createNewSession.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVotes.component';
+import { SessionDetailComponent } from './sessions/sessionDetail.component';
 
 import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
 
@@ -25,19 +27,19 @@ import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
 // module in the same file
 export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
 
-
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule 
+    HttpModule
   ],
   declarations: [
     HomeComponent,
     DetailPanelComponent,
     CreateNewSessionComponent,
     ProfileComponent,
-    upgradeAdapter.upgradeNg1Component('sessionDetail'),
+    SessionDetailWithVotesComponent,
+    SessionDetailComponent,
     UnreviewedTalkComponent,
     NavComponent,
     ZoomInDirective,
@@ -48,10 +50,3 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
   ]
 })
 export class AppModule { }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
