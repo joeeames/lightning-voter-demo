@@ -1,6 +1,7 @@
 import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { Sessions } from '../sessions/sessions.service';
 import { CurrentUser } from '../security/currentUser.model';
+import { UnreviewedSessionCount } from '../sessions/unreviewedSessionCount.service';
 
 @Component({
   selector: 'nav',
@@ -14,7 +15,7 @@ export class NavComponent {
     @Inject('currentIdentity') private currentIdentity,
     private sessions : Sessions, 
     @Inject('toastr') private toastr, 
-    @Inject('unreviewedSessionCount') private unreviewedSessionCount) {
+    private unreviewedSessionCount: UnreviewedSessionCount) {
 
     this.currentUser = currentIdentity.currentUser;
     
@@ -22,16 +23,3 @@ export class NavComponent {
   }
   
 }
-// angular.module('app').component('nav', {
-//   templateUrl: '/nav/nav.html',
-//   bindings: {
-//   },
-//   controller: function(currentIdentity, sessions, unreviewedSessionCount) {
-    
-//     this.currentUser = currentIdentity.currentUser;
-    
-//     unreviewedSessionCount.updateUnreviewedSessionCount();
-//     this.unreviewedSessionCount = unreviewedSessionCount;
-    
-//   }
-// });
