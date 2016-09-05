@@ -1,3 +1,9 @@
+
+
+import { Injectable, Inject } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+
 //remove this when this gets converted to ng2
 interface CurrentUser {
   firstName: string;
@@ -5,14 +11,11 @@ interface CurrentUser {
   id: number;
 }
 
-angular.module('app').service('currentIdentity', class CurrentIdentity {
-  $http: any;
-  $q: any;
+@Injectable()
+export class CurrentIdentity {
   currentUser: CurrentUser;
 
-  constructor($http, $q) {
-    this.$http = $http;
-    this.$q = $q;
+  constructor(private http: Http) {
     this.currentUser = null;
   }
 
@@ -29,15 +32,14 @@ angular.module('app').service('currentIdentity', class CurrentIdentity {
   }
   
   updateUser(newUserObj) {
-    var dfd = this.$q.defer();
+    console.log('called');
     
-    this.$http.put('/api/users/' + this.currentUser.id, newUserObj).then(response => {
+    this.http.put('/api/users/' + this.currentUser.id, newUserObj)
+        .map((response:Response) => {
+      console.log(this.currentUser);
       this.currentUser.firstName = newUserObj.firstName;
       this.currentUser.lastName = newUserObj.lastName;
-      dfd.resolve();
-    }, response => {
-      dfd.reject("Error Logging Out");
     })
-    return dfd.promise;
+    .subscribe()
   }
-});
+};

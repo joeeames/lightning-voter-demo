@@ -3,13 +3,14 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Session } from './session.model';
 import { Sessions } from './sessions.service';
+import { CurrentIdentity } from '../security/currentIdentity.service';
 
 @Injectable()
 export class UnreviewedSessionCount {
   value: number;
   
   constructor(private sessions: Sessions, 
-    @Inject('currentIdentity') private currentIdentity:any) {
+    private currentIdentity:CurrentIdentity) {
       this.value = 0;
   }
   

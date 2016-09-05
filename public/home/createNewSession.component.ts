@@ -3,6 +3,7 @@ import { Sessions } from '../sessions/sessions.service';
 import { Response } from '@angular/http';
 import { Session } from '../sessions/session.model';
 import { NavComponent } from '../nav/nav.component';
+import { CurrentIdentity } from '../security/currentIdentity.service';
 
 @Component({
   selector: 'create-new-session',
@@ -17,7 +18,7 @@ export class CreateNewSessionComponent {
 
   constructor(
     @Inject('toastr') private toastr:any,
-    @Inject('currentIdentity') private currentIdentity:any,
+    private currentIdentity:CurrentIdentity,
     private sessions: Sessions) {
 
   }

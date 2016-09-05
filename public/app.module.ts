@@ -9,6 +9,7 @@ import { UnreviewedSessionCount } from './sessions/unreviewedSessionCount.servic
 
 import { Sessions } from './sessions/sessions.service';
 import { Users } from './security/users.service';
+import { CurrentIdentity } from './security/currentIdentity.service';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { NavComponent } from './nav/nav.component';
 import { ZoomInDirective } from './common/zoom-in.directive';
@@ -18,6 +19,7 @@ import { CreateNewSessionComponent } from './home/createNewSession.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVotes.component';
 import { SessionDetailComponent } from './sessions/sessionDetail.component';
+import { LogoutComponent } from './security/logout.component';
 
 import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
 
@@ -43,11 +45,16 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     SessionDetailComponent,
     UnreviewedTalkComponent,
     NavComponent,
+    LogoutComponent,
     ZoomInDirective,
     TalkDurationPipe
   ],
   providers: [
-    NameParser, Sessions, UnreviewedSessionCount, Users
+    NameParser, 
+    Sessions, 
+    UnreviewedSessionCount, 
+    Users,
+    CurrentIdentity
   ]
 })
 export class AppModule { }

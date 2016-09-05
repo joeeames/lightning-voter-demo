@@ -2,6 +2,7 @@ import { upgradeAdapter } from './app.module';
 import { NameParser } from './admin/nameParser.service';
 import { Sessions } from './sessions/sessions.service';
 import { Users } from './security/users.service';
+import { CurrentIdentity } from './security/currentIdentity.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { CreateNewSessionComponent } from './home/createNewSession.component';
@@ -10,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVotes.component';
 import { SessionDetailComponent } from './sessions/sessionDetail.component';
+import { LogoutComponent } from './security/logout.component';
 
 export function upgradeAndDowngrade() {
   
@@ -18,11 +20,12 @@ export function upgradeAndDowngrade() {
   angular.module('app').factory('sessions', upgradeAdapter.downgradeNg2Provider(Sessions))
   angular.module('app').factory('users', upgradeAdapter.downgradeNg2Provider(Users))
   angular.module('app').factory('unreviewedSessionCount', upgradeAdapter.downgradeNg2Provider(Sessions))
+  angular.module('app').factory('currentIdentity', upgradeAdapter.downgradeNg2Provider(CurrentIdentity))
 
   // Upgrading Angular 1 services to Angular 2 services
-  upgradeAdapter.upgradeNg1Provider("currentIdentity");
   upgradeAdapter.upgradeNg1Provider("$location");
   upgradeAdapter.upgradeNg1Provider("toastr");
+  upgradeAdapter.upgradeNg1Provider("auth");
 
   // downgrading Angular 2 Components to Angular 1 Directives
   angular.module('app').directive('profile', 
@@ -41,4 +44,6 @@ export function upgradeAndDowngrade() {
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(SessionDetailWithVotesComponent));
   angular.module('app').directive('sessionDetail', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(SessionDetailComponent));
+  angular.module('app').directive('logout', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(LogoutComponent));
 }

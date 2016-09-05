@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
+import { CurrentIdentity } from '../security/currentIdentity.service';
 
 @Component({
   selector: 'profile',
@@ -10,7 +11,7 @@ export class ProfileComponent {
   profile: any;
 
   constructor(
-    @Inject('currentIdentity') private currentIdentity:any,
+    private currentIdentity:CurrentIdentity,
     @Inject('$location') private $location:any,
     @Inject('toastr') private toastr:any
     ) {
@@ -20,6 +21,7 @@ export class ProfileComponent {
     
       
   save(newProfile) {
+    console.log(this.currentIdentity);
     this.currentIdentity.updateUser(newProfile);
     toastr.success('Profile Saved!');
   }

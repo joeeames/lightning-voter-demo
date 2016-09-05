@@ -6,6 +6,7 @@ import { Session } from '../sessions/session.model';
 import { CurrentUser } from '../security/currentUser.model';
 import { NavComponent } from '../nav/nav.component';
 import { UnreviewedSessionCount } from '../sessions/unreviewedSessionCount.service';
+import { CurrentIdentity } from '../security/currentIdentity.service';
 
 @Component({
   selector: 'home',
@@ -17,7 +18,7 @@ export class HomeComponent {
   currentSessionToReview: Session;
 
   constructor(
-    @Inject('currentIdentity') private currentIdentity,
+    private currentIdentity: CurrentIdentity,
     private sessions : Sessions, 
     @Inject('toastr') private toastr, 
     private unreviewedSessionCount: UnreviewedSessionCount) {
