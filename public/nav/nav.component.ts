@@ -21,7 +21,6 @@ export class NavComponent {
     this.currentUser = currentIdentity.currentUser;
     
     unreviewedSessionCount.updateUnreviewedSessionCount(function() {
-      console.log(unreviewedSessionCount.value);
       changeDetectorRef.detectChanges();
     });
   }

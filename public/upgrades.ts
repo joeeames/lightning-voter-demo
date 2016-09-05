@@ -1,6 +1,7 @@
 import { upgradeAdapter } from './app.module';
 import { NameParser } from './admin/nameParser.service';
 import { Sessions } from './sessions/sessions.service';
+import { Users } from './security/users.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { CreateNewSessionComponent } from './home/createNewSession.component';
@@ -15,6 +16,7 @@ export function upgradeAndDowngrade() {
   // Downgrading Angular 2 services to Angular 1 services
   angular.module('app').factory('nameParser', upgradeAdapter.downgradeNg2Provider(NameParser)) 
   angular.module('app').factory('sessions', upgradeAdapter.downgradeNg2Provider(Sessions))
+  angular.module('app').factory('users', upgradeAdapter.downgradeNg2Provider(Users))
   angular.module('app').factory('unreviewedSessionCount', upgradeAdapter.downgradeNg2Provider(Sessions))
 
   // Upgrading Angular 1 services to Angular 2 services

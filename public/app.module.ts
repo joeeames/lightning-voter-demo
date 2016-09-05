@@ -8,6 +8,7 @@ import { NameParser } from './admin/nameParser.service';
 import { UnreviewedSessionCount } from './sessions/unreviewedSessionCount.service';
 
 import { Sessions } from './sessions/sessions.service';
+import { Users } from './security/users.service';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { NavComponent } from './nav/nav.component';
 import { ZoomInDirective } from './common/zoom-in.directive';
@@ -46,7 +47,7 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     TalkDurationPipe
   ],
   providers: [
-    NameParser, Sessions, UnreviewedSessionCount
+    NameParser, Sessions, UnreviewedSessionCount, Users
   ]
 })
 export class AppModule { }

@@ -24,7 +24,7 @@ app.config(function($routeProvider) {
     },
     allUsers: function(users, auth) {
       return auth.requireLogin().then(function() {
-        return users.getAllUsers();
+        return users.getAllUsers().toPromise();
       });
     }
     
