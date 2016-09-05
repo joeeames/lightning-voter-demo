@@ -1,11 +1,9 @@
-
-
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 //remove this when this gets converted to ng2
-interface CurrentUser {
+export interface CurrentUser {
   firstName: string;
   lastName: string;
   id: number;
