@@ -1,57 +1,29 @@
-function createLoggedInPromise(auth, $q) {
-  var dfd = $q.defer();
-  auth.requireLogin().toPromise().then(function(currentIdentity) {
-    if(!!currentIdentity.error) {
-      dfd.reject(currentIdentity.error);
-    } else {
-      dfd.resolve(currentIdentity)
-    }
-  }).catch(function(error) {
-    dfd.reject(error);
-  })
-  return dfd.promise;
-}
-
-function createRequireAdminPromise(auth, $q) {
-  var dfd = $q.defer();
-  auth.requireAdmin().toPromise().then(function(currentIdentity) {
-    if(!!currentIdentity.error) {
-      dfd.reject(currentIdentity.error);
-    } else {
-      dfd.resolve(currentIdentity)
-    }
-  }).catch(function(error) {
-    dfd.reject(error);
-  })
-  return dfd.promise;
-}
-
 
 app.config(function($routeProvider) {
   var routeResolvers = {
     loggedIn: function(auth, $q) {
-      return createLoggedInPromise(auth, $q);
+      return auth.requireLogin().toPromise();
     },
     waitForAuth: function(auth) {
       return auth.waitForAuth().toPromise();
     },
     requireAdmin: function(auth, $q) {
-      return createRequireAdminPromise(auth, $q);
+      return auth.requireAdmin().toPromise();
     },
     userSessions: function(sessions, currentIdentity, auth, $q) {
-      return createLoggedInPromise(auth, $q).then(function() {
+      return auth.requireLogin().toPromise().then(function() {
         return sessions
           .getSessionsByUser(currentIdentity.currentUser.id)
           .toPromise();
       });
     },
     allSessions: function(sessions, auth, $q) {
-      return createLoggedInPromise(auth, $q).then(function() {
+      return auth.requireLogin().toPromise().then(function() {
         return sessions.getAllSessions().toPromise();
       });
     },
     allUsers: function(users, auth, $q) {
-      return createLoggedInPromise(auth, $q).then(function() {
+      return auth.requireLogin().toPromise().then(function() {
         return users.getAllUsers().toPromise();
       });
     }

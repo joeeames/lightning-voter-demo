@@ -40,9 +40,9 @@ export class Auth {
   }
     
   requireLogin() {
-    return this.waitForAuth().map((a:any) => {
+    return this.waitForAuth().flatMap((a:any) => {
       if(this.currentIdentity.authenticated()) {
-        return true;
+        return Observable.of(true);
       } else {
         return Observable.throw('AUTH_REQUIRED');
       }
@@ -50,9 +50,9 @@ export class Auth {
   }
     
   requireAdmin() {
-    return this.waitForAuth().map(() => {
+    return this.waitForAuth().flatMap(() => {
       if(this.currentIdentity.authenticated() && this.currentIdentity.currentUser.isAdmin) {
-        return true;
+        return Observable.of(true);
       } else {
         return Observable.throw('AUTH_REQUIRED');
       }
