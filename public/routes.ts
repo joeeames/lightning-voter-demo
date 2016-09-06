@@ -80,7 +80,7 @@ app.config(function($routeProvider) {
       }
     })
     .when('/users', {
-      template: '<user-list all-users="$resolve.allUsers"></user-list>',
+      template: '<user-list [all-users]="$resolve.allUsers"></user-list>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers

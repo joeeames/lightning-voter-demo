@@ -13,6 +13,7 @@ import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVot
 import { SessionDetailComponent } from './sessions/sessionDetail.component';
 import { LogoutComponent } from './security/logout.component';
 import { LoginComponent } from './security/login.component';
+import { UserListComponent } from './admin/userList.component';
 import { Auth } from './security/auth.service';
 
 export function upgradeAndDowngrade() {
@@ -50,4 +51,6 @@ export function upgradeAndDowngrade() {
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(LogoutComponent));
   angular.module('app').directive('login', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(LoginComponent));
+  angular.module('app').directive('userList', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(UserListComponent));
 }

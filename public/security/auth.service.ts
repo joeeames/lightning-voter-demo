@@ -52,10 +52,8 @@ export class Auth {
   requireAdmin() {
     return this.waitForAuth().map(() => {
       if(this.currentIdentity.authenticated() && this.currentIdentity.currentUser.isAdmin) {
-        console.log(1);
         return true;
       } else {
-        console.log(2);
         return Observable.throw('AUTH_REQUIRED');
       }
     })
