@@ -69,7 +69,8 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     UnreviewedSessionCount, 
     Users,
     Auth,
-    CurrentIdentity
+    CurrentIdentity,
+    { provide: 'toastr', useValue: toastr }
   ]
 })
 export class AppModule { }

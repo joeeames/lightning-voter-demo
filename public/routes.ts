@@ -1,3 +1,46 @@
+// import { provideRouter, RouterConfig, CanActivate } from '@angular/router';
+// import { Injectable } from '@angular/core';
+// import { Observable } from 'rxjs/Rx';
+
+// import { AdminLoginComponent } from './admin/adminlogin.component';
+// import { ResultsComponent } from './admin/results.component';
+// import { UserDetailsComponent } from './admin/userDetails.component';
+// import { UserListComponent } from './admin/userList.component';
+// import { CreateUsersComponent } from './admin/createUsers.component';
+// import { HomeComponent } from './home/home.component';
+// import { CreateNewSessionComponent } from './home/createNewSession.component';
+// import { ProfileComponent } from './profile/profile.component';
+// import { LoginComponent } from './security/login.component';
+// import { LogoutComponent } from './security/logout.component';
+// import { Auth } from './security/auth.service';
+
+// export class LoggedInGuard implements CanActivate {
+
+//   constructor(private auth: Auth) {}
+
+//   canActivate() {
+//     return Observable.of(true);
+//   }
+// }
+
+// export const appRoutes: RouterConfig = [
+//   { path: 'profile', component: ProfileComponent },
+//   { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard] },
+//   { path: 'logout', component: LogoutComponent },
+//   { path: 'createsession', component: CreateNewSessionComponent },
+//   { path: 'home', component: HomeComponent },
+//   { path: 'admin/createusers', component: CreateUsersComponent },
+//   { path: 'users', component: UserListComponent },
+//   { path: 'admin/users/:id', component: UserDetailsComponent },
+//   { path: 'admin/results', component: ResultsComponent },
+//   { path: 'admin/login', component: AdminLoginComponent },
+  
+//   { path: '', redirectTo: "/home", pathMatch: "full"}
+// ]
+
+
+
+
 
 app.config(function($routeProvider) {
   var routeResolvers = {

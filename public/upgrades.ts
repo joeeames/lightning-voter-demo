@@ -33,7 +33,7 @@ export function upgradeAndDowngrade() {
   // Upgrading Angular 1 services to Angular 2 services
   upgradeAdapter.upgradeNg1Provider("$location");
   upgradeAdapter.upgradeNg1Provider("$routeParams");
-  upgradeAdapter.upgradeNg1Provider("toastr");
+//   upgradeAdapter.upgradeNg1Provider("toastr");
 
   // downgrading Angular 2 Components to Angular 1 Directives
   angular.module('app').directive('profile', 
