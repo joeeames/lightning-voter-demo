@@ -29,6 +29,7 @@ import { CreateUsersComponent } from './admin/createUsers.component';
 import { AdminLoginComponent } from './admin/adminLogin.component';
 import { routing } from './routes';
 import { LoggedInGuard } from './loggedIn.guard';
+import { SessionResolver } from './userSessions.resolver';
 import { AppComponent } from './app.component';
 
 import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
@@ -76,7 +77,8 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     Auth,
     CurrentIdentity,
     { provide: 'toastr', useValue: toastr },
-    LoggedInGuard
+    LoggedInGuard,
+    SessionResolver
   ],
   bootstrap: [
     AppComponent

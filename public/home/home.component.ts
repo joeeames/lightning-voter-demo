@@ -7,6 +7,7 @@ import { CurrentUser } from '../security/currentUser.model';
 import { NavComponent } from '../nav/nav.component';
 import { UnreviewedSessionCount } from '../sessions/unreviewedSessionCount.service';
 import { CurrentIdentity } from '../security/currentIdentity.service';
+import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -14,6 +15,7 @@ import { CurrentIdentity } from '../security/currentIdentity.service';
 })
 export class HomeComponent {
   @Input() userSessions: Session[];
+  @Input() b: number;
   currentUser: CurrentUser;
   currentSessionToReview: Session;
 
@@ -21,10 +23,22 @@ export class HomeComponent {
     private currentIdentity: CurrentIdentity,
     private sessions : Sessions, 
     @Inject('toastr') private toastr, 
+    private route: ActivatedRoute,
     private unreviewedSessionCount: UnreviewedSessionCount) {
       console.log('home');
       this.currentUser = currentIdentity.currentUser;
       this.setNextSessionToReview();
+
+      this.route.data.subscribe(val => console.log('subscribe', val));
+  }
+
+  ngOnInit() {
+    console.log(this.route.snapshot.data['userSessions'].length);
+    this.userSessions = this.route.snapshot.data['userSessions'];
+  }
+
+  ngOnChanges() {
+    console.log('changes', this.b, this.userSessions);
   }
 
   setNextSessionToReview() {
