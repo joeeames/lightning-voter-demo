@@ -21,7 +21,7 @@
     "@angular/http": "2.0.0-rc.6",
     "@angular/platform-browser": "2.0.0-rc.6",
     "@angular/platform-browser-dynamic": "2.0.0-rc.6",
-    "@angular/router": "3.0.0-beta.2",
+    "@angular/router": "3.0.0-rc.2",
     "@angular/upgrade": "2.0.0-rc.6",
 
     "body-parser": "^1.15.0",

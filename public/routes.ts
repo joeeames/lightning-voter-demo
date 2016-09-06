@@ -1,46 +1,40 @@
-// import { provideRouter, RouterConfig, CanActivate } from '@angular/router';
-// import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs/Rx';
+import { CanActivate, Routes, RouterModule } from '@angular/router';
+import { Injectable, ModuleWithProviders } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
-// import { AdminLoginComponent } from './admin/adminlogin.component';
-// import { ResultsComponent } from './admin/results.component';
-// import { UserDetailsComponent } from './admin/userDetails.component';
-// import { UserListComponent } from './admin/userList.component';
-// import { CreateUsersComponent } from './admin/createUsers.component';
-// import { HomeComponent } from './home/home.component';
-// import { CreateNewSessionComponent } from './home/createNewSession.component';
-// import { ProfileComponent } from './profile/profile.component';
-// import { LoginComponent } from './security/login.component';
-// import { LogoutComponent } from './security/logout.component';
-// import { Auth } from './security/auth.service';
+import { AdminLoginComponent } from './admin/adminLogin.component';
+import { ResultsComponent } from './admin/results.component';
+import { UserDetailsComponent } from './admin/userDetails.component';
+import { UserListComponent } from './admin/userList.component';
+import { CreateUsersComponent } from './admin/createUsers.component';
+import { HomeComponent } from './home/home.component';
+import { CreateNewSessionComponent } from './home/createNewSession.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './security/login.component';
+import { LogoutComponent } from './security/logout.component'; 
+import { Auth } from './security/auth.service';
+import { LoggedInGuard } from './loggedIn.guard';
 
-// export class LoggedInGuard implements CanActivate {
 
-//   constructor(private auth: Auth) {}
-
-//   canActivate() {
-//     return Observable.of(true);
-//   }
-// }
-
-// export const appRoutes: RouterConfig = [
-//   { path: 'profile', component: ProfileComponent },
-//   { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard] },
-//   { path: 'logout', component: LogoutComponent },
-//   { path: 'createsession', component: CreateNewSessionComponent },
-//   { path: 'home', component: HomeComponent },
-//   { path: 'admin/createusers', component: CreateUsersComponent },
-//   { path: 'users', component: UserListComponent },
-//   { path: 'admin/users/:id', component: UserDetailsComponent },
-//   { path: 'admin/results', component: ResultsComponent },
-//   { path: 'admin/login', component: AdminLoginComponent },
+export const appRoutes: Routes = [
+  { path: 'profile', component: ProfileComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'createsession', component: CreateNewSessionComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard] },
+  { path: 'admin/createusers', component: CreateUsersComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'admin/users/:id', component: UserDetailsComponent },
+  { path: 'admin/results', component: ResultsComponent },
+  { path: 'admin/login', component: AdminLoginComponent },
   
-//   { path: '', redirectTo: "/home", pathMatch: "full"}
-// ]
+  { path: '', redirectTo: "/login", pathMatch: "full"}
+]
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, { useHash: true });
 
 
-
-
+/*
 
 app.config(function($routeProvider) {
   var routeResolvers = {
@@ -136,4 +130,4 @@ app.config(function($routeProvider) {
       template: '<logout></logout>'
     })
     .otherwise('/home')
-})
+})*/

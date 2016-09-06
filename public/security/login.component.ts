@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { CurrentIdentity } from './currentIdentity.service';
 import { Observable } from 'rxjs/Rx';
 import { Auth } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -11,13 +12,13 @@ export class LoginComponent {
   email: string;
 
   constructor(
-      @Inject('$location') private $location, 
+      private router: Router,
       currentIdentity:CurrentIdentity, 
       private auth: Auth,
       @Inject('toastr') private toastr) {
       
     if(currentIdentity.authenticated()) {
-      $location.path('/home');
+      this.router.navigate(['/home']);
     }
   }
     
@@ -29,7 +30,7 @@ export class LoginComponent {
       this.toastr.error(error);
       return Observable.throw(error)
     }).subscribe(() => {
-      this.$location.path('/home');
+      this.router.navigate(['/home']);
     })
   }
 }

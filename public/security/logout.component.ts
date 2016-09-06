@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Auth } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'logout',
@@ -8,14 +9,13 @@ import { Auth } from './auth.service';
 export class LogoutComponent { 
 
   constructor(
-      @Inject('$location') private $location,
+      private router: Router,
       private auth: Auth) {
 
   }
 
   ngOnInit() {
     this.auth.logout();
-  
-    this.$location.path('/login');
+    this.router.navigate(['/login']);
   }
 }

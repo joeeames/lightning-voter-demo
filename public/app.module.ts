@@ -27,6 +27,9 @@ import { UserDetailsComponent } from './admin/userDetails.component';
 import { ResultsComponent } from './admin/results.component';
 import { CreateUsersComponent } from './admin/createUsers.component';
 import { AdminLoginComponent } from './admin/adminLogin.component';
+import { routing } from './routes';
+import { LoggedInGuard } from './loggedIn.guard';
+import { AppComponent } from './app.component';
 
 import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
 
@@ -41,9 +44,11 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   declarations: [
+    AppComponent,
     HomeComponent,
     DetailPanelComponent,
     CreateNewSessionComponent,
@@ -70,7 +75,11 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     Users,
     Auth,
     CurrentIdentity,
-    { provide: 'toastr', useValue: toastr }
+    { provide: 'toastr', useValue: toastr },
+    LoggedInGuard
+  ],
+  bootstrap: [
+    AppComponent
   ]
 })
 export class AppModule { }

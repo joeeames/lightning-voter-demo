@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
 import { CurrentIdentity } from '../security/currentIdentity.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'profile',
@@ -12,7 +13,7 @@ export class ProfileComponent {
 
   constructor(
     private currentIdentity:CurrentIdentity,
-    @Inject('$location') private $location:any,
+    private router: Router,
     @Inject('toastr') private toastr:any
     ) {
 
@@ -26,7 +27,7 @@ export class ProfileComponent {
   }
   
   cancel() {
-    this.$location.path('/home');
+    this.router.navigate(['/home']);
   }
   
 }

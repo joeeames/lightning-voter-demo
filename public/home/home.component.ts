@@ -22,6 +22,7 @@ export class HomeComponent {
     private sessions : Sessions, 
     @Inject('toastr') private toastr, 
     private unreviewedSessionCount: UnreviewedSessionCount) {
+      console.log('home');
       this.currentUser = currentIdentity.currentUser;
       this.setNextSessionToReview();
   }

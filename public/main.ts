@@ -1,8 +1,7 @@
-import { upgradeAdapter } from './app.module';
-import { upgradeAndDowngrade } from './upgrades';
+import { platformBrowserDynamic }    from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
 // this is done to make sure that typescript knows about all the rxjs operations
 import './rxjsOperations';
 
-upgradeAndDowngrade();
 
-upgradeAdapter.bootstrap(document.documentElement, ['app']);
+platformBrowserDynamic().bootstrapModule(AppModule)
