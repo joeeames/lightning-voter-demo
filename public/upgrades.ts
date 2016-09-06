@@ -15,6 +15,7 @@ import { LogoutComponent } from './security/logout.component';
 import { LoginComponent } from './security/login.component';
 import { UserListComponent } from './admin/userList.component';
 import { Auth } from './security/auth.service';
+import { UserDetailsComponent } from './admin/userDetails.component';
 
 export function upgradeAndDowngrade() {
   
@@ -28,6 +29,7 @@ export function upgradeAndDowngrade() {
 
   // Upgrading Angular 1 services to Angular 2 services
   upgradeAdapter.upgradeNg1Provider("$location");
+  upgradeAdapter.upgradeNg1Provider("$routeParams");
   upgradeAdapter.upgradeNg1Provider("toastr");
 
   // downgrading Angular 2 Components to Angular 1 Directives
@@ -53,4 +55,6 @@ export function upgradeAndDowngrade() {
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(LoginComponent));
   angular.module('app').directive('userList', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(UserListComponent));
+  angular.module('app').directive('userDetails', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(UserDetailsComponent));
 }

@@ -73,7 +73,7 @@ app.config(function($routeProvider) {
       }
     })
     .when('/admin/users/:id', {
-      template: '<user-details all-users="$resolve.allUsers"></user-details>',
+      template: '<user-details [all-users]="$resolve.allUsers"></user-details>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers

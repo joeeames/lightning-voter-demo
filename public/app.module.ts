@@ -23,6 +23,7 @@ import { SessionDetailComponent } from './sessions/sessionDetail.component';
 import { LogoutComponent } from './security/logout.component';
 import { LoginComponent } from './security/login.component';
 import { UserListComponent } from './admin/userList.component';
+import { UserDetailsComponent } from './admin/userDetails.component';
 
 import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
 
@@ -51,6 +52,7 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     LogoutComponent,
     LoginComponent,
     UserListComponent,
+    UserDetailsComponent,
     ZoomInDirective,
     TalkDurationPipe
   ],
