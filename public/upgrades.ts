@@ -16,6 +16,8 @@ import { LoginComponent } from './security/login.component';
 import { UserListComponent } from './admin/userList.component';
 import { Auth } from './security/auth.service';
 import { UserDetailsComponent } from './admin/userDetails.component';
+import { ResultsComponent } from './admin/results.component';
+import { CreateUsersComponent } from './admin/createUsers.component';
 
 export function upgradeAndDowngrade() {
   
@@ -57,4 +59,8 @@ export function upgradeAndDowngrade() {
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(UserListComponent));
   angular.module('app').directive('userDetails', 
       <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(UserDetailsComponent));
+  angular.module('app').directive('results', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(ResultsComponent));
+  angular.module('app').directive('createUsers', 
+      <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(CreateUsersComponent));
 }

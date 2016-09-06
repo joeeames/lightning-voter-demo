@@ -24,6 +24,8 @@ import { LogoutComponent } from './security/logout.component';
 import { LoginComponent } from './security/login.component';
 import { UserListComponent } from './admin/userList.component';
 import { UserDetailsComponent } from './admin/userDetails.component';
+import { ResultsComponent } from './admin/results.component';
+import { CreateUsersComponent } from './admin/createUsers.component';
 
 import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
 
@@ -53,6 +55,9 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     LoginComponent,
     UserListComponent,
     UserDetailsComponent,
+    ResultsComponent,
+    CreateUsersComponent,
+
     ZoomInDirective,
     TalkDurationPipe
   ],
