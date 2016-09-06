@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { CurrentIdentity } from './currentIdentity.service';
+import { Observable } from 'rxjs/Rx';
+import { Auth } from './auth.service';
 
 @Component({
   selector: 'login',
@@ -11,7 +13,7 @@ export class LoginComponent {
   constructor(
       @Inject('$location') private $location, 
       currentIdentity:CurrentIdentity, 
-      @Inject('auth') private auth,
+      private auth: Auth,
       @Inject('toastr') private toastr) {
       
     if(currentIdentity.authenticated()) {
@@ -23,10 +25,11 @@ export class LoginComponent {
     this.auth.login({
       username: this.email,
       password: "pass"
-    }).then(() => {
+    }).catch((error:any) => {
+      this.toastr.error(error);
+      return Observable.throw(error)
+    }).subscribe(() => {
       this.$location.path('/home');
-    }, (err) => {
-      this.toastr.error(err);
     })
   }
 }

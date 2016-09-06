@@ -1,29 +1,57 @@
+function createLoggedInPromise(auth, $q) {
+  var dfd = $q.defer();
+  auth.requireLogin().toPromise().then(function(currentIdentity) {
+    if(!!currentIdentity.error) {
+      dfd.reject(currentIdentity.error);
+    } else {
+      dfd.resolve(currentIdentity)
+    }
+  }).catch(function(error) {
+    dfd.reject(error);
+  })
+  return dfd.promise;
+}
+
+function createRequireAdminPromise(auth, $q) {
+  var dfd = $q.defer();
+  auth.requireAdmin().toPromise().then(function(currentIdentity) {
+    if(!!currentIdentity.error) {
+      dfd.reject(currentIdentity.error);
+    } else {
+      dfd.resolve(currentIdentity)
+    }
+  }).catch(function(error) {
+    dfd.reject(error);
+  })
+  return dfd.promise;
+}
+
 
 app.config(function($routeProvider) {
   var routeResolvers = {
-    loggedIn: function(auth) {
-      return auth.requireLogin();
+    loggedIn: function(auth, $q) {
+      return createLoggedInPromise(auth, $q);
     },
     waitForAuth: function(auth) {
-      return auth.waitForAuth();
+      return auth.waitForAuth().toPromise();
     },
-    requireAdmin: function(auth) {
-      return auth.requireAdmin();
+    requireAdmin: function(auth, $q) {
+      return createRequireAdminPromise(auth, $q);
     },
-    userSessions: function(sessions, currentIdentity, auth) {
-      return auth.requireLogin().then(function() {
+    userSessions: function(sessions, currentIdentity, auth, $q) {
+      return createLoggedInPromise(auth, $q).then(function() {
         return sessions
           .getSessionsByUser(currentIdentity.currentUser.id)
           .toPromise();
       });
     },
-    allSessions: function(sessions, auth) {
-      return auth.requireLogin().then(function() {
+    allSessions: function(sessions, auth, $q) {
+      return createLoggedInPromise(auth, $q).then(function() {
         return sessions.getAllSessions().toPromise();
       });
     },
-    allUsers: function(users, auth) {
-      return auth.requireLogin().then(function() {
+    allUsers: function(users, auth, $q) {
+      return createLoggedInPromise(auth, $q).then(function() {
         return users.getAllUsers().toPromise();
       });
     }

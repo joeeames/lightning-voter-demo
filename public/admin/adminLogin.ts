@@ -13,7 +13,7 @@ angular.module('app').component('adminLogin', {
       auth.login({
         username: this.email,
         password: this.password
-      }).then(function() {
+      }).toPromise().then(function() {
         $location.path('/home');
       }, function(err) {
         toastr.error(err);

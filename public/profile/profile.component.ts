@@ -21,7 +21,6 @@ export class ProfileComponent {
     
       
   save(newProfile) {
-    console.log(this.currentIdentity);
     this.currentIdentity.updateUser(newProfile);
     toastr.success('Profile Saved!');
   }

@@ -9,6 +9,7 @@ import { UnreviewedSessionCount } from './sessions/unreviewedSessionCount.servic
 
 import { Sessions } from './sessions/sessions.service';
 import { Users } from './security/users.service';
+import { Auth } from './security/auth.service';
 import { CurrentIdentity } from './security/currentIdentity.service';
 import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 import { NavComponent } from './nav/nav.component';
@@ -56,6 +57,7 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     Sessions, 
     UnreviewedSessionCount, 
     Users,
+    Auth,
     CurrentIdentity
   ]
 })

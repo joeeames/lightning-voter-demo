@@ -13,6 +13,7 @@ import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVot
 import { SessionDetailComponent } from './sessions/sessionDetail.component';
 import { LogoutComponent } from './security/logout.component';
 import { LoginComponent } from './security/login.component';
+import { Auth } from './security/auth.service';
 
 export function upgradeAndDowngrade() {
   
@@ -22,11 +23,11 @@ export function upgradeAndDowngrade() {
   angular.module('app').factory('users', upgradeAdapter.downgradeNg2Provider(Users))
   angular.module('app').factory('unreviewedSessionCount', upgradeAdapter.downgradeNg2Provider(Sessions))
   angular.module('app').factory('currentIdentity', upgradeAdapter.downgradeNg2Provider(CurrentIdentity))
+  angular.module('app').factory('auth', upgradeAdapter.downgradeNg2Provider(Auth))
 
   // Upgrading Angular 1 services to Angular 2 services
   upgradeAdapter.upgradeNg1Provider("$location");
   upgradeAdapter.upgradeNg1Provider("toastr");
-  upgradeAdapter.upgradeNg1Provider("auth");
 
   // downgrading Angular 2 Components to Angular 1 Directives
   angular.module('app').directive('profile', 

@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { Auth } from './auth.service';
 
 @Component({
   selector: 'logout',
@@ -8,7 +9,7 @@ export class LogoutComponent {
 
   constructor(
       @Inject('$location') private $location,
-      @Inject('auth') private auth) {
+      private auth: Auth) {
 
   }
 

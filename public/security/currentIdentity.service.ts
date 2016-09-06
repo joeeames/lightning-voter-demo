@@ -7,6 +7,7 @@ export interface CurrentUser {
   firstName: string;
   lastName: string;
   id: number;
+  isAdmin: boolean;
 }
 
 @Injectable()
@@ -30,11 +31,8 @@ export class CurrentIdentity {
   }
   
   updateUser(newUserObj) {
-    console.log('called');
-    
     this.http.put('/api/users/' + this.currentUser.id, newUserObj)
         .map((response:Response) => {
-      console.log(this.currentUser);
       this.currentUser.firstName = newUserObj.firstName;
       this.currentUser.lastName = newUserObj.lastName;
     })
