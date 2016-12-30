@@ -4,4 +4,6 @@
     "public/**/*.js": true,
     "public/**/*.map": true
   }
+,
+"typescript.tsdk": "./node_modules/typescript/lib"
 }

@@ -28,7 +28,7 @@ export const appRoutes: Routes = [
   { path: 'admin/results', component: ResultsComponent },
   { path: 'admin/login', component: AdminLoginComponent },
   
-  { path: '', redirectTo: "/login", pathMatch: "full"}
+  { path: '', redirectTo: "/home", pathMatch: "full"}
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, { useHash: true });
