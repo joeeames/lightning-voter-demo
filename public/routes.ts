@@ -14,6 +14,7 @@ import { LoginComponent } from './security/login.component';
 import { LogoutComponent } from './security/logout.component'; 
 import { Auth } from './security/auth.service';
 import { LoggedInGuard } from './loggedIn.guard';
+import { SessionResolver } from './userSessions.resolver';
 
 
 export const appRoutes: Routes = [
@@ -21,7 +22,7 @@ export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'createsession', component: CreateNewSessionComponent },
-  { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard], resolve: { userSessions: SessionResolver} },
   { path: 'admin/createusers', component: CreateUsersComponent },
   { path: 'users', component: UserListComponent },
   { path: 'admin/users/:id', component: UserDetailsComponent },
