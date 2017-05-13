@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'toastr']);
+var app = angular.module('app', ['toastr', 'ui.router']);
 app.run(function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(e, next, prev, err) {
     if(err === "AUTH_REQUIRED") {

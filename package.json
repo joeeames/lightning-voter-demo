@@ -14,6 +14,7 @@
   "author": "joe eames",
   "license": "MIT",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.3",
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.1",
     "debug": "^2.2.0",
@@ -30,7 +31,9 @@
     "karma-chrome-launcher": "^0.2.3",
     "karma-jasmine": "^0.3.8",
     "karma-ng-html2js-preprocessor": "^0.2.2",
-    "typescript": "^1.8.10",
-    "typings": "^0.8.1"
+    "typescript": "~2.0.10",
+    "@types/angular": "^1.6.5",
+    "@types/core-js": "^0.9.35"
+    
   }
 }

@@ -3,10 +3,10 @@ angular.module('app').component('userDetails', {
   bindings: {
     allUsers: '='
   },
-  controller: function($routeParams) {
+  controller: function($stateParams) {
     
     this.user = this.allUsers.find(function(user) {
-      return user.id === parseInt($routeParams.id);
+      return user.id === parseInt($stateParams.id);
     })
   }
 })
