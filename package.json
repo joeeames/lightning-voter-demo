@@ -7,8 +7,7 @@
     "start": "node ./server/server.js",
     "dev": "nodemon ./server/server.js -w ./server",
     "test": "karma start",
-    "tsc": "tsc -p . -w --outDir build",
-    "typings": "typings"
+    "tsc": "tsc -p . -w --outDir build"
   },
   "keywords": [],
   "author": "joe eames",
@@ -25,12 +24,14 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "@types/angular": "^1.6.17",
+    "@types/core-js": "^0.9.41",
+    "@types/jasmine": "^2.5.47",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
     "karma-jasmine": "^0.3.8",
     "karma-ng-html2js-preprocessor": "^0.2.2",
-    "typescript": "^1.8.10",
-    "typings": "^0.8.1"
+    "typescript": "^2.3.2"
   }
 }
