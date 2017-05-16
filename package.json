@@ -7,7 +7,7 @@
     "start": "node ./server/server.js",
     "dev": "nodemon ./server/server.js -w ./server",
     "test": "karma start",
-    "tsc": "tsc -p . -w --outDir build"
+    "tsc": "tsc -p . -w"
   },
   "keywords": [],
   "author": "joe eames",
