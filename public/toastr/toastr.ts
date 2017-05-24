@@ -1,4 +1,7 @@
+declare var toastr;
+
 (function() {
+  
   var toastrModule = angular.module('toastr', []);
   
   toastr.options.timeOut = 1000;
