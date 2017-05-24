@@ -6,6 +6,7 @@ import { UpgradeModule } from '@angular/upgrade/static';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { NameParser } from './admin/nameParser.service';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   providers: [
-    
+    NameParser
   ],
   bootstrap: [
     AppComponent
