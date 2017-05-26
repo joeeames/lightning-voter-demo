@@ -1,0 +1,18 @@
+<div ng-show="!!$ctrl.session">
+  <div  class="panel panel-default">
+    <div class="panel-heading">
+      {{$ctrl.session.title}}
+    </div>
+    <div class="panel-body">
+      <p><strong>{{$ctrl.session.length | talkDuration}}</strong></p>
+      <p>{{$ctrl.session.abstract}}</p>
+    </div>
+  </div>
+
+  <span>Are you interested in this session?</span>
+  <button class="btn btn-primary btn-xs" ng-click="$ctrl.yes()">Yes</button>
+  <button class="btn btn-warning btn-xs" ng-click="$ctrl.no()">No</button>
+</div>
+<div ng-show="!$ctrl.session" class="alert alert-success" role="alert"> 
+  You have reviewed all the submitted sessions
+</div>
