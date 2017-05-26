@@ -6,6 +6,7 @@ import { UpgradeModule } from '@angular/upgrade/static';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { UnreviewedTalkComponent } from './home/unreviewedTalk.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
   ],
   declarations: [
     AppComponent,
+    UnreviewedTalkComponent
   ],
   providers: [
   ],
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   entryComponents: [
+    UnreviewedTalkComponent
   ]
 })
 export class AppModule { }
