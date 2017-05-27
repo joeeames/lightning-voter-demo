@@ -1,3 +1,5 @@
+declare var toastr;
+
 (function() {
   var toastrModule = angular.module('toastr', []);
   
