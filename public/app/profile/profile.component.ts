@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { TOASTR_TOKEN, Toastr } from "../toastr/toastr.service";
 
 @Component({
   selector: 'profile',
@@ -6,27 +7,21 @@ import { Component, Inject } from '@angular/core';
 })
 export class ProfileComponent { 
   
-  profile: any;
-  currentIdentity: any;
-
   constructor(
-    // private currentIdentity:any,
-    // private $location:any,
-    // private toastr:any
+    @Inject('$location') private $location:any,
+    @Inject('currentIdentity') private currentIdentity:any,
+    @Inject(TOASTR_TOKEN) private toastr:Toastr
     ) {
-
-    // this.currentIdentity = currentIdentity;
-    this.currentIdentity = {currentUser: {firstName: 'joe', lastName: 'eames'}}
   }
     
       
   save(newProfile) {
-    // this.currentIdentity.updateUser(newProfile);
-    toastr.success('Profile Saved!');
+    this.currentIdentity.updateUser(newProfile);
+    this.toastr.success('Profile Saved!');
   }
   
   cancel() {
-    // this.$location.path('/home');
+    this.$location.path('/home');
   }
   
 }
