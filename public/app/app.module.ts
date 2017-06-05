@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NameParser } from "./admin/nameParser.service";
+import { UnreviewedTalkComponent } from "./home/unreviewedTalk.component";
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { NameParser } from "./admin/nameParser.service";
   ],
   declarations: [
     AppComponent,
+    UnreviewedTalkComponent
   ],
   providers: [
     NameParser
@@ -25,6 +27,7 @@ import { NameParser } from "./admin/nameParser.service";
     AppComponent
   ],
   entryComponents: [
+    UnreviewedTalkComponent
   ]
 })
 export class AppModule { }
