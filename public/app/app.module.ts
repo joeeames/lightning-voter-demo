@@ -12,6 +12,7 @@ import { TalkDurationPipe } from "./common/talkDuration.pipe";
 import { ProfileComponent } from "./profile/profile.component";
 import { Toastr, TOASTR_TOKEN } from "./toastr/toastr.service";
 import { NavComponent } from "./nav/nav.component";
+import { NavWrapperComponent } from "./nav/nav-wrapper.component";
 
 declare var toastr: Toastr;
 
@@ -27,7 +28,8 @@ declare var toastr: Toastr;
     UnreviewedTalkComponent,
     TalkDurationPipe,
     ProfileComponent,
-    NavComponent
+    NavComponent,
+    NavWrapperComponent
   ],
   providers: [
     NameParser,
