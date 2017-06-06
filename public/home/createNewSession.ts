@@ -4,7 +4,7 @@ angular.module('app').component('createNewSession', {
   bindings: {
     userSessions: '='
   },
-  controller: function(toastr, currentIdentity, sessions_v2) {
+  controller: function(toastr, currentIdentity, sessions) {
     
     this.create = function() {
       let newUserSession = {
@@ -16,7 +16,7 @@ angular.module('app').component('createNewSession', {
         userId: currentIdentity.currentUser.id,
       }
       
-      sessions_v2.createNewSession(newUserSession).then(function(response) {
+      sessions.createNewSession(newUserSession).then(function(response) {
         this.userSessions.push(response);
       }.bind(this))
 

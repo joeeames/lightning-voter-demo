@@ -10,14 +10,14 @@ app.config(function($routeProvider) {
     requireAdmin: function(auth) {
       return auth.requireAdmin();
     },
-    userSessions: function(sessions_v2, currentIdentity, auth) {
+    userSessions: function(sessions, currentIdentity, auth) {
       return auth.requireLogin().then(function() {
-        return sessions_v2.getSessionsByUser(currentIdentity.currentUser.id);
+        return sessions.getSessionsByUser(currentIdentity.currentUser.id);
       });
     },
-    allSessions: function(sessions_v2, auth) {
+    allSessions: function(sessions, auth) {
       return auth.requireLogin().then(function() {
-        return sessions_v2.getAllSessions();
+        return sessions.getAllSessions();
       });
     },
     allUsers: function(users, auth) {
