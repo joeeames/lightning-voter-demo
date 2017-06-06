@@ -9,6 +9,7 @@ import { NameParser } from "./app/admin/nameParser.service";
 import { UnreviewedTalkComponent } from "./app/home/unreviewedTalk.component";
 import { ProfileComponent } from "./app/profile/profile.component";
 import { Sessions } from "./app/sessions/sessions.service";
+import { DetailPanelComponent } from "./app/common/detailPanel.component";
 
 declare var angular: angular.IAngularStatic;
 
@@ -23,7 +24,10 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
     .directive('profile', downgradeComponent({
         component: ProfileComponent
     }))
-    
+    .directive('detailPanel', downgradeComponent({
+      component: DetailPanelComponent,
+    }))
+
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
   upgrade.bootstrap(document.documentElement, ['app']);
   console.log('hybrid app bootstrapped');
