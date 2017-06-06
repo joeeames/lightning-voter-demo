@@ -13,6 +13,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { Toastr, TOASTR_TOKEN } from "./toastr/toastr.service";
 import { NavComponent } from "./nav/nav.component";
 import { NavWrapperComponent } from "./nav/nav-wrapper.component";
+import { Sessions } from "./sessions/sessions.service";
 
 declare var toastr: Toastr;
 
@@ -39,7 +40,8 @@ declare var toastr: Toastr;
     { provide: 'currentIdentity',
       useFactory: (i: any) => i.get('currentIdentity'),
       deps: ['$injector'] },
-    { provide: TOASTR_TOKEN, useValue: toastr }
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    Sessions
   ],
   bootstrap: [
     AppComponent
