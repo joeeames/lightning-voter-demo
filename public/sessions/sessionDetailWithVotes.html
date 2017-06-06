@@ -1,0 +1,5 @@
+<detail-panel [collapsed]="$ctrl.initialCollapsed" [title]="$ctrl.session.title">
+  <strong>{{$ctrl.session.voteCount}} votes</strong>
+  <p>{{$ctrl.session.length | talkDuration}}</p>
+  <p><small>{{$ctrl.session.abstract}}</small></p>  
+</detail-panel>
