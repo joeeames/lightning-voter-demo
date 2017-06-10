@@ -1,5 +1,5 @@
 
-app.config(function($routeProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
   var routeResolvers = {
     loggedIn: function(auth) {
       return auth.requireLogin();
@@ -28,67 +28,80 @@ app.config(function($routeProvider) {
     
   }
   
-  $routeProvider
-    .when('/admin/login', {
+  $stateProvider
+    .state('admin_login', {
+      url: '/admin/login',
       template: '<admin-login></admin-login>',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }
     })
-    .when('/admin/results', {
+    .state('admin_results', {
+      url: '/admin/results',
       template: '<results all-sessions="$resolve.allSessions"></results>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allSessions: routeResolvers.allSessions
       }
     })
-    .when('/admin/users/:id', {
+    .state('admin_user', {
+      url: '/admin/users/:id',
       template: '<user-details all-users="$resolve.allUsers"></user-details>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers
       }
     })
-    .when('/users', {
+    .state('users', {
+      url: '/users',
       template: '<user-list all-users="$resolve.allUsers"></user-list>',
       resolve: {
         admin: routeResolvers.requireAdmin,
         allUsers: routeResolvers.allUsers
       }
     })
-    .when('/admin/createusers', {
+    .state('admin_createusers', {
+      url: '/admin/createusers',
       template: '<create-users></create-users>',
       resolve:  {
         admin: routeResolvers.requireAdmin
       }
     })
-    .when('/home', {
+    .state('home', {
+      url: '/home',
       template: '<home user-sessions="$resolve.userSessions"></home>',
       resolve: {
         login:routeResolvers.loggedIn,
         userSessions: routeResolvers.userSessions
       }
     })
-    .when('/profile', {
-      template: '<profile></profile>',
+    .state('profile', {
+      url: '/profile',
+      template: '<profile user-profile="$resolve.userProfile"></profile>',
       resolve: {
         userProfile: routeResolvers.loggedIn,
       }
     })
-    .when('/createsession', {
+    .state('createsession', {
+      url: '/createsession',
       template: '<create-new-session user-sessions="$resolve.userSessions"></create-new-user>',
       resolve: {
         userSessions: routeResolvers.userSessions,
       }
     })
-    .when('/login', {
+    .state('login', {
+      url: '/login',
       template: '<login></login>',
       resolve: {
         currentAuth: routeResolvers.waitForAuth
       }
     })
-    .when('/logout', {
+    .state('/logout', {
+      url: '/logout',
       template: '<logout></logout>'
-    })
-    .otherwise('/home')
+    });
+
+    $urlRouterProvider.otherwise('/home')
+
+
 })

@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'toastr']);
+var app = angular.module('app', ['ui.router', 'ui.router.upgrade', 'toastr']);
 app.run(function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(e, next, prev, err) {
     if(err === "AUTH_REQUIRED") {
@@ -9,6 +9,8 @@ app.run(function($rootScope, $location) {
     }
   })
 })
+
+app.config([ '$urlServiceProvider', ($urlService) => $urlService.deferIntercept() ]);
 
 // angular.element(document).ready(() => {
 //   angular.bootstrap(document.body, ['app'])
