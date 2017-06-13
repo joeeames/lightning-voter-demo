@@ -27,7 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
     
   }
-  
+
   $stateProvider
     .state('admin_login', {
       url: '/admin/login',

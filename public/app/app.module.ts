@@ -15,7 +15,6 @@ import { NavComponent } from "./nav/nav.component";
 import { NavWrapperComponent } from "./nav/nav-wrapper.component";
 import { Sessions } from "./sessions/sessions.service";
 import { DetailPanelComponent } from "./common/detailPanel.component";
-import { UIViewComponent } from "./common/ui-view-upgrade.component";
 // import { UIRouterUpgradeModule } from '@uirouter/angular-hybrid';
 
 declare var toastr: Toastr;
@@ -26,7 +25,6 @@ declare var toastr: Toastr;
     FormsModule,
     HttpModule,
     UpgradeModule,
-    // UIRouterUpgradeModule
   ],
   declarations: [
     AppComponent,
@@ -36,7 +34,6 @@ declare var toastr: Toastr;
     NavComponent,
     NavWrapperComponent,
     DetailPanelComponent,
-    UIViewComponent
   ],
   providers: [
     NameParser,
@@ -59,5 +56,3 @@ declare var toastr: Toastr;
   ]
 })
 export class AppModule { }
-
-console.log('here3');
