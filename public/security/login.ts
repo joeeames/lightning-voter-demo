@@ -4,18 +4,18 @@ angular.module('app').component('login', {
     
   },
   controller: class LoginCtrl {
-    $location: any;
+    $state: any;
     auth: any;
     toastr: any;
     email: string;
   
-    constructor($location, currentIdentity, auth, toastr) {
-      this.$location = $location;
+    constructor($state, currentIdentity, auth, toastr) {
+      this.$state = $state;
       this.auth = auth;
       this.toastr = toastr;
         
       if(currentIdentity.authenticated()) {
-        $location.path('/home');
+        $state.go('home');
       }
     }
       
@@ -24,7 +24,7 @@ angular.module('app').component('login', {
           username: this.email,
           password: "pass"
         }).then(() => {
-          this.$location.path('/home');
+          this.$state.go('home');
         }, (err) => {
           this.toastr.error(err);
         })

@@ -1,9 +1,9 @@
 
 app.config(function($stateProvider, $urlRouterProvider) {
   var routeResolvers = {
-    loggedIn: function(auth) {
-      return auth.requireLogin();
-    },
+    // loggedIn: function(auth) {
+    //   return auth.requireLogin();
+    // },
     waitForAuth: function(auth) {
       return auth.waitForAuth();
     },
@@ -29,6 +29,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
   }
 
   $stateProvider
+    .state({
+     name: 'adminauth'
+    })
     .state('admin_login', {
       url: '/admin/login',
       template: '<admin-login></admin-login>',
@@ -37,10 +40,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
     .state('admin_results', {
+      data: { requiresAdmin: true },
       url: '/admin/results',
       template: '<results all-sessions="$resolve.allSessions"></results>',
       resolve: {
-        admin: routeResolvers.requireAdmin,
+        // admin: routeResolvers.requireAdmin,
         allSessions: routeResolvers.allSessions
       }
     })
@@ -69,17 +73,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('home', {
       url: '/home',
+      data: { requiresAuth: true },
       template: '<home user-sessions="$resolve.userSessions"></home>',
       resolve: {
-        login:routeResolvers.loggedIn,
-        userSessions: routeResolvers.userSessions
+        // login:routeResolvers.loggedIn,
+        // userSessions: routeResolvers.userSessions
       }
     })
     .state('profile', {
       url: '/profile',
       template: '<profile user-profile="$resolve.userProfile"></profile>',
       resolve: {
-        userProfile: routeResolvers.loggedIn,
+        // userProfile: routeResolvers.loggedIn,
       }
     })
     .state('createsession', {
