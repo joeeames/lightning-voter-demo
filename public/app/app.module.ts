@@ -24,6 +24,7 @@ declare var toastr: Toastr;
     FormsModule,
     HttpModule,
     UpgradeModule,
+    RouterModule.forRoot([])
   ],
   declarations: [
     AppComponent,

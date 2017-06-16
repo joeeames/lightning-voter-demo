@@ -1,4 +1,10 @@
 var app = angular.module('app', ['ngRoute', 'toastr']);
+
+app.config(($locationProvider) => {
+  $locationProvider.html5Mode(true);
+
+})
+
 app.run(function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(e, next, prev, err) {
     if(err === "AUTH_REQUIRED") {
