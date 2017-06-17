@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'toastr']);
+var app = angular.module('app', ['ngRoute', 'toastr', 'ngMaterial']);
 app.run(function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(e, next, prev, err) {
     if(err === "AUTH_REQUIRED") {
@@ -8,6 +8,10 @@ app.run(function($rootScope, $location) {
       $location.path("/home");
     }
   })
+})
+
+app.config(($locationProvider) => {
+  $locationProvider.hashPrefix('');
 })
 
 // angular.element(document).ready(() => {

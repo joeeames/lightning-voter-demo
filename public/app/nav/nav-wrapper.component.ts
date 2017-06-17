@@ -13,7 +13,7 @@ export class NavWrapperComponent extends UpgradeComponent {
 declare var angular: angular.IAngularStatic;
 
 angular.module('app').component('nav-wrapper', {
-  template: '<nav></nav>',
+  template: '<my-nav></my-nav>',
   bindings: {
   },
   controller: function() {

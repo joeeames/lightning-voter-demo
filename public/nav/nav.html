@@ -1,8 +1,35 @@
-<div 
-  class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <div class="navbar-header"><a href="/" class="navbar-brand">Lightning Talks</a></div>
-    <div class="navbar-collapse collapse">
+
+    <md-content class="md-padding">
+      <md-nav-bar
+        md-selected-nav-item="currentNavItem"
+        nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="#/" name="home">Home
+          <span class="badge">{{$ctrl.unreviewedSessionCount.value}}</span>
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/createsession" name="createsession">
+          Create Session
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/profile" name="profile">
+          Profile
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/admin/createusers" name="createusers" ng-show="$ctrl.currentUser.isAdmin">
+          Create 
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/admin/results" name="results" ng-show="$ctrl.currentUser.isAdmin">
+          Results
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/users" name="users" ng-show="$ctrl.currentUser.isAdmin">
+          Users
+        </md-nav-item>
+        <md-nav-item md-nav-href="#/logout" name="logout">
+          Logout
+        </md-nav-item>
+        
+       
+      </md-nav-bar>
+
+    </md-content>
+    <!--<div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="#/">Home <span class="badge">{{$ctrl.unreviewedSessionCount.value}}</span> </a></li>
         <li><a href="#/createsession">Create Session</a></li>
@@ -18,6 +45,4 @@
           Welcome {{$ctrl.currentUser.firstName}} {{$ctrl.currentUser.lastName}}
         </li>
       </ul>
-    </div>
-  </div>
-</div>
+    </div>-->
