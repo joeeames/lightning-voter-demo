@@ -12,6 +12,12 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter')
+    ],
+
 
     // list of files / patterns to load in the browser
     files: [
@@ -26,49 +32,36 @@ module.exports = function(config) {
       'node_modules/zone.js/dist/fake-async-test.js',
 
       // RxJs.
-{ pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
-{ pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
- 
-// Angular itself and the testing library
-{pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
-{pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
+      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
+      
+      // Angular itself and the testing library
+      {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
 
-{pattern: 'public/systemjs.config.js', included: false, watched: false},
-'karma-test-shim.js',
+      {pattern: 'public/systemjs.config.js', included: false, watched: false},
+      {pattern: 'systemjs.config.extras.js', included: false, watched: false},
+      'karma-test-shim.js',
 
-      'public/vendor/jquery.min.js',
-      'public/vendor/1.5.5/angular.min.js',
-      'public/vendor/1.5.5/angular-route.min.js',
-      'public/vendor/toastr.min.js',
-      'public/toastr/toastr.js',
-      'public/app.js',
-      'public/**/*.js',
-      'public/**/*.js',
-      'test/**/*.js',
-      'public/**/*.html'
+      // 'public/vendor/jquery.min.js',
+      // 'public/vendor/1.5.5/angular.min.js',
+      // 'public/vendor/1.5.5/angular-route.min.js',
+      // 'public/vendor/toastr.min.js',
+      // 'public/toastr/toastr.js',
+      // 'public/app/**/*.js',
+      // 'public/**/*.js',
+      // 'public/**/*.js',
+      // 'test/**/*.js',
+      // 'public/**/*.html'
     ],
 
 
     // list of files to exclude
     exclude: [
-      'public/vendor/1.4.9/**/*.js'
+      // 'public/vendor/1.4.9/**/*.js'
     ],
 
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      '**/*.html': ['ng-html2js']
-    },
-    
-    ngHtml2JsPreprocessor: {
-      stripPrefix: 'public'
-    },
-
-
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress'],
 
 

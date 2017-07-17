@@ -7,6 +7,7 @@
     "start": "node ./server/server.js",
     "dev": "nodemon ./server/server.js -w ./server",
     "test": "karma start",
+    "test2": "karma start angular-karma.conf.js",
     "tsc": "tsc -p . -w"
   },
   "keywords": [],
@@ -37,14 +38,15 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@types/angular": "^1.6.17",
-    "@types/core-js": "^0.9.41",
-    "@types/jasmine": "^2.5.47",
-    "jasmine-core": "^2.4.1",
-    "karma": "^1.7.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-ng-html2js-preprocessor": "^1.0.0",
+    "@types/angular": "1.6.26",
+    "@types/core-js": "0.9.42",
+    "@types/jasmine": "2.5.53",
+    "jasmine-core": "2.6.4",
+    "karma": "1.7.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-jasmine": "1.1.0",
+    "karma-jasmine-html-reporter": "0.2.2",
+    "karma-ng-html2js-preprocessor": "1.0.0",
     "typescript": "2.3.4"
   }
 }
