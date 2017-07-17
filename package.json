@@ -41,10 +41,10 @@
     "@types/core-js": "^0.9.41",
     "@types/jasmine": "^2.5.47",
     "jasmine-core": "^2.4.1",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.3",
-    "karma-jasmine": "^0.3.8",
-    "karma-ng-html2js-preprocessor": "^0.2.2",
-    "typescript": "^2.3.2"
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-ng-html2js-preprocessor": "^1.0.0",
+    "typescript": "2.3.4"
   }
 }

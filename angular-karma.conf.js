@@ -15,10 +15,30 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/systemjs/dist/system.src.js',
+      'node_modules/core-js/client/shim.js',
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      'node_modules/zone.js/dist/proxy.js',
+      'node_modules/zone.js/dist/sync-test.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/zone.js/dist/async-test.js',
+      'node_modules/zone.js/dist/fake-async-test.js',
+
+      // RxJs.
+{ pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
+{ pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
+ 
+// Angular itself and the testing library
+{pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
+{pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
+
+{pattern: 'public/systemjs.config.js', included: false, watched: false},
+'karma-test-shim.js',
+
       'public/vendor/jquery.min.js',
       'public/vendor/1.5.5/angular.min.js',
       'public/vendor/1.5.5/angular-route.min.js',
-      'public/vendor/1.5.5/angular-mocks.js',
       'public/vendor/toastr.min.js',
       'public/toastr/toastr.js',
       'public/app.js',
@@ -31,12 +51,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      'public/vendor/1.4.9/**/*.js',
-      'public/app/**/*.js',
-      'public/main.js',
-      'public/systemjs-angular-loader.js',
-      'public/systemjs.config.js',
-      'public/routes.js'
+      'public/vendor/1.4.9/**/*.js'
     ],
 
 
