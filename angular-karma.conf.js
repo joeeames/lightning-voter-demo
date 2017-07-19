@@ -40,20 +40,19 @@ module.exports = function(config) {
       {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
 
       {pattern: 'public/systemjs.config.js', included: false, watched: false},
+      {pattern: 'public/systemjs-angular-loader.js', included: false, watched: false},
       {pattern: 'systemjs.config.extras.js', included: false, watched: false},
       'karma-test-shim.js',
 
-      // 'public/vendor/jquery.min.js',
-      // 'public/vendor/1.5.5/angular.min.js',
-      // 'public/vendor/1.5.5/angular-route.min.js',
-      // 'public/vendor/toastr.min.js',
-      // 'public/toastr/toastr.js',
-      // 'public/app/**/*.js',
-      // 'public/**/*.js',
-      // 'public/**/*.js',
-      // 'test/**/*.js',
-      // 'public/**/*.html'
+      // transpiled application & spec code paths loaded via module imports
+      { pattern: 'public/app/**/*.js', included: false, watched: true },
+      { pattern: 'public/app/**/*.html', included: false, watched: true },
+
     ],
+
+    proxies: {
+      "/app/": "/base/public/app/"
+    },
 
 
     // list of files to exclude

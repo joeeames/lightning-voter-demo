@@ -1,11 +1,15 @@
 
-console.log("in the nameparser spec");
+import { NameParser } from './nameParser.service';
+
 describe('parseNames', function() {
+  let nameParser;
+
+  beforeEach(() => {
+    nameParser = new NameParser();
+  })
   
-  beforeEach(module('app'))
-  
-  it('should parse names correctly', inject(function(nameParser) {
+  it('should parse names correctly', function() {
     expect(nameParser.parse('f@f.com|frank|furter')[0].firstName).toBe('frank');
-  }))
+  })
   
 })
