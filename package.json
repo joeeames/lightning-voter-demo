@@ -4,7 +4,8 @@
   "description": "lightning talk voting app",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/server.js",
+    "server": "node ./server/server.js",
+    "start": "webpack --config webpack.dev.js --watch --profile --progress",
     "dev": "nodemon ./server/server.js -w ./server",
     "test": "karma start",
     "test2": "karma start angular-karma.conf.js",
@@ -41,12 +42,25 @@
     "@types/angular": "1.6.26",
     "@types/core-js": "0.9.42",
     "@types/jasmine": "2.5.53",
+    "@types/node": "6.0.45",
     "jasmine-core": "2.6.4",
     "karma": "1.7.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.0",
     "karma-jasmine-html-reporter": "0.2.2",
     "karma-ng-html2js-preprocessor": "1.0.0",
-    "typescript": "2.3.4"
+    "typescript": "2.3.4",
+    "angular2-template-loader": "0.6.x",
+    "awesome-typescript-loader": "3.0.x",
+    "html-loader": "0.4.x",
+    "canonical-path": "0.0.2",
+    "ts-helpers": "^1.1.2",
+    "html-webpack-plugin": "2.28.x",
+    "extract-text-webpack-plugin": "2.0.x",
+    "webdriver-manager": "10.2.5",
+    "webpack": "2.2.x",
+    "webpack-dev-server": "2.4.x",
+    "rimraf": "2.5.x",
+    "url-loader": "0.5.7"
   }
 }

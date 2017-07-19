@@ -1,5 +1,5 @@
 angular.module('app').component('results', {
-  templateUrl: '/admin/results.html',
+  templateUrl: './results.html',
   bindings: {
     sessionsByVoteDesc: '=allSessions'
   },

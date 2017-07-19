@@ -21,7 +21,9 @@ module.exports = function(app) {
   app.use(passport.initialize());
   app.use(passport.session());
   
-  app.use(express.static(rootPath + '/public'));
+  app.use(express.static(rootPath + '/dist'));
   app.use('/node_modules', express.static(rootPath + '/node_modules'));
-  app.use('/config', express.static(rootPath + '/config'));
+  app.use('/vendor', express.static(rootPath + '/public/vendor'));
+  app.use('/toastr', express.static(rootPath + '/public/toastr'));
+  app.use('/styles.css', express.static(rootPath + '/public/styles.css'));
 }

@@ -1,5 +1,5 @@
 angular.module('app').component('userList', { 
-  templateUrl: '/admin/userList.html',
+  templateUrl: './userList.html',
   bindings: {
     users: '=allUsers'
   },
