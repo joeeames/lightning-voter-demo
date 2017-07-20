@@ -53,7 +53,6 @@
     "karma": "1.7.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.0",
-    "karma-jasmine-html-reporter": "0.2.2",
     "karma-mocha-reporter": "^2.2.3",
     "karma-ng-html2js-preprocessor": "1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
@@ -61,11 +60,7 @@
     "null-loader": "^0.1.1",
     "raw-loader": "^0.5.1",
     "rimraf": "2.5.x",
-    "ts-helpers": "^1.1.2",
     "typescript": "2.3.4",
-    "url-loader": "0.5.7",
-    "webdriver-manager": "10.2.5",
-    "webpack": "2.2.x",
-    "webpack-dev-server": "2.4.x"
+    "webpack": "2.2.x"
   }
 }
