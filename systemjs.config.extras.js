@@ -1,1 +1,0 @@
-/** App specific SystemJS configuration */

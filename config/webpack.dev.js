@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
+console.log('dist is',  helpers.root('dist'));
 
 module.exports = {
     // devtool: 'cheap-module-eval-source-map',
