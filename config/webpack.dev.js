@@ -6,10 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
-console.log('dist is',  helpers.root('dist'));
-
 module.exports = {
-    // devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
 
     entry: {
         'polyfills': './public/polyfills.ts',
@@ -20,7 +18,6 @@ module.exports = {
 
     output: {
         path: helpers.root('dist'),
-        // publicPath: 'http://localhost:8080/',
         publicPath: '/',
         filename: '[name].js',
         chunkFilename: '[id].chunk.js'
@@ -36,10 +33,6 @@ module.exports = {
                 test: /\.ts$/,
                 loaders: ['awesome-typescript-loader', 'angular2-template-loader']
             },
-            // {
-            //     test: /^((?!\/app\/).)*\.ts$/,
-            //     loaders: ['awesome-typescript-loader']
-            // },
             {
                 test: /\.html$/,
                 loader: 'html-loader'
@@ -55,19 +48,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'public/index.html'
         }),
-
-        // new webpack.optimize.UglifyJsPlugin({
-        //     beautify: false,
-        //     comments: false,
-        //     compress: {
-        //         screw_ie8: true,
-        //         warnings: false
-        //     },
-        //     mangle: {
-        //         keep_fnames: true,
-        //         screw_i8: true
-        //     }
-        // }),
 
         new webpack.DefinePlugin({
             'process.env': {
