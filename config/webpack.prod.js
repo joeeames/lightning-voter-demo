@@ -1,14 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
+
 const helpers = require('./helpers');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
+const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
-
     entry: {
         'polyfills': './public/polyfills.ts',
         'vendor': './public/vendor.ts',
@@ -17,21 +17,21 @@ module.exports = {
     },
 
     output: {
-        path: helpers.root('dist/dev'),
+        path: helpers.root('dist/aot'),
         publicPath: '/',
-        filename: '[name].js',
+        filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js'
     },
 
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.js', '.ts']
     },
 
     module: {
         loaders: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+                loader: '@ngtools/webpack'
             },
             {
                 test: /\.html$/,
@@ -39,14 +39,31 @@ module.exports = {
             }
         ]
     },
-
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills', 'ng1']
+            name: ['app', 'vendor', 'polyfills']
+        }),
+
+        new AotPlugin({
+            tsConfigPath: './tsconfig.aot.json',
+            entryModule: helpers.root('public/app/app.module#AppModule')
         }),
 
         new HtmlWebpackPlugin({
             template: 'public/index.html'
+        }),
+
+        new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            comments: false,
+            compress: {
+                screw_ie8: true,
+                warnings: false
+            },
+            mangle: {
+                keep_fnames: true,
+                screw_i8: true
+            }
         }),
 
         new webpack.DefinePlugin({
