@@ -8,14 +8,18 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "lib": ["dom","es2015"]
+    "lib": ["dom","es2017"]
   },
   "compileOnSave": true,
   "exclude": [
     "node_modules/*",
     "aot/",
-    "app/boot-aot.ts"
+    "public/main-aot.ts"
   ],
+  // "files": [
+  //   "public/app/app.module.ts",
+  //   "public/main.ts"
+  // ],
   "angularCompilerOptions": {
     "genDir": "aot/",
     "skipMetadataEmit": true

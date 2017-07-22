@@ -16,7 +16,10 @@ import { NavWrapperComponent } from "./nav/nav-wrapper.component";
 import { Sessions } from "./sessions/sessions.service";
 import { DetailPanelComponent } from "./common/detailPanel.component";
 
-declare var toastr: Toastr;
+export declare var toastr: Toastr;
+
+export function getLocation(i: any){ i.get('$location') }
+export function getCurrentIdentity(i: any){ i.get('currentIdentity') }
 
 @NgModule({
   imports: [
@@ -37,10 +40,10 @@ declare var toastr: Toastr;
   providers: [
     NameParser,
     { provide: '$location',
-      useFactory: (i: any) => i.get('$location'),
+      useFactory: getLocation,
       deps: ['$injector'] },
     { provide: 'currentIdentity',
-      useFactory: (i: any) => i.get('currentIdentity'),
+      useFactory: getCurrentIdentity,
       deps: ['$injector'] },
     { provide: TOASTR_TOKEN, useValue: toastr },
     Sessions

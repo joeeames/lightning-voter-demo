@@ -9,7 +9,7 @@ export class ProfileComponent {
   
   constructor(
     @Inject('$location') private $location:any,
-    @Inject('currentIdentity') private currentIdentity:any,
+    @Inject('currentIdentity') public currentIdentity:any,
     @Inject(TOASTR_TOKEN) private toastr:Toastr
     ) {
   }

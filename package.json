@@ -12,6 +12,7 @@
     "dev": "nodemon ./server/server.js -w ./server",
     "test": "karma start config/angularjs-karma.conf.js",
     "test2": "karma start config/angular-karma.conf.js",
+    "ngc": "ngc -p tsconfig.aot.json",
     "tsc": "tsc -p . -w"
   },
   "keywords": [],
