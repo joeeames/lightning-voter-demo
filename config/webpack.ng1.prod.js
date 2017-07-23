@@ -7,17 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
-
+    
+    // devtool: 'cheap-module-eval-source-map',
     entry: {
-        'polyfills': './public/polyfills.ts',
-        'vendor': './public/vendor.ts',
-        'app': './public/main.ts',
         'ng1': './public/index.ts'
     },
 
     output: {
-        path: helpers.root('dist/dev'),
+        path: helpers.root('dist/aot'),
         publicPath: '/',
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js'
@@ -39,14 +36,25 @@ module.exports = {
             }
         ]
     },
-
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills', 'ng1']
+            // name: 'common-ignore',
+            // chunks: ['ng1', 'app']
+            name: ['ng1']
         }),
-
-        new HtmlWebpackPlugin({
-            template: 'public/index.html'
+        
+        new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            comments: false,
+            compress: {
+                screw_ie8: true,
+                warnings: false
+            },
+            mangle: false
+            //  {
+            //     keep_fnames: true,
+            //     screw_i8: true
+            // }
         }),
 
         new webpack.DefinePlugin({

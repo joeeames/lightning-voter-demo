@@ -7,13 +7,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+// var cnt = 0;
+// function isFileTS(filename) {
+//   if(filename.endsWith('.ts')) {
+//     cnt++;
+//     console.log('file', cnt, filename);
+//     return true;  
+//   } else {
+//     return false;
+//   }
+// }
 
 module.exports = {
     entry: {
         'polyfills': './public/polyfills.ts',
         'vendor': './public/vendor-aot.ts',
-        'app': './public/main-aot.ts',
-        'ng1': './public/index.ts'
+        'app': './public/main-aot.ts'//,
+        // 'ng1': './public/index.ts'
     },
 
     output: {
@@ -24,7 +34,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.js', '.ts']
+        extensions: ['.ts', '.js']
     },
 
     module: {
@@ -41,7 +51,7 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills', 'ng1']
+            name: ['app', 'vendor', 'polyfills']
         }),
 
         new AotPlugin({
@@ -53,18 +63,18 @@ module.exports = {
             template: 'public/index.html'
         }),
 
-        // new webpack.optimize.UglifyJsPlugin({
-        //     beautify: false,
-        //     comments: false,
-        //     compress: {
-        //         screw_ie8: true,
-        //         warnings: false
-        //     },
-        //     mangle: {
-        //         keep_fnames: true,
-        //         screw_i8: true
-        //     }
-        // }),
+        new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            comments: false,
+            compress: {
+                screw_ie8: true,
+                warnings: false
+            },
+            mangle: {
+                keep_fnames: true,
+                screw_i8: true
+            }
+        }),
 
         new webpack.DefinePlugin({
             'process.env': {
