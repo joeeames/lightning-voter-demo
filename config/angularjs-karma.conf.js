@@ -11,7 +11,7 @@ module.exports = function(config) {
       '../public/vendor/1.5.5/angular-route.min.js',
       '../public/vendor/1.5.5/angular-mocks.js',
       '../public/vendor/toastr.min.js',
-      '../dist/dev/ng1.js',
+      '../dist/dev/ng1.bundle.js',
       '../test/**/*.js',
       '../public/**/*.html'
     ],
