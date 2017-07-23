@@ -62,7 +62,7 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'config/prod/index.html',
+            template: 'config/index.html',
             chunks: ['app']
         }),
 

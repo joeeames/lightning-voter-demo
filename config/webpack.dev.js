@@ -46,11 +46,8 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'config/dev/index.html',
+            template: 'config/index.html',
             chunks: ['app'],
-            // chunksSortMode: function(a, b) {
-            //     return (a.names[0] < b.names[0])? 1 : -1;
-            // }
         }),
 
         new webpack.DefinePlugin({
