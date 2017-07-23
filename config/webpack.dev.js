@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+    // devtool: 'cheap-module-eval-source-map',
 
     entry: {
         'polyfills': './public/polyfills.ts',
@@ -42,11 +42,15 @@ module.exports = {
 
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills', 'ng1']
+            name: 'common'
         }),
 
         new HtmlWebpackPlugin({
-            template: 'config/dev/index.html'
+            template: 'config/dev/index.html',
+            chunks: ['app'],
+            // chunksSortMode: function(a, b) {
+            //     return (a.names[0] < b.names[0])? 1 : -1;
+            // }
         }),
 
         new webpack.DefinePlugin({

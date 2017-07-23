@@ -53,7 +53,7 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills']
+            name: 'common'
         }),
 
         new AotPlugin({
@@ -62,7 +62,8 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'config/prod/index.html'
+            template: 'config/prod/index.html',
+            chunks: ['app']
         }),
 
         new webpack.optimize.UglifyJsPlugin({
