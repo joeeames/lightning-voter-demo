@@ -39,7 +39,6 @@
     "passport": "0.3.2",
     "passport-local": "1.0.0",
     "rxjs": "5.0.1",
-    "systemjs": "0.19.39",
     "zone.js": "0.8.12"
   },
   "devDependencies": {
@@ -67,6 +66,6 @@
     "raw-loader": "0.5.1",
     "rimraf": "2.5.x",
     "typescript": "2.3.4",
-    "webpack": "2.2.x"
+    "webpack": "3.3.0"
   }
 }
