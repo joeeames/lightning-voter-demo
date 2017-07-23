@@ -19,6 +19,8 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 // }
 
 module.exports = {
+    
+    devtool: 'cheap-module-eval-source-map',
     entry: {
         'polyfills': './public/polyfills.ts',
         'vendor': './public/vendor-aot.ts',
@@ -60,21 +62,21 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'public/index.html'
+            template: 'config/prod/index.html'
         }),
 
-        new webpack.optimize.UglifyJsPlugin({
-            beautify: false,
-            comments: false,
-            compress: {
-                screw_ie8: true,
-                warnings: false
-            },
-            mangle: {
-                keep_fnames: true,
-                screw_i8: true
-            }
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     beautify: false,
+        //     comments: false,
+        //     compress: {
+        //         screw_ie8: true,
+        //         warnings: false
+        //     },
+        //     mangle: {
+        //         keep_fnames: true,
+        //         screw_i8: true
+        //     }
+        // }),
 
         new webpack.DefinePlugin({
             'process.env': {

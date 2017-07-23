@@ -46,7 +46,7 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'public/index.html'
+            template: 'config/dev/index.html'
         }),
 
         new webpack.DefinePlugin({

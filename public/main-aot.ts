@@ -1,6 +1,6 @@
 import {platformBrowser} from "@angular/platform-browser";
 import {AppModuleNgFactory} from "../aot/public/app/app.module.ngfactory";
-
+import './app/rxjsOperations';
 
 declare var angular: angular.IAngularStatic;
 import { downgradeInjectable, downgradeComponent } from '@angular/upgrade/static';

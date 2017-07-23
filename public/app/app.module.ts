@@ -16,10 +16,12 @@ import { NavWrapperComponent } from "./nav/nav-wrapper.component";
 import { Sessions } from "./sessions/sessions.service";
 import { DetailPanelComponent } from "./common/detailPanel.component";
 
-export declare var toastr: Toastr;
+// declare var window;
 
-export function getLocation(i: any){ i.get('$location') }
-export function getCurrentIdentity(i: any){ i.get('currentIdentity') }
+export function getToastr() { return toastr; }
+
+export function getLocation(i: any){ return i.get('$location') }
+export function getCurrentIdentity(i: any){ return i.get('currentIdentity') }
 
 @NgModule({
   imports: [
@@ -45,7 +47,7 @@ export function getCurrentIdentity(i: any){ i.get('currentIdentity') }
     { provide: 'currentIdentity',
       useFactory: getCurrentIdentity,
       deps: ['$injector'] },
-    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: TOASTR_TOKEN, useFactory: getToastr },
     Sessions
   ],
   bootstrap: [
