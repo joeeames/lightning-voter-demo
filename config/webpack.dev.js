@@ -28,7 +28,7 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
                 loaders: ['awesome-typescript-loader', 'angular2-template-loader']
@@ -43,6 +43,13 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common'
+        }),
+
+        new webpack.SourceMapDevToolPlugin({
+            "filename": "[file].map[query]",
+            "moduleFilenameTemplate": "[resource-path]",
+            "fallbackModuleFilenameTemplate": "[resource-path]?[hash]",
+            "sourceRoot": "webpack:///"
         }),
 
         new HtmlWebpackPlugin({
