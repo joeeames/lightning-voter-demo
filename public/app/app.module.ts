@@ -16,8 +16,6 @@ import { NavWrapperComponent } from "./nav/nav-wrapper.component";
 import { Sessions } from "./sessions/sessions.service";
 import { DetailPanelComponent } from "./common/detailPanel.component";
 
-// declare var window;
-
 export function getToastr() { return toastr; }
 
 export function getLocation(i: any){ return i.get('$location') }

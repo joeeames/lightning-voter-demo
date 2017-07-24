@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 const helpers = require('./helpers');
 
@@ -55,11 +56,14 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common'
         }),
+        
 
         new AotPlugin({
             tsConfigPath: './tsconfig.aot.json',
             entryModule: helpers.root('public/app/app.module#AppModule')
         }),
+
+        new ProgressPlugin(),
 
         new HtmlWebpackPlugin({
             template: 'config/index.html',
