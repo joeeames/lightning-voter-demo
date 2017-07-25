@@ -7,9 +7,9 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     files: [
       '../public/vendor/jquery.min.js',
-      '../public/vendor/1.5.5/angular.min.js',
-      '../public/vendor/1.5.5/angular-route.min.js',
-      '../public/vendor/1.5.5/angular-mocks.js',
+      '../public/vendor/1.6.3/angular.min.js',
+      '../public/vendor/1.6.3/angular-route.min.js',
+      '../public/vendor/1.6.3/angular-mocks.js',
       '../public/vendor/toastr.min.js',
       '../dist/dev/common.bundle.js',
       '../dist/dev/ng1.bundle.js',

@@ -10,6 +10,11 @@ app.run(function($rootScope, $location) {
   })
 })
 
+app.config(['$locationProvider', function($locationProvider) {
+ $locationProvider.hashPrefix('');
+}]);
+
+
 // angular.element(document).ready(() => {
 //   angular.bootstrap(document.body, ['app'])
 // });

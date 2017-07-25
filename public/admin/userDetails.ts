@@ -5,8 +5,10 @@ angular.module('app').component('userDetails', {
   },
   controller: function($routeParams) {
     
-    this.user = this.allUsers.find(function(user) {
-      return user.id === parseInt($routeParams.id);
-    })
+    this.$onInit = function() {
+      this.user = this.allUsers.find(function(user) {
+        return user.id === parseInt($routeParams.id);
+      })
+    }
   }
 })
