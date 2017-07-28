@@ -3,5 +3,10 @@
   "files.exclude": {
     "public/**/*.js": { "when": "$(basename).ts"},
     "public/**/*.map": true
+  },
+  "search.exclude": {
+    "public/**/*.js": true,
+    "public/**/*.map": true,
+    "public/vendor/**/*.*": true
   }
 }

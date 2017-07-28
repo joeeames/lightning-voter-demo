@@ -1,8 +1,7 @@
 angular.module('app').component('logout', {
-  
-  controller: function($location, auth) {
-    auth.logout();
-  
-    $location.path('/login');
-  }
-})
+    controller: function ($location, auth) {
+        auth.logout();
+        $location.path('/login');
+    }
+});
+//# sourceMappingURL=logout.js.map
