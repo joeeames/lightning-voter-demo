@@ -1,5 +1,5 @@
 angular.module('app').component('home', { 
-  templateUrl: '/home/home.html',
+  templateUrl: './home.html',
   bindings: {
     userSessions: '='
   },

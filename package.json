@@ -4,7 +4,9 @@
   "description": "lightning talk voting app",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/server.js",
+    "server": "node ./server/server.js",
+    "start": "npm run clean-dev && webpack --config config/webpack.dev.js --watch --profile --progress",
+    "clean-dev": "rimraf dist/dev/*",
     "dev": "nodemon ./server/server.js -w ./server",
     "test": "karma start",
     "tsc": "tsc -p . -w"

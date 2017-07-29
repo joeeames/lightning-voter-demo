@@ -1,6 +1,6 @@
 angular.module('app').component('profile', { 
   
-  templateUrl: '/profile/profile.html',
+  templateUrl: './profile.html',
   controller: function($location, toastr, currentIdentity) {
     
     this.profile = angular.copy(currentIdentity.currentUser);

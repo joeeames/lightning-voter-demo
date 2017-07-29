@@ -1,5 +1,5 @@
 angular.module('app').component('login', {
-  templateUrl: '/security/login.html',
+  templateUrl: './login.html',
   bindings: {
     
   },
