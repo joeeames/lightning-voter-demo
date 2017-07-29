@@ -4,11 +4,12 @@ angular.module('app').component('results', {
     sessionsByVoteDesc: '=allSessions'
   },
   controller: function() {
-    this.sessionsByVoteDesc.sort(function(session1, session2) {
-      // reverse order
-      return session2.voteCount - session1.voteCount;
-    })
-    
+    this.$onInit = function() {
+      this.sessionsByVoteDesc.sort(function(session1, session2) {
+        // reverse order
+        return session2.voteCount - session1.voteCount;
+      })
+    }    
   }
 })
 

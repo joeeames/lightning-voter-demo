@@ -8,7 +8,6 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
 module.exports = {
     
-    // devtool: 'cheap-module-eval-source-map',
     entry: {
         'ng1': './public/index.ts'
     },
@@ -38,8 +37,6 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            // name: 'common-ignore',
-            // chunks: ['ng1', 'app']
             name: ['ng1']
         }),
         

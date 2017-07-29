@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 const helpers = require('./helpers');
 
@@ -8,25 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-// var cnt = 0;
-// function isFileTS(filename) {
-//   if(filename.endsWith('.ts')) {
-//     cnt++;
-//     console.log('file', cnt, filename);
-//     return true;  
-//   } else {
-//     return false;
-//   }
-// }
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     
-    devtool: 'cheap-module-eval-source-map',
     entry: {
         'polyfills': './public/polyfills.ts',
         'vendor': './public/vendor-aot.ts',
-        'app': './public/main-aot.ts'//,
-        // 'ng1': './public/index.ts'
+        'app': './public/main-aot.ts'
     },
 
     output: {
@@ -56,14 +44,17 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common'
         }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            chunks: ["vendor", "app"],
+            minChunks: 2
+        }),
         
 
         new AotPlugin({
             tsConfigPath: './tsconfig.aot.json',
             entryModule: helpers.root('public/app/app.module#AppModule')
         }),
-
-        new ProgressPlugin(),
 
         new HtmlWebpackPlugin({
             template: 'config/index.html',
@@ -87,6 +78,9 @@ module.exports = {
             'process.env': {
                 'ENV': JSON.stringify(ENV)
             }
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static'
         })
     ]
 };

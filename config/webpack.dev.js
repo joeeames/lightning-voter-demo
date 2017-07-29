@@ -5,9 +5,9 @@ const helpers = require('./helpers');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
-
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+ 
 module.exports = {
-    // devtool: 'cheap-module-eval-source-map',
 
     entry: {
         'polyfills': './public/polyfills.ts',
@@ -42,7 +42,13 @@ module.exports = {
 
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'common'
+            name: 'common',
+            minChunks: Infinity
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            chunks: ["vendor", "app"],
+            minChunks: 2
         }),
 
         new webpack.SourceMapDevToolPlugin({
@@ -61,6 +67,9 @@ module.exports = {
             'process.env': {
                 'ENV': JSON.stringify(ENV)
             }
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static'
         })
     ]
 };
