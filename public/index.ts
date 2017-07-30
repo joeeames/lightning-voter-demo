@@ -14,7 +14,6 @@ import './security/currentIdentity';
 import './security/users';
 import './home/home';
 import './home/createNewSession';
-import './sessions/sessions';
 import './sessions/unreviewedSessionCount';
 import './sessions/sessionDetail';
 import './sessions/sessionDetailWithVotes';

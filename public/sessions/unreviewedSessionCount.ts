@@ -3,16 +3,16 @@ angular.module('app').service('unreviewedSessionCount', class UnreviewedSessionC
   sessions: any;
   currentIdentity: any;
   
-  constructor(sessions, currentIdentity) {
+  constructor(sessions_v2, currentIdentity) {
     this.value = 0;
-    this.sessions = sessions;
+    this.sessions = sessions_v2;
     this.currentIdentity = currentIdentity;
   }
   
   updateUnreviewedSessionCount() {
     this.sessions.getUnreviewedCount(this.currentIdentity.currentUser.id)
         .then(response => {
-      this.value = response.data.count;
+      this.value = response.count;
     })
   }
 })
