@@ -10,8 +10,8 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 module.exports = {
 
     entry: {
-        // 'polyfills': './public/polyfills.ts',
-        // 'vendor': './public/vendor.ts',
+        'polyfills': './public/polyfills.ts',
+        'vendor': './public/vendor.ts',
         'app': './public/main.ts',
         'ng1': './public/index.ts'
     },
@@ -45,11 +45,11 @@ module.exports = {
             name: 'common',
             minChunks: Infinity
         }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     chunks: ["vendor", "app"],
-        //     minChunks: 2
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            chunks: ["vendor", "app"],
+            minChunks: 2
+        }),
 
         new webpack.SourceMapDevToolPlugin({
             "filename": "[file].map[query]",
@@ -60,7 +60,7 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: 'config/index.html',
-            // chunks: ['app'],
+            chunks: ['app'],
         }),
 
         new webpack.DefinePlugin({
@@ -69,13 +69,13 @@ module.exports = {
             }
         }),
 
-         new webpack.ContextReplacementPlugin(
+        new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,
             helpers.root('./src'),
             {}
-        )
-        // new BundleAnalyzerPlugin({
-        //     analyzerMode: 'static'
-        // })
+        ),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static'
+        })
     ]
 };

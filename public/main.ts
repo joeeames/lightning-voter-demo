@@ -1,7 +1,3 @@
-import 'core-js/es7/reflect';
-import 'core-js/client/shim';
-import 'zone.js/dist/zone';
-
 import { platformBrowserDynamic }    from '@angular/platform-browser-dynamic';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { downgradeInjectable, downgradeComponent } from '@angular/upgrade/static';
