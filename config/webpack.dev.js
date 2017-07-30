@@ -74,8 +74,8 @@ module.exports = {
             helpers.root('./src'),
             {}
         ),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'static'
-        })
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: 'static'
+        // })
     ]
 };
