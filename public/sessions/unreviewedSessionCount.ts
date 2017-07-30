@@ -3,9 +3,9 @@ angular.module('app').service('unreviewedSessionCount', class UnreviewedSessionC
   sessions: any;
   currentIdentity: any;
   
-  constructor(sessions_v2, currentIdentity) {
+  constructor(sessions, currentIdentity) {
     this.value = 0;
-    this.sessions = sessions_v2;
+    this.sessions = sessions;
     this.currentIdentity = currentIdentity;
   }
   
