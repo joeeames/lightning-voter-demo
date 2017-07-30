@@ -9,6 +9,7 @@
     "clean-dev": "rimraf dist/dev/*",
     "dev": "nodemon ./server/server.js -w ./server",
     "test": "karma start config/angularjs-karma.conf.js",
+    "test2": "karma start config/angular-karma.conf.js",
     "tsc": "tsc -p . -w"
   },
   "keywords": [],
