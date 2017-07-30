@@ -70,7 +70,7 @@ app.config(function($routeProvider) {
       }
     })
     .when('/profile', {
-      template: '<profile user-profile="$resolve.userProfile"></profile>',
+      template: '<profile></profile>',
       resolve: {
         userProfile: routeResolvers.loggedIn,
       }
