@@ -17,6 +17,5 @@ import './home/createNewSession';
 import './sessions/unreviewedSessionCount';
 import './sessions/sessionDetail';
 import './sessions/sessionDetailWithVotes';
-import './components/detailPanel';
 import './components/talkDuration';
 import './components/zoomIn';

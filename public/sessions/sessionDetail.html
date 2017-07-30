@@ -1,4 +1,4 @@
-<detail-panel collapsed="{{$ctrl.initialCollapsed}}" title="{{$ctrl.session.title}}">
+<detail-panel [collapsed]="$ctrl.initialCollapsed" [title]="$ctrl.session.title">
   <strong>{{$ctrl.session.length | talkDuration}}</strong>
   <p><small>{{$ctrl.session.abstract}}</small></p>  
 </detail-panel>
