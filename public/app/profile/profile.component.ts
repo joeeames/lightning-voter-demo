@@ -1,25 +1,25 @@
 import { Component, Inject } from '@angular/core';
-// import { TOASTR_TOKEN, Toastr } from "../toastr/toastr.service";
+import { TOASTR_TOKEN, Toastr } from "../toastr/toastr.service";
 
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent { 
-  currentIdentity: any;
 
-  constructor(/*$location, toastr, currentIdentity*/) {
-    this.currentIdentity = {currentUser: {firstName: 'joe', lastName: 'eames'}}    
+  constructor(
+    @Inject('$location') private $location,
+    @Inject('currentIdentity') private currentIdentity,
+    @Inject(TOASTR_TOKEN) private toastr:Toastr
+    ) {
   }
 
-  // this.profile = angular.copy(currentIdentity.currentUser);
-      
-  save() {
-    // this.currentIdentity.updateUser(this.profile);
-    // toastr.success('Profile Saved!');
+  save(newProfile) {
+    this.currentIdentity.updateUser(newProfile);
+    toastr.success('Profile Saved!');
   }
   
   cancel() {
-    // this.$location.path('/home');
+    this.$location.path('/home');
   }
 }

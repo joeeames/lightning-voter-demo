@@ -12,6 +12,6 @@
     class="form-control" [ngModel]="currentIdentity.currentUser.lastName" name="lastName">
   
   <br><br>
-  <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
+  <button class="btn btn-primary btn-sm" (click)="save(form.value)">Save</button>
   <button class="btn btn-warning btn-sm" (click)="cancel()">Cancel</button>
 </form>
