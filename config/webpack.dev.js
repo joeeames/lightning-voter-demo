@@ -12,7 +12,7 @@ module.exports = {
     entry: {
         // 'polyfills': './public/polyfills.ts',
         // 'vendor': './public/vendor.ts',
-        // 'app': './public/main.ts',
+        'app': './public/main.ts',
         'ng1': './public/index.ts'
     },
 
@@ -68,6 +68,12 @@ module.exports = {
                 'ENV': JSON.stringify(ENV)
             }
         }),
+
+         new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core(\\|\/)@angular/,
+            helpers.root('./src'),
+            {}
+        )
         // new BundleAnalyzerPlugin({
         //     analyzerMode: 'static'
         // })
