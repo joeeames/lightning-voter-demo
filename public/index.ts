@@ -5,7 +5,6 @@ import './admin/adminLogin';
 import './admin/createUsers';
 import './admin/userList';
 import './admin/userDetails';
-import './nav/nav';
 import './security/logout';
 import './security/login';
 import './security/auth';

@@ -1,11 +1,21 @@
-import { Directive, ElementRef, Injector, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { UpgradeComponent } from '@angular/upgrade/static';
 
-@Directive({
-  selector: 'app-nav'
+@Component({
+  selector: 'app-nav',
+  templateUrl: "./nav.component.html"
 })
-export class NavComponent extends UpgradeComponent {
-  constructor(elementRef: ElementRef, injector: Injector) {
-    super('nav', elementRef, injector);
+export class NavComponent {
+  currentUser: any;
+
+  constructor(@Inject('currentIdentity') private currentIdentity,
+    @Inject('unreviewedSessionCount') private unreviewedSessionCount
+) {
+  }
+
+  ngOnInit() {
+    this.currentUser = this.currentIdentity.currentUser;
+    
+    this.unreviewedSessionCount.updateUnreviewedSessionCount();
   }
 }

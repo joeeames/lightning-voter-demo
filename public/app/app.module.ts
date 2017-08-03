@@ -18,6 +18,7 @@ import { SessionDetailWithVotesComponent } from "./sessions/sessionDetailWithVot
 
 export function getLocation(i: any){ return i.get('$location') }
 export function getCurrentIdentity(i: any){ return i.get('currentIdentity') }
+export function getUnreviewedSessionCount(i: any){ return i.get('unreviewedSessionCount') }
 export function getToastr() { return toastr; }
 
 @NgModule({
@@ -45,6 +46,9 @@ export function getToastr() { return toastr; }
     { provide: 'currentIdentity',
       useFactory: getCurrentIdentity,
       deps: ['$injector'] },
+    { provide: 'unreviewedSessionCount',
+      useFactory: getUnreviewedSessionCount,
+      deps: ['$injector'] },
     { provide: TOASTR_TOKEN, useFactory: getToastr },
     Sessions    
   ],
@@ -55,7 +59,8 @@ export function getToastr() { return toastr; }
     UnreviewedTalkComponent,
     ProfileComponent,
     DetailPanelComponent,
-    ResultsComponent
+    ResultsComponent,
+    NavComponent
   ]
 })
 export class AppModule { }

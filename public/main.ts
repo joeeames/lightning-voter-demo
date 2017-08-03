@@ -11,6 +11,7 @@ import { ProfileComponent } from "./app/profile/profile.component";
 import { Sessions } from "./app/sessions/sessions.service";
 import { DetailPanelComponent } from "./app/common/detailPanel.component";
 import { ResultsComponent } from "./app/admin/results.component";
+import { NavComponent } from "./app/nav/nav.component";
 
 declare var angular: angular.IAngularStatic;
 
@@ -30,6 +31,9 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
     }))
     .directive('results', downgradeComponent({
       component: ResultsComponent,
+    }))
+    .directive('nav', downgradeComponent({
+      component: NavComponent,
     }))
     
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
