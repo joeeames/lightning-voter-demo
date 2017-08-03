@@ -14,6 +14,7 @@ import { NavComponent } from "./nav/nav.component";
 import { Sessions } from "./sessions/sessions.service";
 import { DetailPanelComponent } from "./common/detailPanel.component";
 import { ResultsComponent } from "./admin/results.component";
+import { SessionDetailWithVotesComponent } from "./sessions/sessionDetailWithVotes.component";
 
 export function getLocation(i: any){ return i.get('$location') }
 export function getCurrentIdentity(i: any){ return i.get('currentIdentity') }
@@ -33,7 +34,8 @@ export function getToastr() { return toastr; }
     ProfileComponent,
     NavComponent,
     DetailPanelComponent,
-    ResultsComponent
+    ResultsComponent,
+    SessionDetailWithVotesComponent
   ],
   providers: [
     NameParser,

@@ -2,5 +2,5 @@
 <h1>Results</h1>
 
 <session-detail-with-votes [session]="session" 
-  *ngFor="session in $ctrl.sessionsByVoteDesc"></session-detail-with-votes>
+  *ngFor="let session of sessionsByVoteDesc"></session-detail-with-votes>
 
