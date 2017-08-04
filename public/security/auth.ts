@@ -62,4 +62,14 @@ angular.module('app').service('auth', class Auth {
       }
     })
   }
+
+  requireAdmin2() {
+    return this.waitForAuth().then(() => {
+      if(this.currentIdentity.authenticated() && this.currentIdentity.currentUser.isAdmin) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  }
 })

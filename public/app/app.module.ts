@@ -16,9 +16,12 @@ import { Sessions } from "./sessions/sessions.service";
 import { DetailPanelComponent } from "./common/detailPanel.component";
 import { ResultsComponent } from "./admin/results.component";
 import { SessionDetailWithVotesComponent } from "./sessions/sessionDetailWithVotes.component";
+import { AllSessionsResolver } from "./sessions/allSessions.resolver";
+import { AdminGuard } from "./security/admin.guard";
 
 export function getLocation(i: any){ return i.get('$location') }
 export function getCurrentIdentity(i: any){ return i.get('currentIdentity') }
+export function getAuth(i: any){ return i.get('auth') }
 export function getUnreviewedSessionCount(i: any){ return i.get('unreviewedSessionCount') }
 export function getToastr() { return toastr; }
 
@@ -35,7 +38,9 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     HttpModule,
     UpgradeModule,
     RouterModule.forRoot([
-      { path: 'admin/results', component: ResultsComponent },
+      { path: 'admin/results', component: ResultsComponent, 
+        resolve: { sessions: AllSessionsResolver},
+        canActivate: [AdminGuard] },
     ], {useHash: true})
   ],
   declarations: [
@@ -56,12 +61,17 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     { provide: 'currentIdentity',
       useFactory: getCurrentIdentity,
       deps: ['$injector'] },
+    { provide: 'auth',
+      useFactory: getAuth,
+      deps: ['$injector'] },
     { provide: 'unreviewedSessionCount',
       useFactory: getUnreviewedSessionCount,
       deps: ['$injector'] },
     { provide: TOASTR_TOKEN, useFactory: getToastr },
     { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
     { provide: '$scope', useExisting: '$rootScope' },
+    AllSessionsResolver,
+    AdminGuard,
     Sessions    
   ],
   bootstrap: [

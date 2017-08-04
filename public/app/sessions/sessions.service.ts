@@ -17,12 +17,10 @@ export class Sessions {
   }
   
   getAllSessions() {
-    return this.http.get('/api/sessions')
-      .map((rsp:Response) => {
-        let data = rsp.json();
-        return data;
-      })
-      .toPromise()
+    return this.http.get('/api/sessions/')
+      .map((rsp: Response) => {
+        return <any>rsp.json(); 
+      });
   }
   
   createNewSession(newSession) {
