@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { UpgradeComponent } from '@angular/upgrade/static';
+import { CurrentIdentity } from "../security/currentIdentity.service";
+import { UnreviewedSessionCount } from "../sessions/unreviewedSessionCount.service";
 
 @Component({
   selector: 'app-nav',
@@ -8,8 +10,8 @@ import { UpgradeComponent } from '@angular/upgrade/static';
 export class NavComponent {
   currentUser: any;
 
-  constructor(@Inject('currentIdentity') private currentIdentity,
-    @Inject('unreviewedSessionCount') private unreviewedSessionCount
+  constructor(public currentIdentity: CurrentIdentity,
+    public unreviewedSessionCount: UnreviewedSessionCount
 ) {
   }
 

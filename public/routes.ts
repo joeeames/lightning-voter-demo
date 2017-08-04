@@ -1,27 +1,28 @@
 
 angular.module('app').config(function($routeProvider) {
+  console.log('config')
   var routeResolvers = {
-    loggedIn: function(auth) {
-      return auth.requireLogin();
+    loggedIn: function(routeResolvers) {
+      return routeResolvers.requireLogin();
     },
-    waitForAuth: function(auth) {
-      return auth.waitForAuth();
+    waitForAuth: function(routeResolvers) {
+      return routeResolvers.waitForAuth();
     },
-    requireAdmin: function(auth) {
-      return auth.requireAdmin();
+    requireAdmin: function(routeResolvers) {
+      return routeResolvers.requireAdmin();
     },
-    userSessions: function(sessions, currentIdentity, auth) {
-      return auth.requireLogin().then(function() {
+    userSessions: function(sessions, currentIdentity, routeResolvers) {
+      return routeResolvers.requireLogin().then(function() {
         return sessions.getSessionsByUser(currentIdentity.currentUser.id);
       });
     },
-    allSessions: function(sessions, auth) {
-      return auth.requireLogin().then(function() {
+    allSessions: function(sessions, routeResolvers) {
+      return routeResolvers.requireLogin().then(function() {
         return sessions.getAllSessions();
       });
     },
-    allUsers: function(users, auth) {
-      return auth.requireLogin().then(function() {
+    allUsers: function(users, routeResolvers) {
+      return routeResolvers.requireLogin().then(function() {
         return users.getAllUsers();
       });
     }

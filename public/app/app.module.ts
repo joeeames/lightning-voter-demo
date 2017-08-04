@@ -18,15 +18,18 @@ import { ResultsComponent } from "./admin/results.component";
 import { SessionDetailWithVotesComponent } from "./sessions/sessionDetailWithVotes.component";
 import { AllSessionsResolver } from "./sessions/allSessions.resolver";
 import { AdminGuard } from "./security/admin.guard";
+import { Auth } from "./security/auth.service";
+import { CurrentIdentity } from "./security/currentIdentity.service";
+import { UnreviewedSessionCount } from "./sessions/unreviewedSessionCount.service";
 
 export function getLocation(i: any){ return i.get('$location') }
-export function getCurrentIdentity(i: any){ return i.get('currentIdentity') }
-export function getAuth(i: any){ return i.get('auth') }
-export function getUnreviewedSessionCount(i: any){ return i.get('unreviewedSessionCount') }
 export function getToastr() { return toastr; }
 
-class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
-  shouldProcessUrl(url) { console.log('match', url.toString().startsWith("/admin/results"), url.toString()); return url.toString().startsWith("/admin/results"); }
+export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
+  shouldProcessUrl(url) { 
+    // console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
+    return url.toString().startsWith("/admin/results"); 
+  }
   extract(url) { return url; }
   merge(url, whole) { return url; }
 }
@@ -39,7 +42,7 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     UpgradeModule,
     RouterModule.forRoot([
       { path: 'admin/results', component: ResultsComponent, 
-        resolve: { sessions: AllSessionsResolver},
+        resolve: { sessions: AllSessionsResolver },
         canActivate: [AdminGuard] },
     ], {useHash: true})
   ],
@@ -58,20 +61,14 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     { provide: '$location',
       useFactory: getLocation,
       deps: ['$injector'] },
-    { provide: 'currentIdentity',
-      useFactory: getCurrentIdentity,
-      deps: ['$injector'] },
-    { provide: 'auth',
-      useFactory: getAuth,
-      deps: ['$injector'] },
-    { provide: 'unreviewedSessionCount',
-      useFactory: getUnreviewedSessionCount,
-      deps: ['$injector'] },
     { provide: TOASTR_TOKEN, useFactory: getToastr },
     { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
     { provide: '$scope', useExisting: '$rootScope' },
     AllSessionsResolver,
     AdminGuard,
+    Auth,
+    CurrentIdentity,
+    UnreviewedSessionCount,
     Sessions    
   ],
   bootstrap: [
@@ -81,7 +78,6 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     UnreviewedTalkComponent,
     ProfileComponent,
     DetailPanelComponent,
-    // ResultsComponent,
     NavComponent
   ]
 })

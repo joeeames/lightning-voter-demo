@@ -7,9 +7,9 @@
         <li><a href="#/">Home <span class="badge">{{unreviewedSessionCount.value}}</span> </a></li>
         <li><a href="#/createsession">Create Session</a></li>
         <li><a href="#/profile">Profile</a></li>
-        <li><a href="#/admin/createusers" *ngIf="currentIdentity.currentUser.isAdmin">Create Users</a></li>
-        <li><a href="#/admin/results" *ngIf="currentIdentity.currentUser.isAdmin">Results</a></li>
-        <li><a href="#/users" *ngIf="currentIdentity.currentUser.isAdmin">Users</a></li>
+        <li><a href="#/admin/createusers" *ngIf="currentIdentity.currentUser?.isAdmin">Create Users</a></li>
+        <li><a href="#/admin/results" *ngIf="currentIdentity.currentUser?.isAdmin">Results</a></li>
+        <li><a href="#/users" *ngIf="currentIdentity.currentUser?.isAdmin">Users</a></li>
         <li><a href="#/logout">Logout</a></li>
       </ul>
       
