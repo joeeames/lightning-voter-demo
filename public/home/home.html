@@ -4,7 +4,7 @@
 <unreviewed-talk [session]="$ctrl.currentSessionToReview" (vote-no)="$ctrl.voteNo()" (vote-yes)="$ctrl.voteYes()"></unreviewed-talk>
 <hr style="margin-top:20px">
 <h3>Your Sessions
-<a zoom-in class="btn btn-primary btn-xs" href="#/createsession">Create a New Session</a>
+<a zoom-in class="btn btn-primary btn-xs" href="/createsession">Create a New Session</a>
 </h3>
 
 <div ng-repeat="session in $ctrl.userSessions">
