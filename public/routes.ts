@@ -1,6 +1,5 @@
 
 angular.module('app').config(function($routeProvider) {
-  console.log('config')
   var routeResolvers = {
     loggedIn: function(routeResolvers) {
       return routeResolvers.requireLogin();
