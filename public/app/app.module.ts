@@ -1,10 +1,9 @@
-import { NgModule, forwardRef } from '@angular/core';
+import { NgModule, forwardRef, OpaqueToken }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { HttpModule } from '@angular/http';
 import { RouterModule, UrlHandlingStrategy } from "@angular/router";
-
 
 import { AppComponent } from './app.component';
 import { NameParser } from "./admin/nameParser.service";
@@ -28,7 +27,7 @@ export function getToastr() { return toastr; }
 
 export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
   shouldProcessUrl(url) { 
-    // console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
+    console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
     return url.toString().startsWith("/admin/results"); 
   }
   extract(url) { return url; }
@@ -45,7 +44,7 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
       { path: 'admin/results', component: ResultsComponent, 
         resolve: { sessions: AllSessionsResolver },
         canActivate: [AdminGuard] },
-    ], {useHash: false})
+    ], {useHash: true})
   ],
   declarations: [
     AppComponent,
@@ -70,7 +69,7 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     Auth,
     CurrentIdentity,
     UnreviewedSessionCount,
-    Sessions
+    Sessions    
   ],
   bootstrap: [
     AppComponent

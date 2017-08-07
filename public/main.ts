@@ -1,7 +1,6 @@
 import { platformBrowserDynamic }    from '@angular/platform-browser-dynamic';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { downgradeInjectable, downgradeComponent } from '@angular/upgrade/static';
-import { setUpLocationSync } from '@angular/router/upgrade';
 
 import './app/rxjsOperations';
 
@@ -15,6 +14,5 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
     
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
   upgrade.bootstrap(document.documentElement, ['app']);
-  setUpLocationSync(upgrade);
   console.log('hybrid app bootstrapped');
 })
