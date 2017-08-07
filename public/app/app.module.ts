@@ -27,7 +27,7 @@ export function getToastr() { return toastr; }
 
 export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
   shouldProcessUrl(url) { 
-    console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
+    // console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
     return url.toString().startsWith("/admin/results"); 
   }
   extract(url) { return url; }
