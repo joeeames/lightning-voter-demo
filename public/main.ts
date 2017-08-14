@@ -13,7 +13,7 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
   // downgrades
   angular.module('app')
     .factory('nameParser', downgradeInjectable(NameParser))
-    .factory('sessions_v2', downgradeInjectable(Sessions))
+    .factory('sessions', downgradeInjectable(Sessions))
     .directive('unreviewedTalk', downgradeComponent({
       component: UnreviewedTalkComponent
     }))

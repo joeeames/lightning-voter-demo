@@ -2,7 +2,7 @@ angular.module('app').component('nav', {
   templateUrl: './nav.html',
   bindings: {
   },
-  controller: function(currentIdentity, sessions, unreviewedSessionCount) {
+  controller: function(currentIdentity, unreviewedSessionCount) {
     
     this.currentUser = currentIdentity.currentUser;
     
