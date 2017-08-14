@@ -1,0 +1,19 @@
+<app-nav></app-nav>
+
+<h1>User Profile</h1>
+
+<form class="form-inline" #form="ngForm">
+  <label for="firstName">First Name</label>
+  <input type="text" id="firstName" placeholder="First Name"
+    class="form-control" [ngModel]="currentIdentity.currentUser.firstName"
+    name="firstName">
+    
+  <label for="lastName">Last Name</label>
+  <input type="text" id="lastName" placeholder="Last Name"
+    class="form-control" [ngModel]="currentIdentity.currentUser.lastName"
+    name="lastName">
+  
+  <br><br>
+  <button class="btn btn-primary btn-sm" (click)="save(form.value)">Save</button>
+  <button class="btn btn-warning btn-sm" (click)="cancel()">Cancel</button>
+</form>

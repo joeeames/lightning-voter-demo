@@ -1,16 +1,16 @@
 angular.module('app').component('home', { 
-  templateUrl: '/home/home.html',
+  templateUrl: './home.html',
   bindings: {
     userSessions: '='
   },
-  controller: function(currentIdentity, sessions, 
+  controller: function(currentIdentity, sessions_v2, 
     toastr, unreviewedSessionCount) {
       
     
     this.currentUser = currentIdentity.currentUser
     
     this.setNextSessionToReview = function() {
-      sessions.getNextUnreviewedSession(currentIdentity.currentUser.id).then((response) => {
+      sessions_v2.getNextUnreviewedSession(currentIdentity.currentUser.id).then((response) => {
         this.currentSessionToReview = response.data;
       })
     }
@@ -18,8 +18,8 @@ angular.module('app').component('home', {
     
     
     this.voteYes = function() {
-      sessions.incrementVote(this.currentSessionToReview.id)
-      .then(() => sessions.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id))
+      sessions_v2.incrementVote(this.currentSessionToReview.id)
+      .then(() => sessions_v2.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id))
       .then(function() {
         this.setNextSessionToReview();
         
@@ -29,7 +29,7 @@ angular.module('app').component('home', {
     }
     
     this.voteNo = function() {
-      sessions.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id)
+      sessions_v2.addReviewedSession(this.currentUser.id, this.currentSessionToReview.id)
       .then(function() {
         this.setNextSessionToReview();
 
