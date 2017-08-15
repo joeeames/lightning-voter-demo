@@ -13,6 +13,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { TOASTR_TOKEN } from "./toastr/toastr.service";
 import { NavComponent } from "./nav/nav.component";
 import { Sessions } from "./sessions/sessions.service";
+import { DetailPanelComponent } from "./common/detailPanel.component";
 
 function getLocation(i:any) { return i.get('$location') }
 function getCurrentIdentity(i:any) { return i.get('currentIdentity') }
@@ -30,7 +31,8 @@ function getToastr() { return toastr; }
     UnreviewedTalkComponent,
     TalkDurationPipe,
     ProfileComponent,
-    NavComponent
+    NavComponent,
+    DetailPanelComponent
   ],
   providers: [
     NameParser,
@@ -48,7 +50,8 @@ function getToastr() { return toastr; }
   ],
   entryComponents: [
     UnreviewedTalkComponent,
-    ProfileComponent
+    ProfileComponent,
+    DetailPanelComponent
   ]
 })
 export class AppModule {}

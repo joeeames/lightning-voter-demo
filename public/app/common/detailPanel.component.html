@@ -1,0 +1,8 @@
+<div class="panel panel-primary">
+  <div class="panel-heading pointable" (click)="collapse()">
+    <span>{{title}}</span>
+  </div>
+  <div class="panel-body" [hidden]="collapsed">
+    <ng-content></ng-content>
+  </div>
+</div>
