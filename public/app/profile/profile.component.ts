@@ -8,7 +8,7 @@ import { Toastr, TOASTR_TOKEN } from "../toastr/toastr.service";
 export class ProfileComponent {
   constructor(
     @Inject('$location') private $location,
-    @Inject('currentIdentity') private currentIdentity,
+    @Inject('currentIdentity') public currentIdentity,
     @Inject(TOASTR_TOKEN) private toastr: Toastr
     ) {
   }

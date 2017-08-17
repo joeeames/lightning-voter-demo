@@ -15,9 +15,9 @@ import { NavComponent } from "./nav/nav.component";
 import { Sessions } from "./sessions/sessions.service";
 import { DetailPanelComponent } from "./common/detailPanel.component";
 
-function getLocation(i:any) { return i.get('$location') }
-function getCurrentIdentity(i:any) { return i.get('currentIdentity') }
-function getToastr() { return toastr; }
+export function getLocation(i:any) { return i.get('$location') }
+export function getCurrentIdentity(i:any) { return i.get('currentIdentity') }
+export function getToastr() { return toastr; }
 
 @NgModule({
   imports: [
