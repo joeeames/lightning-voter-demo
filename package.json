@@ -8,7 +8,8 @@
     "dev": "nodemon ./server/server.js -w ./server",
     "start": "npm run clean-dev && webpack --config config/webpack.dev.js --watch --profile --progress",
     "clean-dev": "rimraf dist/dev/*",
-    "test": "karma start",
+    "test": "karma start config/angularjs-karma.conf.js",
+    "test2": "karma start config/angular-karma.conf.js",
     "tsc": "tsc -p . -w"
   },
   "keywords": [],
