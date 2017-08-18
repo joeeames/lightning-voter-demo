@@ -10,24 +10,10 @@ module.exports = function(config) {
       '../public/vendor/toastr.min.js',
       '../dist/dev/common.bundle.js',
       '../dist/dev/ng1.bundle.js',
-      '../test/**/*.js',
-      '../public/**/*.html'
+      '../test/**/*.js'
     ],
     exclude: [
-      '../public/vendor/1.4.9/**/*.js',
-      '../public/app/**/*.js',
-      '../public/main.js',
-      '../public/vendor.js',
-      '../public/polyfills.js',
-      '../public/index.js',
-      '../public/routes.js'
     ],
-    preprocessors: {
-      '../**/*.html': ['ng-html2js']
-    },
-    ngHtml2JsPreprocessor: {
-      stripPrefix: 'public'
-    },
     reporters: ['mocha'],
     port: 9876,
     colors: true,
