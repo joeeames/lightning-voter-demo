@@ -6,7 +6,6 @@ import './admin/createUsers';
 import './admin/userList';
 import './admin/userDetails';
 import './security/logout';
-import './security/login';
 import './security/routeResolvers';
 import './security/users';
 import './home/home';

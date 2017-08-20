@@ -9,7 +9,8 @@ import { AppModule } from './app/app.module';
 import { downgradeItems } from "./downgrades";
 
 
-platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
+platformBrowserDynamic().bootstrapModule(AppModule)
+.then(platformRef => {
   // downgrades
   downgradeItems();
     

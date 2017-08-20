@@ -22,6 +22,7 @@ import { AdminGuard } from "./security/admin.guard";
 import { Auth } from "./security/auth.service";
 import { CurrentIdentity } from "./security/currentIdentity.service";
 import { UnreviewedSessionCount } from "./sessions/unreviewedSessionCount.service";
+import { LoginComponent } from "./security/login.component";
 
 export function getLocation(i: any){ return i.get('$location') }
 export function getToastr() { return toastr; }
@@ -29,7 +30,7 @@ export function getToastr() { return toastr; }
 export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
   shouldProcessUrl(url) { 
     // console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
-    return url.toString().startsWith("/admin/results"); 
+    return url.toString().startsWith("/admin/results") || url.toString().startsWith("/login"); 
   }
   extract(url) { return url; }
   merge(url, whole) { return url; }
@@ -45,6 +46,9 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
       { path: 'admin/results', component: ResultsComponent, 
         resolve: { sessions: AllSessionsResolver },
         canActivate: [AdminGuard] },
+      { path: 'login', component: LoginComponent
+      },
+      // { path: '**', redirectTo: 'login', pathMatch: 'full' }
     ], {useHash: false})
   ],
   declarations: [
@@ -55,7 +59,8 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     NavComponent,
     DetailPanelComponent,
     ResultsComponent,
-    SessionDetailWithVotesComponent
+    SessionDetailWithVotesComponent,
+    LoginComponent
   ],
   providers: [
     NameParser,
@@ -76,10 +81,10 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     AppComponent
   ],
   entryComponents: [
-    UnreviewedTalkComponent,
-    ProfileComponent,
-    DetailPanelComponent,
-    NavComponent
+    // UnreviewedTalkComponent,
+    // ProfileComponent,
+    // DetailPanelComponent,
+    // NavComponent
   ]
 })
 export class AppModule { }

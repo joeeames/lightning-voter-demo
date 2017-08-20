@@ -1,0 +1,15 @@
+<h1>Please Login</h1>
+
+<p>Enter your attendee email address</p>
+<form class="form" #form="ngForm">
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <input type="text" autofocus placeholder="Email Address" name="email" [(ngModel)]="email" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" (click)="login(form.value)">Login</button>
+    </div>
+  </div>
+</form>
