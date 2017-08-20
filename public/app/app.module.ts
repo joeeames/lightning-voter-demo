@@ -27,14 +27,14 @@ import { LoginComponent } from "./security/login.component";
 export function getLocation(i: any){ return i.get('$location') }
 export function getToastr() { return toastr; }
 
-export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
-  shouldProcessUrl(url) { 
-    // console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
-    return url.toString().startsWith("/admin/results") || url.toString().startsWith("/login"); 
-  }
-  extract(url) { return url; }
-  merge(url, whole) { return url; }
-}
+// export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
+//   shouldProcessUrl(url) { 
+//     // console.log('match', url.toString().startsWith("/admin/results"), url.toString()); 
+//     return url.toString().startsWith("/admin/results") || url.toString().startsWith("/login"); 
+//   }
+//   extract(url) { return url; }
+//   merge(url, whole) { return url; }
+// }
 
 @NgModule({
   imports: [
@@ -48,7 +48,7 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
         canActivate: [AdminGuard] },
       { path: 'login', component: LoginComponent
       },
-      // { path: '**', redirectTo: 'login', pathMatch: 'full' }
+      { path: '**', redirectTo: 'login', pathMatch: 'full' }
     ], {useHash: false})
   ],
   declarations: [
@@ -68,7 +68,7 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
       useFactory: getLocation,
       deps: ['$injector'] },
     { provide: TOASTR_TOKEN, useFactory: getToastr },
-    { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
+    // { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
     { provide: '$scope', useExisting: '$rootScope' },
     AllSessionsResolver,
     AdminGuard,
