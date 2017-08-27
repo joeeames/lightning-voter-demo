@@ -15,11 +15,7 @@ angular.module('app').config(function($routeProvider) {
         return sessions.getSessionsByUser(currentIdentity.currentUser.id);
       });
     },
-    allSessions: function(sessions, auth) {
-      return auth.requireLogin().then(function() {
-        return sessions.getAllSessions();
-      });
-    },
+    
     allUsers: function(users, auth) {
       return auth.requireLogin().then(function() {
         return users.getAllUsers();
@@ -35,13 +31,13 @@ angular.module('app').config(function($routeProvider) {
         currentAuth: routeResolvers.waitForAuth
       }
     })
-    .when('/admin/results', {
-      template: '<results all-sessions="$resolve.allSessions"></results>',
-      resolve: {
-        admin: routeResolvers.requireAdmin,
-        allSessions: routeResolvers.allSessions
-      }
-    })
+    // .when('/admin/results', {
+    //   template: '<results [all-sessions]="$resolve.allSessions"></results>',
+    //   resolve: {
+    //     admin: routeResolvers.requireAdmin,
+    //     allSessions: routeResolvers.allSessions
+    //   }
+    // })
     .when('/admin/users/:id', {
       template: '<user-details all-users="$resolve.allUsers"></user-details>',
       resolve: {
@@ -90,5 +86,7 @@ angular.module('app').config(function($routeProvider) {
     .when('/logout', {
       template: '<logout></logout>'
     })
-    .otherwise('/home')
+    .when('/', {
+      redirectTo: '/home'
+    })
 })

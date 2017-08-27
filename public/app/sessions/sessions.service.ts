@@ -21,7 +21,6 @@ export class Sessions {
         let data = rsp.json();
         return data;
       })
-      .toPromise()
   }
   
   createNewSession(newSession) {

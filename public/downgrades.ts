@@ -4,6 +4,7 @@ import { ProfileComponent } from "./app/profile/profile.component";
 import { Sessions } from "./app/sessions/sessions.service";
 import { DetailPanelComponent } from "./app/common/detailPanel.component";
 import { UpgradeModule, downgradeInjectable, downgradeComponent } from '@angular/upgrade/static';
+import { ResultsComponent } from "./app/admin/results.component";
 
 declare var angular: angular.IAngularStatic;
 
@@ -19,5 +20,8 @@ export function downgradeItems() {
     }))
     .directive('detailPanel', downgradeComponent({
       component: DetailPanelComponent
+    }))
+    .directive('results', downgradeComponent({
+      component: ResultsComponent
     }))
 }
