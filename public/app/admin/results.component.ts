@@ -7,10 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResultsComponent {
   sessionsByVoteDesc: any;
-  sessions: any;
 
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.data.forEach((data) => {
