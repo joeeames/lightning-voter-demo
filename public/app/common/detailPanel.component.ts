@@ -1,4 +1,4 @@
-import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Input, Component } from "@angular/core";
 
 @Component({
   selector: 'detail-panel',
@@ -6,9 +6,9 @@ import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 })
 export class DetailPanelComponent {
   @Input() title: string;
-  @Input() collapsed;
-
+  @Input() collapsed: boolean;
+  
   collapse() {
     this.collapsed = !this.collapsed;
   }
-} 
+}
