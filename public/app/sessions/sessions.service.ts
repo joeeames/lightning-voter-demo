@@ -1,26 +1,26 @@
-import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class Sessions {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+  }
 
   getSessionsByUser(userId) {
     return this.http.get('/api/sessions/user/' + userId)
       .map((rsp: Response) => {
-        let data = rsp.json();
+        let data = rsp.json(); 
         return data;
       })
       .toPromise();
   }
   
   getAllSessions() {
-    return this.http.get('/api/sessions')
-      .map((rsp:Response) => {
-        let data = rsp.json();
-        return data;
-      })
+    return this.http.get('/api/sessions/')
+      .map((rsp: Response) => {
+        return <any>rsp.json(); 
+      });
   }
   
   createNewSession(newSession) {

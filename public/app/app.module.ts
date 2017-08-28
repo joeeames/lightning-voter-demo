@@ -1,12 +1,11 @@
+import { NgModule, forwardRef, OpaqueToken }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
+import { UpgradeModule } from '@angular/upgrade/static';
+import { HttpModule } from '@angular/http';
+import { RouterModule, UrlHandlingStrategy } from "@angular/router";
 
-
-import { NgModule } from "@angular/core";
-import { UpgradeModule } from "@angular/upgrade/static";
-import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
-import { RouterModule, UrlHandlingStrategy, UrlTree } from "@angular/router";
-import { AppComponent } from "./app.component";
+import { AppComponent } from './app.component';
 import { NameParser } from "./admin/nameParser.service";
 import { UnreviewedTalkComponent } from "./home/unreviewedTalk.component";
 import { TalkDurationPipe } from "./common/talkDuration.pipe";
@@ -19,18 +18,19 @@ import { ResultsComponent } from "./admin/results.component";
 import { SessionDetailWithVotesComponent } from "./sessions/sessionDetailWithVotes.component";
 import { AllSessionsResolver } from "./sessions/allSessions.resolver";
 import { AdminGuard } from "./security/admin.guard";
+import { Auth } from "./security/auth.service";
+import { CurrentIdentity } from "./security/currentIdentity.service";
+import { UnreviewedSessionCount } from "./sessions/unreviewedSessionCount.service";
 
-export function getLocation(i:any) { return i.get('$location') }
-export function getCurrentIdentity(i:any) { return i.get('currentIdentity') }
-export function getAuth(i:any) { return i.get('auth') }
+export function getLocation(i: any){ return i.get('$location') }
 export function getToastr() { return toastr; }
 
-class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
-  shouldProcessUrl(url: UrlTree): boolean {
-    return url.toString().startsWith('/admin/results');
+export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
+  shouldProcessUrl(url) { 
+    return url.toString().startsWith("/admin/results"); 
   }
-  extract(url: UrlTree): UrlTree { return url; }
-  merge(newUrlPart: UrlTree, rawUrl: UrlTree): UrlTree { return newUrlPart; }
+  extract(url) { return url; }
+  merge(url, whole) { return url; }
 }
 
 @NgModule({
@@ -40,9 +40,9 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     HttpModule,
     UpgradeModule,
     RouterModule.forRoot([
-      { path: 'admin/results', component: ResultsComponent,
-        resolve: { sessions: AllSessionsResolver},
-        canActivate: [AdminGuard]}
+      { path: 'admin/results', component: ResultsComponent, 
+        resolve: { sessions: AllSessionsResolver },
+        canActivate: [AdminGuard] },
     ], {useHash: true})
   ],
   declarations: [
@@ -59,19 +59,16 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     NameParser,
     { provide: '$location',
       useFactory: getLocation,
-      deps: ['$injector']},
-    { provide: 'currentIdentity',
-      useFactory: getCurrentIdentity,
-      deps: ['$injector']},
-    { provide: 'auth',
-      useFactory: getAuth,
-      deps: ['$injector']},
+      deps: ['$injector'] },
     { provide: TOASTR_TOKEN, useFactory: getToastr },
-    Sessions,
     { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
-    { provide: '$scope', useExisting: '$rootScope'},
+    { provide: '$scope', useExisting: '$rootScope' },
     AllSessionsResolver,
-    AdminGuard
+    AdminGuard,
+    Auth,
+    CurrentIdentity,
+    UnreviewedSessionCount,
+    Sessions    
   ],
   bootstrap: [
     AppComponent
@@ -80,7 +77,7 @@ class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     UnreviewedTalkComponent,
     ProfileComponent,
     DetailPanelComponent,
-    ResultsComponent
+    NavComponent
   ]
 })
-export class AppModule {}
+export class AppModule { }

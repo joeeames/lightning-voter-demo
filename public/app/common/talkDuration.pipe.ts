@@ -1,9 +1,8 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core'
 
-@Pipe({ name: 'talkDuration' })
+@Pipe({name: 'talkDuration'})
 export class TalkDurationPipe implements PipeTransform {
-  transform(duration: any) {
+  transform(duration: string): string {
     return "Duration: " + duration + " minutes";
   }
-
 }

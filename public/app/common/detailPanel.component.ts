@@ -12,10 +12,3 @@ export class DetailPanelComponent {
     this.collapsed = !this.collapsed;
   }
 }
-
-
-
-
-
-
-

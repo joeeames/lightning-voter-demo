@@ -1,4 +1,4 @@
-import { Input, Component } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'session-detail-with-votes',
@@ -6,4 +6,4 @@ import { Input, Component } from "@angular/core";
 })
 export class SessionDetailWithVotesComponent {
   @Input() session: any;
-}
+} 
