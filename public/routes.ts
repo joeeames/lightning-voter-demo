@@ -81,12 +81,12 @@ angular.module('app').config(function($routeProvider) {
         userSessions: routeResolvers.userSessions,
       }
     })
-    .when('/login', {
-      template: '<login></login>',
-      resolve: {
-        currentAuth: routeResolvers.waitForAuth
-      }
-    })
+    // .when('/login', {
+    //   template: '<login></login>',
+    //   resolve: {
+    //     currentAuth: routeResolvers.waitForAuth
+    //   }
+    // })
     .when('/logout', {
       template: '<logout></logout>'
     })

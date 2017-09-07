@@ -21,17 +21,10 @@ import { AdminGuard } from "./security/admin.guard";
 import { Auth } from "./security/auth.service";
 import { CurrentIdentity } from "./security/currentIdentity.service";
 import { UnreviewedSessionCount } from "./sessions/unreviewedSessionCount.service";
+import { LoginComponent } from "./security/login.component";
 
 export function getLocation(i: any){ return i.get('$location') }
 export function getToastr() { return toastr; }
-
-export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
-  shouldProcessUrl(url) { 
-    return url.toString().startsWith("/admin/results"); 
-  }
-  extract(url) { return url; }
-  merge(url, whole) { return url; }
-}
 
 @NgModule({
   imports: [
@@ -43,7 +36,9 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
       { path: 'admin/results', component: ResultsComponent, 
         resolve: { sessions: AllSessionsResolver },
         canActivate: [AdminGuard] },
-    ], {useHash: true})
+      { path: 'login', component: LoginComponent },
+      { path: '**', redirectTo: 'login', pathMatch: 'full'}
+    ], {useHash: false})
   ],
   declarations: [
     AppComponent,
@@ -53,16 +48,12 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     NavComponent,
     DetailPanelComponent,
     ResultsComponent,
-    SessionDetailWithVotesComponent
+    SessionDetailWithVotesComponent,
+    LoginComponent
   ],
   providers: [
     NameParser,
-    { provide: '$location',
-      useFactory: getLocation,
-      deps: ['$injector'] },
     { provide: TOASTR_TOKEN, useFactory: getToastr },
-    { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
-    { provide: '$scope', useExisting: '$rootScope' },
     AllSessionsResolver,
     AdminGuard,
     Auth,
@@ -74,10 +65,7 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     AppComponent
   ],
   entryComponents: [
-    UnreviewedTalkComponent,
-    ProfileComponent,
-    DetailPanelComponent,
-    NavComponent
+    
   ]
 })
 export class AppModule { }

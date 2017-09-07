@@ -4,13 +4,13 @@
     <div class="navbar-header"><a href="/" class="navbar-brand">Lightning Talks</a></div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#/">Home <span class="badge">{{unreviewedSessionCount.value}}</span> </a></li>
-        <li><a href="#/createsession">Create Session</a></li>
-        <li><a href="#/profile">Profile</a></li>
-        <li><a href="#/admin/createusers" *ngIf="currentIdentity.currentUser?.isAdmin">Create Users</a></li>
-        <li><a href="#/admin/results" *ngIf="currentIdentity.currentUser?.isAdmin">Results</a></li>
-        <li><a href="#/users" *ngIf="currentIdentity.currentUser?.isAdmin">Users</a></li>
-        <li><a href="#/logout">Logout</a></li>
+        <li><a [routerLink]="['/']">Home <span class="badge">{{unreviewedSessionCount.value}}</span> </a></li>
+        <li><a href="/createsession">Create Session</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/admin/createusers" *ngIf="currentIdentity.currentUser?.isAdmin">Create Users</a></li>
+        <li><a [routerLink]="['/admin/results']" *ngIf="currentIdentity.currentUser?.isAdmin">Results</a></li>
+        <li><a href="/users" *ngIf="currentIdentity.currentUser?.isAdmin">Users</a></li>
+        <li><a href="/logout">Logout</a></li>
       </ul>
       
       <ul class="nav navbar-right navbar nav">

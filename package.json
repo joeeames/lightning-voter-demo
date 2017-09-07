@@ -7,7 +7,7 @@
     "server": "node ./server/server.js",
     "dev": "nodemon ./server/server.js -w ./server",
     "start": "npm run clean-dev && webpack --config config/webpack.dev.js --watch --profile --progress",
-    "build": "npm run clean-aot && webpack --config config/webpack.ng1.prod.js --profile --progress --bail && webpack --config config/webpack.prod.js --profile --progress --bail",
+    "build": "npm run clean-aot && webpack --config config/webpack.prod.js --profile --progress --bail",
     "clean-dev": "rimraf dist/dev/*",
     "clean-aot": "rimraf dist/aot/*",
     "ngc": "ngc -p tsconfig.aot.json",
